@@ -1,0 +1,81 @@
+﻿208-10-29
+	mysql
+		초기 문제집 테이블 폼 완성
+
+	index.php
+		메인 메뉴 검색창 제작
+		메인 메뉴 리스트 표시
+
+2018-10-30
+	*
+		한글 표기 에러 해결
+
+	index.php
+		css 초기 디자인 완성
+
+	solve.php
+		문제 풀이 사이트 초본 제작
+
+2018-10-31
+	index.php
+		메뉴 검색창 '선택안함'항목 추가
+		GET방식을 POST로 전부 수정
+
+2018-11-1
+	mysql
+		초기 유저 테이블 폼 완성
+
+	solve.php
+		데이터 저장 방식으로 COOKIE 선택
+
+	index.php
+		로그인 파트 제작
+
+	signUp.php
+		회원가입창 제작	
+		
+2018-11-2
+	mysql
+		유저가 푼 문제 정보 저장 방식 결정
+
+	solve.php
+		이전 문제, 다음 문제 이동 버튼 제작
+
+2018-11-03
+	solve.php 
+		mysql 최적화
+		비유저 사용 가능
+		이미 푼 문제 번호 자동 마킹 기능 제작
+		
+	solve-backup.php
+		기존의 solve.php를 백업함
+
+2018-11-04
+	solve.php
+		코드 최적화
+
+	setup.php
+		solve.php 1회성 설정 작업 이동
+
+	checkError.php
+		solve.php에서 잘못된 입력 방식으로 인한 오류 제거용
+
+	index.php
+		리스트에 풀이 현황 표시
+		비밀번호나 아이디 오류시 메세지 출력
+		mqli 공격 관련 보안 활성화
+
+	index.css
+		menu.css에서 이름 변경 및 위치 변경
+		
+2018-11-05
+	cnn.php
+		mysql 암호변경을 빠르게 진행할 수 있도록 배치
+
+2018-11-12
+	*.php
+		POST방식을  GET방식으로 변경
+
+	signUp.php
+		자바스크립트와 php 변수 관련 오류 수정
+	

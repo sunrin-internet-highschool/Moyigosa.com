@@ -1,0 +1,1 @@
+create table users(id varchar(20) primary key not null,password varchar(20) not null,name varchar(11) not null, email varchar(100) not null,nick varchar(20) not null);
