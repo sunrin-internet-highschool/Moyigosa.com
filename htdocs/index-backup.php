@@ -40,7 +40,25 @@ while($row = $result->fetch_assoc()){
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/index.css">
     <title>모의고사풀이사이트</title>
+    <style></style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script language="javascript">
+        $(function(){
+            $(".show0").click(function(){
+                $('.show_data0').stop().slideToggle('fast');
+            })
+            
+            $(".show1").click(function(){
+                $('.show_data1').stop().slideToggle('fast');
+            })
+            
+            $(".show2").click(function(){
+                $('.show_data2').stop().slideToggle('fast');
+            })
+        })
+    </script>
 </head>
 
 <body>

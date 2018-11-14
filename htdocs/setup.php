@@ -8,7 +8,7 @@
     }
 if(!isset($_SESSION['questFinal'.$def])||empty($_SESSION['questFinal'.$def])){
     echo"<script>alert('잘못된 접근입니다.');self.close();</script>";
-    return 0;
+   die();
 }
     $i=1;
     $result = mysqli_query($conn, "SELECT * FROM list".$select);
