@@ -1,45 +1,535 @@
-INSERT INTO list VALUES(NULL,1,'대화를 듣고, 여자의 마지막 말에 대한 남자의 응답으로 가장적절한 것을 고르시오.', ' ', ' He’s working on a new novel.', ' There’ll be a book signing in New York.', ' His new novel will be published in April.', ' It’s in the new­release section over there.', ' You can find a bigger bookstore down the street.',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,2,'대화를 듣고, 남자의 마지막 말에 대한 여자의 응답으로 가장적절한 것을 고르시오.', ' ', ' It’s cheaper to buy them at this store.', ' You have to ask the store for a refund.', ' I had the groceries delivered this morning.', ' They become waste and hurt the environment.', ' We should consume more vegetables than meat.',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,3,'다음을 듣고, 남자가 하는 말의 목적으로 가장 적절한 것을고르시오.', ' ', ' 드론 동호회 회원을 모집하려고', ' 새로 출시된 드론을 광고하려고', ' 드론 사용 시 유의 사항을 안내하려고', ' 드론의 다양한 응용 분야를 설명하려고', ' 드론 조종 자격증의 취득 방법을 알려주려고',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,4,'대화를 듣고, 여자의 의견으로 가장 적절한 것을 고르시오.', ' ', ' 아이의 건강을 위해 친환경 제품을 쓰는 것이 좋다. ', ' 이사를 자주 하는 것은 아이의 정서 발달에 해롭다. ', ' 거주지를 결정할 때는 교육 시설을 고려할 필요가 있다. ', ' 낯선 환경을 경험하는 것은 문제 해결 능력을 향상시킨다. ', ' 어린 시절을 자연과 보내는 것이 아이의 발달에 중요하다.',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,5,'대화를 듣고, 두 사람의 관계를 가장 잘 나타낸 것을 고르시오.', ' ', ' 인테리어 디자이너 – 의뢰인', ' 의류 판매업자 – 패션모델', ' 건물 주인 – 세입자', ' 식당 종업원 – 손님', ' 요리사 – 견습생',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,6,'대화를 듣고, 그림에서 대화의 내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것을고르시오.', ' ', ' ', ' ', ' ', ' ', ' ',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,7,'대화를 듣고, 여자가 할 일로 가장 적절한 것을 고르시오.', ' ', ' 지하철 타기 ', ' 음료 구매하기', ' 영화표 예매하기 ', ' 관람할 영화 고르기', ' 상영관 확인하기',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,8,'대화를 듣고, 남자가 전단지를 만들지 <span style="text-decoration:underline;">않는</span> 이유를 고르시오.', ' ', ' 개인 정보 노출을 원하지 않아서', ' 홍보 효과가 적을 것 같아서', ' 룸메이트를 이미 구해서', ' 만드는 데 시간이 오래 걸려서', ' 인터넷으로 광고하는 것이 더 편해서',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,9,'대화를 듣고, 남자가 지불할 금액을 고르시오.', ' ', ' $45 ', ' $50 ', ' $54 ', ' $60 ', ' $63',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,10,' 대화를 듣고, Dream Surf Camp에 관해 언급되지 <span style="text-decoration:underline;">않은</span> 것을고르시오.', ' ', ' 캠프 기간 ', ' 캠프 장소 ', ' 예약 방법', ' 강습 횟수 ', ' 강습 내용',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,11,' Taste of Italy Tour에 관한 다음 내용을 듣고, 일치하지<span style="text-decoration:underline;">않는</span> 것을 고르시오[3점].', ' ', ' 6시간 동안 투어가 진행된다. ', ' 이탈리아 음식을 맛볼 수 있다. ', ' 가이드와 현지 시장을 방문한다. ', ' 추가 비용 없이 와인 한 잔이 제공된다. ', ' 인터넷으로 예약을 할 수 있다. ',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,12,' 다음 표를 보면서 대화를 듣고, 여자가 주문할 휴지통을 고르시오.', ' Trash Cans for SaleModel Size(liter) Open Type Material Shape', ' A 9 swing lid plastic oval', ' B 12 swing lid stainless steel rectangle', ' C 15 motion sensor plastic oval', ' D 20 motion sensor stainless steel oval', ' E 25 motion sensor stainless steel rectangle',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,13,' 대화를 듣고, 여자의 마지막 말에 대한 남자의 응답으로 가장적절한 것을 고르시오[3점].', ' Man: ', ' No problem. You can teach me how to play the game.', ' All right. I won’t let him use my phone too long.', ' Okay. Let’s take more photos with my phone.', ' Well, lack of sleep can cause poor eyesight.', ' Sure. I already had my eyes checked.',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,14,' 대화를 듣고, 남자의 마지막 말에 대한 여자의 응답으로 가장적절한 것을 고르시오[3점].', ' Woman: ', ' I’m sorry, but it was canceled.', ' Yes, the meeting was postponed.', ' Don’t worry. I’ll ask them about it.', ' Oh, we’ve been waiting for an hour.', ' Sure, I’ll finish the project by Friday.',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,15,' 다음 상황 설명을 듣고, Kate가 선생님에게 할 말로 가장적절한 것을 고르시오.', ' Kate: ', ' Let’s return to the resort to stay one more night.', ' My flight’s been canceled, so I can’t come to school.', ' I think I’ll have to take the last flight tonight.', ' Fortunately, the storm has just stopped here.', ' I’ve been to the island many times before.',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,16,' 여자가 하는 말의 주제로 가장 적절한 것은?', '', ' types of music popular among kids', ' difficulties in teaching music to kids', ' choosing the right instrument for kids', ' using music to increase concentration', ' effects of music on other subjects',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,17,' 언급된 악기가 <span style="text-decoration:underline;">아닌</span> 것은?', '', ' piano ', ' trumpet ', ' guitar', ' saxophone ', ' flute',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,18,' 다음 글의 목적으로 가장 적절한 것은?', 'Dear Sue Smith,We are concerned that we have not heard from yousince we sent you the selections you chose when youjoined the Club. As you know, the payment is alwaysdue when you receive your selections. Because wehave not received the payment, we have suspendedyour membership privileges. Don’t miss out on all thebenefits your membership offers you: the widestselection of music, great discounts and more! Pleasereturn the bottom portion of this letter with yourcheck in the enclosed envelope. Send us your paymenttoday. Paying promptly will restore your membershipto good standing.Sincerely,Larry Cook', ' 지불해야 할 돈의 납부를 요청하려고', ' 구매한 제품의 반품 방법을 알리려고', ' 회원의 자격 요건에 대해 안내하려고', ' 회원 자격이 회복되었음을 통보하려고', ' 회비를 인상하게 된 이유를 설명하려고',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,19,' 다음 글에 드러난 ‘I’의 심경 변화로 가장 적절한 것은?', 'On December 6th, I arrived at University Hospital inCleveland at 10:00 a.m. I went through the process ofadmissions. I grew anxious because the time for surgerywas drawing closer. I was directed to the waiting area,where I remained until my name was called. I had a fewhours of waiting time. I just kept praying. At some point inmy ongoing prayer process, before my name was called, inthe midst of the chaos, an unbelievable peace embraced me.All my fear disappeared! An unbelievable peace overrode myemotions. My physical body relaxed in the comfort provided,and I looked forward to getting the surgery over with andworking hard at recovery.', ' cheerful → sad ', ' worried → relieved', ' angry → ashamed ', ' jealous → thankful', ' hopeful → disappointed',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,20,' 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?', 'You are far more likely to eat what you can see in plainview. Organize the foods in your kitchen so the best choicesare most visible and easily accessible. It also helps to hidepoor choices in inconvenient places. An even better idea isto simply get rid of anything with low nutritional value thatyou may be tempted to eat. Put fruits, vegetables, and otherhealthy options at eye level in your refrigerator, or leavethem out on the table. Even when you aren’t hungry, simplyseeing these items will plant a seed in your mind for yournext snack. Also consider taking small bags of nuts, fruits,or vegetables with you when you are away from home. Thatway, you can satisfy a mid­afternoon craving even if nogood options are available. * craving: 갈망, 욕구', ' 음식은 먹고 싶은 양보다 적게 섭취해야 한다. ', ' 음식물이 남지 않도록 계획을 세워 조리해야 한다. ', ' 위생을 고려해 냉장고를 정기적으로 청소해야 한다. ', ' 몸에 좋은 음식은 찾기 쉽고 가까운 곳에 두어야 한다. ', ' 식품을 구매하기 전에 반드시 유통기한을 확인해야 한다.',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,21,' 다음 글의 요지로 가장 적절한 것은?', 'Playing any game that involves more than one personteaches kids teamwork, the consequences of cheating, andhow to be a good team player whether they win or lose. It’snot hard to see how those skills make it into the daily livesof kids. But like all things we hope to teach our children,learning to cooperate or to compete fairly takes practice.Humans aren’t naturally good at losing, so there will betears, yelling, and cheating, but that’s okay. The point is,playing games together helps kids with their socialization. Itallows them a safe place to practice getting along, followingrules, and learning how to be graceful in defeat.', ' 경쟁과 협동은 똑같은 내적 동기에서 유발된다. ', ' 운동 후에는 충분한 휴식을 취하는 것이 중요하다. ', ' 아이들이 편히 놀 수 있는 안전한 장소가 필요하다. ', ' 스포츠에서 심리적 요인이 점점 더 중요해지고 있다. ', ' 둘 이상이 하는 경기는 아이의 사회화에 도움을 준다.',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,22,' 다음 글의 주제로 가장 적절한 것은?', 'The public growth of the Internet began in the 1990s, asincreasing numbers of computers came into homes andworkplaces. The first online newspaper was published in theUS and the Chicago­based Tribune was among the first titlesto put its content online, in 1991. As the decade progressed,software developments made the task of creating onlinecontent quicker and cheaper — between 1995 and 1998, thenumber of US dailies on the web grew from 175 to 750.Newspapers in the UK followed the same pattern: in 1994,the Sunday Times became the UK’s first newspaper to havean online edition and a few months later the Daily Telegraphlaunched the Electronic Telegraph, Europe’s first onlinedaily.', ' the early history of online newspapers', ' the bad effects of the Internet on youth', ' the disadvantage of delivering news online', ' the efforts of newspapers to reduce errors', ' the effectiveness of different news formats',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,23,' 다음 글의 제목으로 가장 적절한 것은?', 'Each spring in North America, the early morning hours arefilled with the sweet sounds of songbirds, such as sparrowsand robins. While it may seem like these birds are simplysinging songs, many are in the middle of an intensecompetition for territories. For many birds, this strugglecould ultimately decide whom they mate with and if theyever raise a family. When the birds return from their winterfeeding grounds, the males usually arrive first. Older, moredominant males will reclaim their old territories: a tree,shrub, or even a window ledge. Younger males will try tochallenge the older ones for space by mimicking the songthat the older males are singing. The birds that can sing theloudest and the longest usually wind up with the bestterritories. * ledge: 선반 모양의 공간', ' Harmony Brings Peace', ' Great Waves of Migration', ' Singing for a Better Home', ' An Endless Journey for Food', ' Too Much Competition Destroys All',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,24,' 다음 도표의 내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것은?', 'The graph above shows the leading outdoor watersportactivities by number of participants in the United Kingdom(UK) from 2014 to 2015. ', 'In 2015, the number ofparticipants in outdoor swimming decreased compared to theprevious year. ', 'In 2015, the most popular outdoorwatersport activity was coastal walking. ', 'In 2014, thenumber of participants in any boating activity was more thantwice the number of participants in canoeing. ', 'In 2015, thenumber of participants in canoeing slightly decreased fromthe previous year, but it was more than the number ofparticipants in angling in 2015. ', 'The number of participantsin angling in 2015 more than doubled compared to theprevious year.① ② ③ ④ ⑤ ',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,25,' Grant Wood에 관한 다음 글의 내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것은?', 'Grant Wood grew up on a farm and drew with whatevermaterials could be spared. Often he used charcoal from thewood fire to sketch on a leftover piece of brown paper. Hewas only ten when his father died, and his mother movedthe family to Cedar Rapids, Iowa, where Wood went toschool. He studied part­time at the State University of Iowaand attended night classes at the Art Institute of Chicago.When he was 32, he went to Paris to study at theAcadémie Julian. In 1927, he traveled to Munich, Germany,where some of the most accomplished artists of the periodwere working. While there, he saw German and Flemishartworks that influenced him greatly, especially the work ofJan van Eyck. After that trip, his style changed to reflectthe realism of those painters.', ' 남은 종이 위에 숯을 사용하여 스케치하기도 했다. ', ' 열 살 때 아버지가 돌아가셨다. ', ' 대학에서 시간제로 공부를 한 적이 있다. ', ' Jan van Eyck의 작품에서 영향을 받았다. ', ' 독일 여행 후에 사실주의 화풍에서 벗어났다.',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,26,' Science Showcase Video Contest에 관한 다음 안내문의내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것은?', 'Science Showcase Video ContestCreate a video that effectively communicates a specificaspect of science and is informative for a broad publicaudience. Videos should be submitted between June 1 andAugust 31 . Winners will be announced in early October.Up to $2,000 in Prize MoneyGuidelines: ▪ One or two entries per individual ▪ Submit the following to scienceshowcase@kmail.com: ‒ the title of your video ‒ your name and phone number ‒ a download link to your video ▪ No restrictions on style of videoFor more information, please visit our website:www.scienceshowcase.org.', ' 8월 31일까지 영상물을 제출해야 한다. ', ' 수상자는 10월 초에 발표한다. ', ' 상금은 2,000달러까지 수여된다. ', ' 출품작은 1인당 한 편으로 제한된다. ', ' 영상물의 형식에는 제한이 없다. ',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,27,' 2018 Secret Garden Tour에 관한 다음 안내문의 내용과일치하는 것은?', '2018 Secret Garden TourWe hope you’ll join us for 2018 Secret Garden Tour, aself­guided journey through private residences withbeautiful gardens. ▪ When: Sunday, April 15, 10 a.m. to 5 p.m. ▪ Where: Rivertown’s East End ▪ Price: $40 (Advance tickets are $36 and available online.) ‒ The tour includes 12 gardens, all within walkingdistance to each other. ‒ Guests are invited to view the Art of the Gardenexhibition.We offer free parking on the day of the tour. Theparking lot opens at 9 a.m.For more information, please visitwww.secretgardentour.org.', ' 전체 투어를 가이드가 안내한다. ', ' 일요일에 총 다섯 시간 동안 진행된다. ', ' 사전에 표를 구입하면 10달러를 할인해 준다. ', ' 12개의 정원을 둘러 볼 수 있다. ', ' 주차비가 부과되며 주차장은 오전 9시에 연다.',NULL,NULL,4, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,28,' 다음 글의 밑줄 친 부분 중, 어법상 <span style="text-decoration:underline;">틀린</span> 것은[3점]?', ' Although sports nutrition is a fairly new academic discipline,there have always been recommendations ', '<span style="text-decoration:underline;">made</span> to athletesabout foods that could enhance athletic performance. Oneancient Greek athlete is reported to ', '<span style="text-decoration:underline;">have eaten</span> dried figsto enhance training. There are reports that marathon runnersin the 1908 Olympics drank cognac to improve performance.The teenage running phenomenon, Mary Decker, surprisedthe sports world in the 1970s when she reported ', '<span style="text-decoration:underline;">that</span> sheate a plate of spaghetti noodles the night before a race.Such practices may be suggested to athletes ', '<span style="text-decoration:underline;">because of</span>their real or perceived benefits by individuals who excelledin their sports. Obviously, some of these practices, such asdrinking alcohol during a marathon, are no longerrecommended, but others, such as a high­carbohydrate mealthe night before a competition, ', '<span style="text-decoration:underline;">has</span> stood the test of time. * discipline: (학문의) 분야 ** phenomenon: 천재① ② ③ ④ ⑤ ',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,29,' 다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지<span style="text-decoration:underline;">않은</span> 것은[3점]?', ' Although instances occur in which partners start theirrelationship by telling everything about themselves to eachother, such instances are ', '<span style="text-decoration:underline;">rare</span>. In most cases, the amountof disclosure ', '<span style="text-decoration:underline;">increases</span> over time. We begin relationshipsby revealing relatively little about ourselves; then if our firstbits of self­disclosure are well received and bring on similarresponses from the other person, we’re ', '<span style="text-decoration:underline;">reluctant</span> to revealmore. This principle is important to remember. It wouldusually be a ', '<span style="text-decoration:underline;">mistake</span> to assume that the way to build astrong relationship would be to reveal the most privatedetails about yourself when first making contact with anotherperson. Unless the circumstances are unique, such baring ofyour soul would be ', '<span style="text-decoration:underline;">likely</span> to scare potential partners awayrather than bring them closer. * bare: 드러내다① ② ③ ④ ⑤ ',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,30,' 밑줄 친 부분이 가리키는 대상이 나머지 넷과 <span style="text-decoration:underline;">다른</span> 것은?', 'Jack stopped the cycle of perfectionism that ', '<span style="text-decoration:underline;">his</span> sonMark was developing. Mark could not stand to lose at gamesby the time he was eight years old. Jack was contributing toMark’s attitude by always letting him win at chess because', '<span style="text-decoration:underline;">he</span> didn’t like to see Mark get upset and cry. One day,Jack realized it was more important to allow Mark someexperience with losing, so ', '<span style="text-decoration:underline;">he</span> started winning at least halfthe games. Mark was upset at first, but soon began to winand lose with more grace. Jack felt a milestone had beenreached one day when ', '<span style="text-decoration:underline;">he</span> was playing catch with Markand threw a bad ball. Instead of getting upset about missingthe ball, Mark was able to use ', '<span style="text-decoration:underline;">his</span> sense of humor andcommented, “Nice throw, Dad. Lousy catch, Mark.” * milestone: 중대한 시점① ② ③ ④ ⑤ ',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,31,' 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오.', ' Most importantly, money needs to be ________________    in apredictable way. Precious metals have been desirable asmoney across the millennia not only because they haveintrinsic beauty but also because they exist in fixedquantities. Gold and silver enter society at the rate at whichthey are discovered and mined; additional precious metalscannot be produced, at least not cheaply. Commodities likerice and tobacco can be grown, but that still takes time andresources. A dictator like Zimbabwe’s Robert Mugabe couldnot order the government to produce 100 trillion tons ofrice. He was able to produce and distribute trillions of newZimbabwe dollars, which is why they eventually becamemore valuable as toilet paper than currency. * intrinsic: 내재적인', ' invested ', ' scarce ', ' transferred', ' divisible ', ' deposited',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,32,' 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오[3점].', ' In one experiment, children were told they could have onemarshmallow treat if they chose to eat it immediately, buttwo treats if they waited. Most of the children, who rangedin age from 4 to 8, chose to wait, but the strategies theyused differed significantly. The 4­year­olds often chose tolook at the marshmallows while waiting, a strategy that wasnot terribly effective. In contrast, 6­ and 8­year­olds usedlanguage to help overcome temptation, although in differentways. The 6­year­olds spoke and sang to themselves,reminding themselves they would get more treats if theywaited. The 8­year­olds focused on aspects of themarshmallows unrelated to taste, such as appearance, whichhelped them to wait. In short, children used “self­talk” to ___________________. ', ' change their habit', ' get more things done', ' regulate their behavior', ' build their self­esteem', ' improve their speaking skills',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,33,' 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오[3점].', ' The desire for fame has its roots in the __________________. No one would want to be famous who hadn’t also,somewhere in the past, been made to feel extremelyinsignificant. We sense the need for a great deal of admiringattention when we have been painfully exposed to earlierdeprivation. Perhaps one’s parents were hard to impress.They never noticed one much, they were so busy with otherthings, focusing on other famous people, unable to have orexpress kind feelings, or just working too hard. There wereno bedtime stories and one’s school reports weren’t thesubject of praise and admiration. That’s why one dreamsthat one day the world will pay attention. When we’refamous, our parents will have to admire us too. ', ' spread of media', ' experience of neglect', ' freedom from authority', ' curiosity about the unknown', ' misunderstanding of popularity',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,34,' 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오[3점].', ' When the late Theodore Roosevelt came back from Africa,just after he left the White House in 1909, he made his firstpublic appearance at Madison Square Garden. Before he wouldagree to make the appearance, he carefully arranged fornearly one thousand paid applauders to be scatteredthroughout the audience to applaud his entrance on theplatform. For more than 15 minutes, these paid hand­clappersmade the place ring with their enthusiasm. The rest of theaudience took up the suggestion and joined in for anotherquarter hour. The newspaper men present were literallyswept off their feet by the tremendous applause given theAmerican hero, and his name was emblazoned across theheadlines of the newspapers in letters two inches high.Roosevelt _________________. * emblazon: 선명히 새기다', ' understood and made intelligent use of personal promotion', ' made public policies that were beneficial to his people', ' knew when was the right time for him to leave office', ' saw the well­being of his supporters as the top priority', ' didn’t appear before the public in an arranged setting',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,35,' 다음 글에서 전체 흐름과 관계 <span style="text-decoration:underline;">없는</span> 문장은?', 'In addition to controlling temperatures when handling freshproduce, control of the atmosphere is important. ', 'Somemoisture is needed in the air to prevent dehydration duringstorage, but too much moisture can encourage growth ofmolds. ', ' Some commercial storage units have controlledatmospheres, with the levels of both carbon dioxide andmoisture being regulated carefully. ', ' Though living thingsemit carbon dioxide when they breathe, carbon dioxide iswidely considered to be a pollutant. ', ' Sometimes othergases, such as ethylene gas, may be introduced at controlledlevels to help achieve optimal quality of bananas and otherfresh produce. ', ' Related to the control of gases andmoisture is the need for some circulation of air among thestored foods. * dehydration: 탈수** controlled atmosphere: 저온 저장과 함께 공기의 농도를 조절하는 장치① ② ③ ④ ⑤ ',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,36,' 주어진 글 다음에 이어질 글의 순서로 가장 적절한것을 고르시오.', 'Studies show that no one is “born” to be anentrepreneur and that everyone has the potential tobecome one.(A) These traits are developed over time and evolve froman individual’s social context. For example, people withparents who were self­employed are more likely tobecome entrepreneurs.(B) Whether someone does or doesn’t is a function ofenvironment, life experiences, and personal choices.However, there are personality traits and characteristicscommonly associated with entrepreneurs.(C) After witnessing a father’s or mother’s independence inthe workplace, an individual is more likely to findindependence appealing. Similarly, people who personallyknow an entrepreneur are more than twice as likely tobe involved in starting a new firm as those with noentrepreneur acquaintances or role models. * entrepreneur: 기업가', ' (A) - (C) - (B) ', ' (B) - (A) - (C)', ' (B) - (C) - (A) ', ' (C) - (A) - (B)', ' (C) - (B) - (A)',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,37,' 주어진 글 다음에 이어질 글의 순서로 가장 적절한것을 고르시오[3점].', 'According to the consulting firm McKinsey, knowledgeworkers spend up to 60 percent of their time looking forinformation, responding to emails, and collaborating withothers.(A) Think of it as the robot­assisted human, givensuperpowers through the aid of technology. Our jobsbecome enriched by relying on robots to do the tediouswhile we work on increasingly more sophisticated tasks.(B) The solution is to enable people to work smarter, notjust by saying it, but by putting smart tools andimproved processes in place so that people can performat enhanced levels.(C) By using social technologies, those workers can becomeup to 25 percent more productive. The need forproductivity gains through working harder and longer hasa limit and a human toll. * tedious: 지루한, 싫증 나는', ' (A) - (C) - (B) ', ' (B) - (A) - (C)', ' (B) - (C) - (A) ', ' (C) - (A) - (B)', ' (C) - (B) - (A)',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,38,' 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장 적절한 곳을 고르시오.', 'However, this solution does not work in all situationsbecause we also become increasingly sensitive to glare.Two major kinds of age­related structural changes occur inthe eye. One is a decrease in the amount of light thatpasses through the eye, resulting in the need for more lightto do tasks such as reading. (', ') As you might suspect,this change is one reason why older adults do not see aswell in the dark, which may account in part for theirreluctance to go places at night. (', ') One possible logicalresponse to the need for more light would be to increaseillumination levels in general. (', ') In addition, our abilityto adjust to changes in illumination, called adaptation,declines. (', ') Going from outside into a darkened movietheater involves dark adaptation; going back outside involveslight adaptation. (', ') Research indicates that the time ittakes for both types of adaptation increases with age. * illumination: 조도, 조명① ② ③ ④ ⑤ ',NULL,NULL,3, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,39,' 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장 적절한 곳을 고르시오[3점].', 'A clay pot is an example of a material artifact, which,although transformed by human activity, is not all thatfar removed from its natural state.By acting on either natural or artificial resources, throughtechniques, we alter them in various ways. (', ') Thus wecreate artifacts, which form an important aspect oftechnologies. (', ') A plastic cup, a contact lens, and acomputer chip, on the other hand, are examples of artifactsthat are far removed from the original states of the naturalresources needed to create them. (', ') Artifacts can serveas resources in other technological processes. (', ') This isone of the important interaction effects within thetechnological system. (', ') In other words, each newtechnology increases the stock of available tools andresources that can be employed by other technologies toproduce new artifacts. * artifact: 가공품① ② ③ ④ ⑤ ',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,40,' 다음 글의 내용을 한 문장으로 요약하고자 한다.', ' 빈칸 (A),(B)에 들어갈 말로 가장 적절한 것은?Despite all the talk of how weak intentions are in theface of habits, it’s worth emphasizing that much of thetime even our strong habits do follow our intentions. Weare mostly doing what we intend to do, even though it’shappening automatically. This probably goes for manyhabits: although we perform them without bringing theintention to consciousness, the habits still line up withour original intentions. Even better, our automatic,unconscious habits can keep us safe even when ourconscious mind is distracted. We look both ways beforecrossing the road despite thinking about a ratherdepressing holiday we took in Brazil, and we put ovengloves on before reaching into the oven despite beingpreoccupied about whether the cabbage is overcooked. Inboth cases, our goal of keeping ourselves alive andunburnt is served by our automatic, unconscious habits.The habitual acts we automatically do are related to our<span style="text-decoration:underline;">&nbsp&nbsp(A)&nbsp&nbsp</span> and these acts can be helpful in keeping usfrom <span style="text-decoration:underline;">&nbsp&nbsp(B)&nbsp&nbsp</span> in our lives.(A) (B)', ' intention ······ danger', ' intention ······ ignorance', ' mood ······ danger', ' experience ······ laziness', ' experience ······ ignorance',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,41,' 윗글의 제목으로 가장 적절한 것은?', 'Mary is an interior designer. A friend of hers bought ahouse that needed to be renovated, and had asked her todo the interior decoration. Mary wanted the interior of thehouse to look attractive. However, she would ignoresafety standards and would not listen to other contractors,if she did not think their proposals fit her ideals. For allthe home products she picked for the house, her mainconcern was whether they looked attractive, not whetherthey were effective or reliable. She chose a fancy­lookingdoor lock, against the advice of the locksmith who didnot think it was dependable. As a consequence, a yearlater, it was necessary to change the door lock, as therewas difficulty opening the lock with the key.In addition, she picked toilets in an upscale model anddesign. However, the homeowner later found out that thetoilet handle must be held down to complete the flushingaction. The plumber was not able to adjust the leverinside the toilet tank to fix the problem.Mary prefers to think that she is always right. Shechooses information that fits her _________, and ignoresother people’s recommendations. However, when facing aproblem, we should always have an open mind, andshould consider all relevant information. We definitelyshould not let our prejudice and emotion take the betterpart of us.', ' Be Practical Rather Than Ideal', ' Don’t Give Up under Pressure', ' Deal with the Problem Now', ' Think about Short­Term Profits', ' Equate the Inside with the Outside',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,42,' 윗글의 빈칸에 들어갈 말로 가장 적절한 것은?', 'Mary is an interior designer. A friend of hers bought ahouse that needed to be renovated, and had asked her todo the interior decoration. Mary wanted the interior of thehouse to look attractive. However, she would ignoresafety standards and would not listen to other contractors,if she did not think their proposals fit her ideals. For allthe home products she picked for the house, her mainconcern was whether they looked attractive, not whetherthey were effective or reliable. She chose a fancy­lookingdoor lock, against the advice of the locksmith who didnot think it was dependable. As a consequence, a yearlater, it was necessary to change the door lock, as therewas difficulty opening the lock with the key.In addition, she picked toilets in an upscale model anddesign. However, the homeowner later found out that thetoilet handle must be held down to complete the flushingaction. The plumber was not able to adjust the leverinside the toilet tank to fix the problem.Mary prefers to think that she is always right. Shechooses information that fits her _________, and ignoresother people’s recommendations. However, when facing aproblem, we should always have an open mind, andshould consider all relevant information. We definitelyshould not let our prejudice and emotion take the betterpart of us.', ' liking ', ' future ', ' duty', ' budget ', ' religion[43 ~ 45] 다음 글을 읽고, 물음에 답하시오. ',NULL,NULL,1, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,43,' 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로가장 적절한 것은?', '(A)In May 1977, Leif Rongemo in Malmö, Sweden,returning from the kitchen to the living room of his thirdfloor apartment, discovered that the casement windowwas open and his two­year­old daughter was missingfrom the living room. When he looked outside, he sawthe street thirty­six feet below ― and (a) <span style="text-decoration:underline;">his</span> littledaughter crawling on all fours along a narrow concreteledge that circled the building. (b) <span style="text-decoration:underline;">He</span>He tried not to letout a cry of alarm to avoid startling her, because anextraordinary kind of rescue was already under way. * casement: 여닫이 창(문)(B)He called his wife to help from the window while (c) <span style="text-decoration:underline;">he</span>rushed down to the street to try to catch the child. Asthe baby girl crawled farther away from the window andsafety, the dog pushed forward determinedly and at lastseized the child’s diaper in his jaws. To the amazementof those who had gathered on the street below ― theywere attempting to create a net to catch the child ― thedog then moved carefully backwards, inch by inch,pulling the little girl back toward the window.(C)Following just behind the baby girl was the family’sAlsatian dog, whining softly in distress. Both dog anddaughter were far beyond reach and there was no roomon the narrow ledge for either to turn around and crawlback to the window. The father quickly realized that if(d) <span style="text-decoration:underline;">he</span> attempted to get on the ledge, all three wouldprobably die.(D)The heart­pounding backwards journey took threeminutes, until the mother could snatch her child. Thedog then leapt into the room, proudly wagging his tail.The family had been thinking of giving the dog tosomeone because they were concerned he might be toobig to keep around a small child. His bold rescue oftheir daughter, however, made (e) <span style="text-decoration:underline;">him</span> a most treasuredmember of the family.', ' (B) － (D) － (C) ', ' (C) － (B) － (D)', ' (C) － (D) － (B) ', ' (D) － (B) － (C)', ' (D) － (C) － (B)',NULL,NULL,2, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,44,' 밑줄 친 (a)~(e) 중에서 가리키는 대상이 나머지 넷과 <span style="text-decoration:underline;">다른</span>것은?', '(A)In May 1977, Leif Rongemo in Malmö, Sweden,returning from the kitchen to the living room of his thirdfloor apartment, discovered that the casement windowwas open and his two­year­old daughter was missingfrom the living room. When he looked outside, he sawthe street thirty­six feet below ― and (a) <span style="text-decoration:underline;">his</span> littledaughter crawling on all fours along a narrow concreteledge that circled the building. (b) <span style="text-decoration:underline;">He</span>He tried not to letout a cry of alarm to avoid startling her, because anextraordinary kind of rescue was already under way. * casement: 여닫이 창(문)(B)He called his wife to help from the window while (c) <span style="text-decoration:underline;">he</span>rushed down to the street to try to catch the child. Asthe baby girl crawled farther away from the window andsafety, the dog pushed forward determinedly and at lastseized the child’s diaper in his jaws. To the amazementof those who had gathered on the street below ― theywere attempting to create a net to catch the child ― thedog then moved carefully backwards, inch by inch,pulling the little girl back toward the window.(C)Following just behind the baby girl was the family’sAlsatian dog, whining softly in distress. Both dog anddaughter were far beyond reach and there was no roomon the narrow ledge for either to turn around and crawlback to the window. The father quickly realized that if(d) <span style="text-decoration:underline;">he</span> attempted to get on the ledge, all three wouldprobably die.(D)The heart­pounding backwards journey took threeminutes, until the mother could snatch her child. Thedog then leapt into the room, proudly wagging his tail.The family had been thinking of giving the dog tosomeone because they were concerned he might be toobig to keep around a small child. His bold rescue oftheir daughter, however, made (e) <span style="text-decoration:underline;">him</span> a most treasuredmember of the family.', ' (a) ', ' (b) ', ' (c) ', ' (d) ', ' (e)',NULL,NULL,5, 2018, 3, "영어", 2);
-INSERT INTO list VALUES(NULL,45,' 윗글에 관한 내용으로 적절하지 <span style="text-decoration:underline;">않은</span> 것은?', '(A)In May 1977, Leif Rongemo in Malmö, Sweden,returning from the kitchen to the living room of his thirdfloor apartment, discovered that the casement windowwas open and his two­year­old daughter was missingfrom the living room. When he looked outside, he sawthe street thirty­six feet below ― and (a) <span style="text-decoration:underline;">his</span> littledaughter crawling on all fours along a narrow concreteledge that circled the building. (b) <span style="text-decoration:underline;">He</span>He tried not to letout a cry of alarm to avoid startling her, because anextraordinary kind of rescue was already under way. * casement: 여닫이 창(문)(B)He called his wife to help from the window while (c) <span style="text-decoration:underline;">he</span>rushed down to the street to try to catch the child. Asthe baby girl crawled farther away from the window andsafety, the dog pushed forward determinedly and at lastseized the child’s diaper in his jaws. To the amazementof those who had gathered on the street below ― theywere attempting to create a net to catch the child ― thedog then moved carefully backwards, inch by inch,pulling the little girl back toward the window.(C)Following just behind the baby girl was the family’sAlsatian dog, whining softly in distress. Both dog anddaughter were far beyond reach and there was no roomon the narrow ledge for either to turn around and crawlback to the window. The father quickly realized that if(d) <span style="text-decoration:underline;">he</span> attempted to get on the ledge, all three wouldprobably die.(D)The heart­pounding backwards journey took threeminutes, until the mother could snatch her child. Thedog then leapt into the room, proudly wagging his tail.The family had been thinking of giving the dog tosomeone because they were concerned he might be toobig to keep around a small child. His bold rescue oftheir daughter, however, made (e) <span style="text-decoration:underline;">him</span> a most treasuredmember of the family.', ' 아빠는 딸이 거실에서 사라진 것을 발견했다. ', ' 개가 아이의 기저귀를 입으로 물어서 붙잡았다. ', ' 사람들이 아이가 떨어지면 받으려고 하고 있었다. ', ' 개와 아이는 몸을 돌리기에 너무 좁은 곳에 있었다. ', ' 아이와 함께 기를 수 없어서 개를 다른 집에 보냈다. ',NULL,NULL,5, 2018, 3, "영어", 2);
+1. 대화를 듣고, 남자의 마지막 말에 대한 여자의 응답으로 가장
+적절한 것을 고르시오. ① Oh, great! Can you lend it to me?
+ ② Why don’t you buy a sleeping bag?
+ ③ You should hurry and finish packing. ④ I wonder if you have an extra raincoat. ⑤ Right. Planning for a trip is always fun.
+2. 대화를 듣고, 여자의 마지막 말에 대한 남자의 응답으로 가장
+적절한 것을 고르시오. ① I need to fix it as soon as possible. ② If you need a cell phone, you can use mine. ③ On the way home, I checked a text message. ④ You shouldn’t use your cell phone while walking. ⑤ The problem is that the battery doesn’t last long.
+3. 다음을 듣고, 여자가 하는 말의 목적으로 가장 적절한 것을
+고르시오. ① 변경된 수업 일정을 공지하려고
+ ② 실내 장식 아이디어를 공모하려고
+ ③ 기숙사 내 행사 연기를 안내하려고
+ ④ 식당 공사로 인한 불편함을 사과하려고
+ ⑤ 누전으로 인한 화재 예방법을 알리려고
+4. 대화를 듣고, 남자의 의견으로 가장 적절한 것을 고르시오. ① 의사소통 능력은 리더십의 필수 항목이다. ② 신체 건강을 위해 꾸준히 운동을 해야 한다. ③ 팀 스포츠는 의사소통 능력 발달에 효과적이다. ④ 동료들과 함께 하는 운동은 협동심을 향상시킬 수 있다. ⑤ 토론 시 자신의 의견을 정확하게 표현하는 것이 중요하다.
+5. 대화를 듣고, 두 사람의 관계를 가장 잘 나타낸 것을 고르시오. ① 초상화가 - 연예인 ② 구독자 - 신문사 편집장
+ ③ 여행자 - 관광 안내원 ④ 환경운동가 - 출판사 직원
+ ⑤ 사진작가 - 잡지사 기자
+6. 대화를 듣고, 그림에서 대화의 내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것을
+고르시오.
+① ② ③ ④ ⑤ 
+7. 대화를 듣고, 여자가 할 일로 가장 적절한 것을 고르시오. ① 연습 시간 확인하기 ② 코치에게 전화 걸기
+ ③ 담임 선생님과 상담하기 ④ 학교에서 아들 데려오기
+ ⑤ 축구 경기 좌석 예약하기
+8. 대화를 듣고, 남자가 그룹 스터디에 참여할 수 <span style="text-decoration:underline;">없는</span> 이유를
+고르시오. ① 팔에 부상을 입어서
+ ② 축제를 진행하게 되어서
+ ③ 사촌 병문안을 가야 해서
+ ④ 바이올린을 가르쳐야 해서
+ ⑤ 피아노 연주를 맡게 되어서
+9. 대화를 듣고, 남자가 지불할 금액을 고르시오. ① $90 ② $93 ③ $100 ④ $103 ⑤ $143
+10. 대화를 듣고, fabric calendar에 관해 두 사람이 언급하지 <span style="text-decoration:underline;">않은</span>
+것을 고르시오. ① 판매 목적 ② 가격 ③ 판매 기간
+ ④ 크기 ⑤ 구매 방법
+11. Okla Readers Theater Competition에 관한 다음 내용을 듣고, 일치하지 <span style="text-decoration:underline;">않는</span> 것을 고르시오. ① 2010년에 대회가 처음 시작되었다. ② 올해 20개의 고등학교가 참가했다. ③ 학년 제한 없이 누구나 대회에 참가할 수 있다. ④ 공연 복장을 따로 준비할 필요가 없다. ⑤ 공연은 4분에서 7분 사이의 길이여야 한다.
+12. 다음 표를 보면서 대화를 듣고, 여자가 구입할 오븐을 고르시오. 
+Model Size Timer(Minutes) Customer Rating Price
+① A Small 75 5 stars $55
+② B Medium 60 4.5 stars $79
+③ C Medium 75 3 stars $85
+④ D Big 75 5 stars $90
+⑤ E Big 90 4.5 stars $105
+ Ovens
+13. 대화를 듣고 남자의 마지막 말에 대한 여자의 응답으로 가장
+적절한 것을 고르시오. [3점]
+ Woman:
+ ① Cheer up! You’ll do better next time. ② That test was easier than I expected. ③ I’ll try it and let you know how it goes. ④ Don’t worry. You already prepared for the test. ⑤ Keep in mind that actions speak louder than words.
+14. 대화를 듣고, 여자의 마지막 말에 대한 남자의 응답으로 가장
+적절한 것을 고르시오. [3점]
+ Man:
+ ① You’re right. It’s not easy to win a free drone. ② That’s great. I’m going to download the app right now. ③ Absolutely. That’s why I usually use the app to study. ④ I don’t think so. Following the safety tips is most important. ⑤ Sure, the government should reduce regulations on drones.
+15. 다음 상황 설명을 듣고, Olivia가 Joy에게 할 말로 가장 적절한
+것을 고르시오. [3점]
+ Olivia:
+ ① Do you mind if I study after you go to sleep?
+ ② You should’ve studied harder to pass the exam. ③ Don’t worry. I can help you with difficult problems. ④ Can you turn off the light when you finish studying?
+ ⑤ I agree. Just tell her that you can’t sleep because of her.
+[16~17] 다음을 듣고, 물음에 답하시오. 16. 여자가 하는 말의 주제로 가장 적절한 것은?
+ ① medicinal benefits of garlic
+ ② home remedies for pain relief
+ ③ healthy recipes that use garlic
+ ④ tips to prevent chronic diseases
+ ⑤ various ingredients for a healthy diet
+17. 언급된 질병이 <span style="text-decoration:underline;">아닌</span> 것은?
+ ① fungal infections ② diabetes ③ flu
+ ④ cancer ⑤ heart disease
+ 18. 다음 글의 목적으로 가장 적절한 것은?
+Dear Mr. Terry Walter, I am the principal of Springfield Public School. As you
+know, Springfield Public School is located at the intersection
+of First Street and Pine Street. The safety of our children
+is at risk largely due to the disregard for speed limits by
+motorists traveling along Pine Street. I have regularly
+witnessed vehicles traveling far in excess of the speed limit on Pine Street. Additionally, parents have expressed concern for the safety of their children who must cross Pine Street.
+For these reasons, we are requesting the installation of
+speed bumps on Pine Street. I know that one of your
+missions, as well as ours, is to ensure that our young
+people are afforded a safe and secure environment to and
+from school each day. I anticipate that your approval of this
+request will greatly improve the safety of our children.
+Sincerely,
+Emma Hudson
+ ① 과속 차량 특별 단속 실시를 촉구하려고
+ ② 교차로 교통신호 체계 개선을 건의하려고
+ ③ 학생 대상 교통안전교육 강의를 부탁하려고
+ ④ 제한속도 규정 표지판 교체 시기를 안내하려고
+ ⑤ 학교 주변 도로에 과속방지턱 설치를 요청하려고
+19. 다음 글의 상황에 나타난 분위기로 가장 적절한 것은?
+ Rivera, who was closest to the dispenser, spun around. He
+cast about, looking for the source of the fire, and for a second Steve thought he might miss the smoke. Then Rivera
+grabbed the burning cylinder and headed for the edge of the
+flight deck. There was a crack like a rifle shot. Sparks and
+rockets ripped apart the night. Rivera rolled on the ground.
+His entire arm was a glowing torch. Steve ran. When he
+reached the burning man, he plunged to his knees and ripped
+off his float coat. He used the vest to smother the flames on Rivera’s arm and back, screaming for a medic even though he
+knew he wouldn’t be heard. * smother: (불을) 덮어 끄다
+ ① urgent and desperate ② exciting and festive
+ ③ gloomy and mysterious ④ boring and monotonous
+ ⑤ romantic and passionate
+20. 다음 글의 요지로 가장 적절한 것은?
+ When you enter a store, what do you see? It is quite
+likely that you will see many options and choices. It doesn’t
+matter whether you want to buy tea, coffee, jeans, or a phone. In all these situations, we are basically flooded with
+options from which we can choose. What will happen if we ask someone, whether online or offline, if he or she prefers
+having more alternatives or less? The majority of people
+will tell us that they prefer having more alternatives. This
+finding is interesting because, as science suggests, the more options we have, the harder our decision making process will
+be. The thing is that when the amount of options exceeds a certain level, our decision making will start to suffer. ① 공정한 거래는 경제 정의 실현에 기여한다. ② 신중한 선택으로 불필요한 소비를 줄일 수 있다. ③ 구매 방법에 따라 제품에 대한 만족도가 달라진다. ④ 선택의 폭이 넓어질수록 의사 결정은 더 어려워진다. ⑤ 생산과정의 투명성 확보는 소비자의 권리를 증진시킨다.
+21. 다음 글에서 필자가 주장하는 바로 가장 적절한 것은?
+ What we need in education is not measurement,
+accountability, or standards. While these can be useful tools
+for improvement, they should hardly occupy center stage.
+Our focus should instead be on making sure we are giving our youth an education that is going to arm them to save humanity. We are faced with unprecedented perils, and these
+perils are multiplying and pushing at our collective gates.
+We should be bolstering curriculum that helps young people
+mature into ethical adults who feel a responsibility to the
+global community. Without this sense of responsibility we have seen that many talented individuals give in to their
+greed and pride, and this destroys economies, ecosystems,
+and entire species. While we certainly should not abandon
+efforts to develop standards in different content areas, and
+also strengthen the STEM subjects, we need to take
+seriously our need for an education centered on global
+responsibility. If we don’t, we risk extinction.* bolster: 강화하다
+① 융합 교육 강화를 위한 정책을 조속히 수립해야 한다. ② 학생 자치활동을 통해 민주 시민 의식을 함양해야 한다. ③ 교육은 미래 산업에 대비한 인재 육성에 앞장서야 한다. ④ 급변하는 미래에 대비하기 위해 교육과정을 다양화해야 한다. ⑤ 교육은 지구 공동체에 책임감을 가진 도덕적 인간을 길러내야 한다.
+22. 다음 글의 주제로 가장 적절한 것은?
+ Although we don’t know the full neurological effects of
+digital technologies on young children’s development, we do
+know that all screen time is not created equal. For example,
+reading an e­book, videoconferencing with grandma, or showing your child a picture you just took of them is not
+the same as the passive, television­watching screen time
+that concerns many parents and educators. So, rather than
+focusing on how much children are interacting with screens,
+parents and educators are turning their focus instead to
+what children are interacting with and who is talking with
+them about their experiences. Though parents may be
+tempted to hand a child a screen and walk away, guiding
+children’s media experiences helps them build important 21st
+Century skills, such as critical thinking and media literacy. ① the predictors of children’s screen media addiction
+ ② reasons for children’s preference for screen media
+ ③ importance of what experiences kids have with screens
+ ④ effects of the amount of screen time on kids’ social skills
+ ⑤ necessity of parental control on children’s physical activities
+23. 다음 글의 제목으로 가장 적절한 것은?
+ Many parents do not understand why their teenagers
+occasionally behave in an irrational or dangerous way. At
+times, it seems like teens don’t think things through or fully
+consider the consequences of their actions. Adolescents
+differ from adults in the way they behave, solve problems,
+and make decisions. There is a biological explanation for
+this difference. Studies have shown that brains continue to
+mature and develop throughout adolescence and well into
+early adulthood. Scientists have identified a specific region
+of the brain that is responsible for immediate reactions
+including fear and aggressive behavior. This region develops
+early. However, the frontal cortex, the area of the brain that
+controls reasoning and helps us think before we act,
+develops later. This part of the brain is still changing and
+maturing well into adulthood. * frontal cortex: 전두엽
+ ① Use Your Brain to the Fullest
+ ② Exercise Boosts Kids’ Brain Health
+ ③ Fear Leads to Aggressive Behaviors
+ ④ Teen Brains: On the Way to Maturity
+ ⑤ Kids’ Emotional Attachment to Parents
+24. 다음 도표의 내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것은?
+ The graph above shows the division of labor in households
+where both parents work full­time in 2015. ①The
+percentage of “mother does more” households in every
+category is higher than that of “father does more”
+households. ②While the category with the highest
+percentage of “mother does more” households is “Managing
+children’s schedules / activities,” the category with the
+highest percentage of “father does more” households is
+“Disciplining children.” ③When it comes to taking care of
+children when they’re sick, the percentage of “mother does
+more” households is the same as that of “share equally”
+households. ④The percentage of “share equally” households
+is over two times higher than that of “mother does more”
+households in three categories. ⑤The category that shows
+the highest percentage of “share equally” households is
+“Playing or doing activities with children,” followed by the
+category “Disciplining children.”
+① ② ③ ④ ⑤ 
+25. Shah Rukh Khan에 관한 다음 글의 내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것은?
+ Shah Rukh Khan is an Indian film actor and producer.
+Khan studied economics in college but spent much of his
+time at Delhi’s Theatre Action Group, where he studied
+acting. He moved from Delhi to Mumbai to pursue a full­time career in Bollywood, which led him to great fame.
+Referred to in the media as the “King of Bollywood” or “King Khan,” he has appeared in more than 80 Bollywood
+films. In 2007, the French government awarded Khan the
+Order of Arts and Letters for his contribution to cinema. He
+is regularly featured on lists of the most influential people
+in Indian culture, and in 2008, he was chosen as one of the
+50 most powerful people in the world. Khan’s philanthropic
+endeavors have provided health care and disaster relief, and
+he was honored with UNESCO’s Pyramide con Marni award
+in 2011 for his support of children’s education. ① 인도의 영화배우이자 제작자이다. ② 대학에서 경제학을 공부했다. ③ 80편이 넘는 Bollywood 영화에 출연했다. ④ 2007년에 세계에서 가장 영향력 있는 50인 중 한 명으로 선정되었다. ⑤ 아동 교육에 대한 후원으로 2011년에 UNESCO에서 상을 받았다.
+26. Dancing Rabbit Ecovillage Tours & Open House에 관한 다음
+안내문의 내용과 일치하는 것은?
+ Dancing Rabbit Ecovillage
+ Tours & Open House
+Come visit Dancing Rabbit Ecovillage and see how our people create an environmentally friendly culture!
+Regular Tours • Dates: 2nd and 4th Saturdays of every month(Apr. to Oct.)
+• Hours: 1 p.m. -3 p.m. • Price: Free of charge
+Special Tours
+ If you are unable to come to our regularly scheduled
+Saturday tour, you can email us to schedule an alternate
+tour. (Email: info@rabbitecov.org)
+• 1 person: $15
+• Groups of 2 - 4 people: $25 per group
+• Groups of 5 or more people: $5 per person
+Annual Open House
+• Date: Saturday, September 8, 2018
+• Free tours begin every half hour from 1 p.m. to 4 p.m. For more information, please call 567-555-8899.
+ ① 정기 투어는 매월 첫째, 셋째 주에 운영된다. ② 정기 투어는 한 시간 동안 진행된다. ③ 특별 투어는 2인 이상일 경우에만 가능하다. ④ 5인 이상으로 구성된 그룹의 특별 투어 비용은 1인당 $5이다. ⑤ 오픈하우스 무료 투어는 오후 2시부터 시작된다
+ 27. A Midsummer Night’s Dream Audition에 관한 다음 안내문의
+내용과 일치하지 <span style="text-decoration:underline;">않는</span> 것은?
+A Midsummer Night’s Dream Audition
+a musical adaptation of the William Shakespeare play
+ We are looking for dancers for the musical A
+Midsummer Night’s Dream that will open at the
+Elliot Arts Center in the spring of 2019. ∙ When:
+ - Saturday, Dec. 15, 2018 (9 a.m. until 6 p.m.)
+ - Sunday, Dec. 16, 2018 (9 a.m. until 11 a.m.)
+ ∙ Where: Studio Vahn
+ Requirement
+ ∙ a modern / ballet dance background
+ ∙ ability to sing preferred
+ ∙ no prior stage experience required
+ Registration
+ ∙ If you are interested in auditioning, email us at
+casting@studiovahn.com. ∙ Please include in your email:
+ - a completed application form with current photos
+ - a signed guardian consent form (only teens)
+ ∙ All applications must be received by Friday, Nov. 30, 2018. For more information, visit www.studiovahn.com.
+ ① 2019년 봄에 있을 공연을 위한 무용수들을 모집한다. ② 일요일은 오전 오디션만 가능하다. ③ 이전 무대 경험이 요구된다. ④ 십 대 참가자는 보호자의 동의서를 제출해야 한다. ⑤ 신청 마감일은 2018년 11월 30일이다.
+
+28. 다음 글의 밑줄 친 부분 중, 어법상 <span style="text-decoration:underline;">틀린</span> 것은? [3점]
+ Are cats liquid or solid? That’s the kind of question that
+could win a scientist an Ig Nobel Prize, a parody of the
+Nobel Prize that honors research that “makes people laugh,
+then think.” But it wasn’t with this in mind ① <span style="text-decoration:underline;">that</span>
+Marc­Antoine Fardin, a physicist at Paris Diderot University,
+set out to find out whether house cats flow. Fardin noticed
+that these furry pets can adapt to the shape of the
+container they sit in ② <span style="text-decoration:underline;">similarly</span> to what fluids such as water do. So he applied rheology, the branch of physics that
+deals with the deformation of matter, to calculate the time
+③ <span style="text-decoration:underline;">it</span> takes for cats to take up the space of a vase or bathroom sink. The conclusion? Cats can be either liquid or solid, depending on the circumstances. A cat in a small box
+will behave like a fluid, ④ <span style="text-decoration:underline;">filled</span> up all the space. But a cat
+in a bathtub full of water will try to minimize its contact
+with it and ⑤ <span style="text-decoration:underline;">behave</span> very much like a solid.
+29. (A), (B), (C)의 각 네모 안에서 문맥에 맞는 낱말로 가장
+적절한 것은?
+ A phenomenon in social psychology, the Pratfall Effect
+states that an individual’s perceived attractiveness increases or decreases after he or she makes a mistake ― depending on the individual’s (A) [perceived / hidden] competence. As
+celebrities are generally considered to be competent
+individuals, and often even presented as flawless or perfect
+in certain aspects, committing blunders will make one’s
+humanness endearing to others. Basically, those who never make mistakes are perceived as being less attractive and
+“likable” than those who make occasional mistakes.
+Perfection, or the attribution of that quality to individuals,
+(B) [creates / narrows] a perceived distance that the general
+public cannot relate to ― making those who never make
+mistakes perceived as being less attractive or likable.
+However, this can also have the opposite effect ― if a perceived average or less than average competent person
+makes a mistake, he or she will be (C) [more / less]
+attractive and likable to others. * blunder: 부주의하거나 어리석은 실수
+ (A) (B) (C)
+ ① perceived …… creates …… less
+ ② perceived …… narrows …… more
+ ③ perceived …… creates …… more
+ ④ hidden …… creates …… less
+ ⑤ hidden …… narrows …… less
+
+30. 밑줄 친 부분이 가리키는 대상이 나머지 넷과 <span style="text-decoration:underline;">다른</span> 것은?
+ A lovely little girl was holding two apples with both hands.
+Her mom came in and softly asked her little daughter with a smile, “My sweetie, could you give your mom one of your
+two apples?” The girl looked up at ① <span style="text-decoration:underline;">her</span> for some seconds.
+Then ② <span style="text-decoration:underline;">she</span> suddenly took a quick bite of one apple, and
+then quickly of the other. Although the mom felt the smile on her face freeze, she tried hard not to reveal ③ <span style="text-decoration:underline;">her</span>
+disappointment. Then the little girl handed one of her bitten
+apples to ④ <span style="text-decoration:underline;">her</span>, and said, “Mommy, here you are. This is
+the sweeter one.” There, ⑤ <span style="text-decoration:underline;">she</span> realized no matter who you
+are, how experienced you are, and how knowledgeable you
+think you are, you should always delay judgment.
+
+[31~34] 다음 빈칸에 들어갈 말로 가장 적절한 것을 고르시오. 31. Online environments vary widely in how easily you can save whatever happens there, what I call its recordability
+and preservability. Even though the design, activities, and
+membership of social media might change over time, the
+content of what people posted usually remains intact. Email,
+video, audio, and text messages can be saved. When perfect
+preservation is possible, time has been suspended. Whenever
+you want, you can go back to reexamine those events from
+the past. In other situations, ___________ slips between our fingers, even challenging our reality testing about whether
+something existed at all, as when an email that we seem to
+remember receiving mysteriously disappears from our inbox.
+The slightest accidental tap of the finger can send an otherwise everlasting document into nothingness. [3점]
+ ① scarcity
+ ② creativity
+ ③ acceleration
+ ④ permanency
+ ⑤ mysteriousness
+32. Verbal and nonverbal signs are not only relevant but also
+significant to intercultural communication. The breakdown of
+them helps to identify aspects of conversations. Here is an excellent example. Newly hired Indian and Pakistani
+assistants in a staff cafeteria at Heathrow Airport were often
+perceived as rude or uncooperative by their supervisors and
+the airport staff, while the Indian and Pakistani women complained of discrimination. Observation revealed that ____________
+ were the primary cause. When the staff
+ordered meat, the cafeteria assistant was supposed to ask
+them whether they would like to have some gravy. Instead
+of saying “gravy?” with a rising intonation, the Asian
+assistants would say “gravy” with a falling intonation, which
+is their normal way of asking a question. However, this may
+appear rude to native speakers of English: “gravy” with
+falling intonation came across as a statement, suggesting
+“This is gravy. Take it or leave it.” [3점]
+* gravy: 육즙 ․ 밀가루 ․ 우유로 만든 소스
+ ① frequent pauses
+ ② moral standards
+ ③ first impressions
+ ④ food preferences
+ ⑤ intonation patterns
+33. Science can only tell us how the world appears to us,
+not how it is independent of our observation of it, and
+therefore right now will always elude science. When you
+look into space, you are looking into an ancient past. Some
+of the stars are already long dead yet we still see them
+because of their traveling light. Let’s say that we are on one of those stars situated roughly sixty million light­years
+away. If we had a really awesome telescope pointed at the
+earth, we would see the dinosaurs walking around. The end
+of the universe is probably so old that if we had that
+telescope, we might be able to see the beginning. Besides
+faraway things, even the immediate objects around us are
+___________________ because there is still a time lag for the reflection of light to reach our eyes. Every
+sensation our body feels has to wait for the information to
+be carried to the brain. [3점]
+* elude: 교묘하게 벗어나다[피하다]
+ ① results of the big bang
+ ② derived from exploration
+ ③ all afterimages of the past
+ ④ mixes of light, colors, and shading
+ ⑤ signs directly encoded in our genes
+34. For many centuries European science, and knowledge in
+general, was recorded in Latin ― a language that no one spoke any longer and that had to be learned in schools.
+Very few individuals, probably less than one percent, had
+the means to study Latin enough to read books in that
+language and therefore to participate in the intellectual
+discourse of the times. Moreover, few people had access to
+books, which were handwritten, scarce, and expensive. The
+great explosion of scientific creativity in Europe was certainly helped by the sudden spread of information brought
+about by Gutenberg’s use of movable type in printing and by
+the legitimation of everyday languages, which rapidly
+replaced Latin as the medium of discourse. In
+sixteenth­century Europe it became much easier to make a creative contribution not necessarily because more creative
+individuals were born then than in previous centuries or because social supports became more favorable, but because
+____________________ . [3점]
+ ① the number of rich people increased
+ ② information became more widely accessible
+ ③ people were able to learn Latin more easily
+ ④ education provided equal opportunities for all ⑤ new methods of scientific research were introduced
+[35~36] 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것을
+고르시오. 35.
+ Calling your pants “blue jeans” almost seems redundant
+because practically all denim is blue. While jeans are probably the most versatile pants in your wardrobe, blue
+actually isn’t a particularly neutral color.
+ (A) The natural indigo dye used in the first jeans, on the other
+hand, would stick only to the outside of the threads. When
+the indigo­dyed denim is washed, tiny amounts of that dye
+get washed away, and the thread comes with them.
+ (B) Ever wonder why it’s the most commonly used hue? Blue was the chosen color for denim because of the chemical
+properties of blue dye. Most dyes will permeate fabric in
+hot temperatures, making the color stick.
+ (C) The more denim was washed, the softer it would get,
+eventually achieving that worn­in, made­just­for­me
+feeling you probably get with your favorite jeans. That
+softness made jeans the trousers of choice for laborers. * hue: 색상 ** permeate: 스며[배어]들다
+ ① (A) - (C) - (B) ② (B) - (A) - (C)
+ ③ (B) - (C) - (A) ④ (C) - (A) - (B)
+ ⑤ (C) - (B) - (A)
+36.
+ Your concepts are a primary tool for your brain to
+guess the meaning of incoming sensory inputs.
+ (A) When Westerners hear Indonesian gamelan music for the
+first time, which is based on seven pitches per octave
+with varied tunings, it’s more likely to sound like noise.
+A brain that’s been wired by listening to twelve­tone
+scales doesn’t have a concept for that music.
+ (B) All people of Western culture with normal hearing have a concept for this ubiquitous scale, even if they can’t
+explicitly describe it. Not all music uses this scale, however.
+ (C) For example, concepts give meaning to changes in sound
+pressure so you hear them as words or music instead
+of random noise. In Western culture, most music is
+based on an octave divided into twelve equally spaced
+pitches: the equal­tempered scale codified by Johann
+Sebastian Bach in the 17th century.
+ ① (A) - (C) - (B) ② (B) - (A) - (C)
+ ③ (B) - (C) - (A) ④ (C) - (A) - (B)
+ ⑤ (C) - (B) - (A)
+[37~38] 글의 흐름으로 보아, 주어진 문장이 들어가기에 가장
+적절한 곳을 고르시오. 37.
+However, when a bill was introduced in Congress to
+outlaw such rules, the credit card lobby turned its
+attention to language. Framing matters in many domains. (①) When credit
+cards started to become popular forms of payment in the
+1970s, some retail merchants wanted to charge different
+prices to their cash and credit card customers. (②) To
+prevent this, credit card companies adopted rules that
+forbade their retailers from charging different prices to cash
+and credit customers. (③) Its preference was that if a company charged different prices to cash and credit
+customers, the credit price should be considered the
+“normal” (default) price and the cash price a discount ―
+rather than the alternative of making the cash price the
+usual price and charging a surcharge to credit card
+customers. (④) The credit card companies had a good
+intuitive understanding of what psychologists would come to
+call “framing.” (⑤) The idea is that choices depend, in
+part, on the way in which problems are stated. [3점]
+① ② ③ ④ ⑤ 
+38.
+This allows the solids to carry the waves more easily
+and efficiently, resulting in a louder sound. Tap your finger on the surface of a wooden table or desk,
+and observe the loudness of the sound you hear. Then,
+place your ear flat on top of the table or desk. (①) With
+your finger about one foot away from your ear, tap the
+table top and observe the loudness of the sound you hear
+again. (②) The volume of the sound you hear with your ear on the desk is much louder than with it off the desk.
+(③) Sound waves are capable of traveling through many
+solid materials as well as through air. (④) Solids, like
+wood for example, transfer the sound waves much better
+than air typically does because the molecules in a solid
+substance are much closer and more tightly packed together
+than they are in air. (⑤) The density of the air itself
+also plays a determining factor in the loudness of sound waves passing through it. * molecule: 분자
+① ② ③ ④ ⑤ 
+39. 다음 글에서 전체 흐름과 관계 <span style="text-decoration:underline;">없는</span> 문장은?
+ At their heart, games differ from other media in one fundamental way: they offer players the chance to influence
+outcomes through their own efforts. ①With rare exception,
+this is not true of film, novels, or television. ②Readers and
+viewers of these other media follow along, reacting to the
+story and its twists and turns, without having a direct
+personal impact on the events they witness. ③In the same manner, video games can have a negative impact on spending habits if players buy many game­related items and
+continually upgrade software and hardware packages. ④In
+games, players have the unique ability to control what
+unfolds. ⑤As Sid Meier, a game designer, once said, “A
+good game is a series of interesting choices.”
+① ② ③ ④ ⑤ 
+40. 다음 글의 내용을 한 문장으로 요약하고자 한다. 빈칸 (A),
+(B)에 들어갈 말로 가장 적절한 것은?
+ A primary school teacher is helping students to
+understand fractional parts by using what she thinks is a commonplace reference. “Today, we’re going to talk about
+cutting up a Thanksgiving holiday favorite ― pumpkin pie.”
+She continues with an explanation of parts. Well into her
+discourse, a young African American boy, looking puzzled,
+asks, “What is pumpkin pie?” Most African Americans are
+likely to serve sweet potato pie for holiday dinners. In
+fact, one of the ways that African American parents
+explain pumpkin pie to their children is to say that it is
+something like sweet potato pie. For them, sweet potato
+pie is the common referent. Even the slight difference of
+being unfamiliar with pumpkin pie can serve as a source of interference for the student. Rather than be engaged
+actively in the lesson, he may have been preoccupied
+with trying to imagine pumpkin pie: What does it taste
+like? How does it smell? Is its texture chunky like apple or cherry pie? In the mind of a child, all of these
+questions can become more of the focus than the subject
+of fractions that the teacher is attempting to teach. * fraction: 분수
+
+Even small differences in (A) knowledge have
+the potential to affect students’ (B) .
+ (A) (B)
+ ① cultural …… learning
+ ② cultural …… responsibility
+ ③ mathematical …… imagination
+ ④ mathematical …… intelligence
+ ⑤ nutritional …… development
+ [41~42] 다음 글을 읽고, 물음에 답하시오.
+ In 2000, James Kuklinski of the University of Illinois led an influential experiment in which more than 1,000 Illinois
+residents were asked questions about welfare. More than
+half indicated that they were confident that their answers were correct ― but in fact, only three percent of the people
+got more than half of the questions right. Perhaps more disturbingly, the ones who were the most confident they were right were generally the ones who knew the least
+about the topic. Kuklinski calls this sort of response the “I
+know I’m right” syndrome. “It implies not only that most
+people will resist correcting their factual beliefs,” he wrote,
+“but also that the very people who most need to correct
+them will be least likely to do so.”
+ How can we have things so wrong and be so sure that
+we’re right? Part of the answer lies in the way our brains are wired. Generally, people tend to seek ________________. There is a substantial body of psychological research
+showing that people tend to interpret information with an eye toward reinforcing their preexisting views. If we believe something about the world, we are more likely to
+passively accept as truth any information that confirms our beliefs, and actively dismiss information that doesn’t. This
+is known as “motivated reasoning.” Whether or not the
+consistent information is accurate, we might accept it as fact, as confirmation of our beliefs. This makes us more confident in said beliefs, and even less likely to entertain
+facts that contradict them.
+41. 윗글의 제목으로 가장 적절한 것은?
+ ① Belief Wins Over Fact
+ ② Still Judge by Appearance?
+ ③ All You Need Is Motivation
+ ④ Facilitate Rational Reasoning
+ ⑤ Correct Errors at the Right Time
+42. 윗글의 빈칸에 들어갈 말로 가장 적절한 것은? [3점]
+ ① diversity ② accuracy ③ popularity
+ ④ consistency ⑤ collaboration
+[43~45] 다음 글을 읽고, 물음에 답하시오. (A)
+ Once, there were two woodcutters ― a young, strong one and an old one ― cutting down trees in a jungle. The young man was very hardworking. On his first day, (a) <span style="text-decoration:underline;">he</span> worked
+through his break time and complained that the old man was wasting time, taking several breaks to eat and drink.
+That day, the young woodcutter brought 15 trees to their
+boss. “Fantastic!” the boss said. “Keep up the great work!”
+(B)
+ It was as if the old man worked through the break time
+just as (b) <span style="text-decoration:underline;">he</span> did. So, the young woodcutter decided to
+work harder the next day. Unfortunately, the results were even worse. “I must be losing my strength,” the young man thought. One day, the old man invited him for a drink
+during the break time. The young man refused and said he
+had no extra time. Then, the old man smiled and said to
+him, “It is a waste of effort to keep chopping trees without
+re­sharpening your axe. Sooner or later, you will have to
+give up because you’ve spent too much energy.”
+(C)
+ Highly motivated by his words, the young woodcutter
+tried harder the next day, but (c) <span style="text-decoration:underline;">he</span> could only bring ten
+trees. The third day he tried even harder, but he was only
+able to bring seven trees. Day after day, he was bringing
+less and less trees. As time went by, (d) <span style="text-decoration:underline;">he</span> noticed that even though he worked through his break time and hardly
+took a rest, the old woodcutter was cutting down the same amount of trees as him ― and sometimes chopped down even more. (D)
+ Suddenly the young woodcutter realized that during break
+times while the old man was having a drink, he was also
+re­sharpening his axe, which the young woodcutter never did. That’s how (e) <span style="text-decoration:underline;">he</span> could chop more than the young man
+in less time! The old man said that we all need time to
+relax, to think and meditate, and to learn and grow. If we don’t take the time to sharpen the “axe,” we will become
+dull and lose our effectiveness.
+43. 주어진 글 (A)에 이어질 내용을 순서에 맞게 배열한 것으로
+가장 적절한 것은?
+ ① (B) - (D) - (C) ② (C) - (B) - (D)
+ ③ (C) - (D) - (B) ④ (D) - (B) - (C)
+ ⑤ (D) - (C) - (B)
+44. 밑줄 친 (a)~(e) 중에서 가리키는 대상이 나머지 넷과 <span style="text-decoration:underline;">다른</span> 것은?
+ ① (a) ② (b) ③ (c) ④ (d) ⑤ (e)
+45. 윗글의 the young woodcutter에 관한 내용으로 적절하지 <span style="text-decoration:underline;">않은</span> 것은?
+ ① 쉬는 시간에도 열심히 일했다. ② 첫 날 15개의 나무를 가져왔다. ③ 쉬는 시간에 함께 음료를 마시자는 노인의 초대를 거절했다. ④ 가져온 나무의 수는 점점 늘어났다. ⑤ 노인이 쉬는 시간에 도끼날을 갈고 있었다는 사실을 깨달았다.
+
