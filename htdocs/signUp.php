@@ -251,16 +251,16 @@
         </form>
         <?php
         
-if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POST['name'])&&isset($_POST['nick'])){
+if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['nick'])){
         require_once ('cnn.php');
     $result = mysqli_query($conn, "SELECT id FROM users where id='".$_POST['id']."'");
     while($row = $result->fetch_assoc()) {
         $id=$row['id'];
     }
     if(empty($id)){
-        mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['pw']."','".$_POST['name']."','".$_POST['email']."','".$_POST['nick']."')");
+        mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['password']."','".$_POST['name']."','".$_POST['mail']."','".$_POST['nick']."')");
         mysqli_query($conn, "create table ".$_POST['id']."(num int not null, answer int,year int not null, month int not null, subject varchar(11) not null, grade int not null)");
-        echo"<script>alert('success!');self.close();</script>";
+        echo"<script>alert('회원가입이 성공적으로 끝났습니다!');self.close();</script>";
     }   
 }
 ?>

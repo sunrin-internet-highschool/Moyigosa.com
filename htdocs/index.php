@@ -73,13 +73,15 @@ while($row = $result->fetch_assoc()){
             }
                             
             if(!empty($_POST['id'])&&!empty($_POST['pw'])){
-                $result = mysqli_query($conn, "SELECT id,password,nick FROM users where id='".$_POST['id']."' and password='".$_POST['pw']."'");
+                $result = mysqli_query($conn, "SELECT * FROM users where id='".$_POST['id']."' and password='".$_POST['pw']."'");
             while($row = $result->fetch_assoc()) {
                 session_unset();
                 $id=$row['id'];                  
                 $pw=$row['password'];
-                  
                 $nick=$row['nick'];
+                $name=$row['name'];
+                $email=$row['email'];
+                
             }
                 if(!isset($id)||!isset($pw)){
                 echo"<script>alert('입력하신 아이디나 비밀번호가 잘못되었습니다.');</script>";
@@ -90,6 +92,13 @@ while($row = $result->fetch_assoc()){
                 $_SESSION['nick']=$nick;
                 $_SESSION['id']=$id;
                 $_SESSION['pw']=$pw;
+                $_SESSION['name']=$name;
+                $_SESSION['email']=$email;
+                unset($nick);
+                unset($id);
+                unset($pw);
+                unset($name);
+                unset($email);
             }       
             
             if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
@@ -97,6 +106,7 @@ while($row = $result->fetch_assoc()){
                 echo "<form action=\"\" method=\"post\">";
                 echo "<input type=\"submit\" value=\"로그아웃\" name=\"logout\">";
                 echo "</form>";
+                echo "<a href=\"user.php\" target=\"_blank\">회원정보수정</a>";
             }else{//로그인 안된 상태
                 echo "<div id=\"login\">";
                 echo "<form action=\"\" method=\"post\">";

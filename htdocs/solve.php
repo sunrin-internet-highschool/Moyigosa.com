@@ -23,11 +23,7 @@ if(isset($_POST['submit'])){
         }
     }
         if(isset($say)){
-            $conn = mysqli_connect(
-        'localhost',
-        'root',
-        '1234',
-        'test');
+            require_once('cnn.php');
             mysqli_query($conn, "delete from ".$_SESSION['id'].$select);
             mysqli_query($conn,  "insert into ".$_SESSION['id']." values".$say);
         }
@@ -273,9 +269,9 @@ if(isset($_POST['submit'])){
             </div>
             
             <div id="All_right">
+                
                 <div class="omr_form">
-                   <div class="omr">
-                          <div class="timer">
+                    <div class="timer">
                            <span class="countTimeMinute">00</span> :
                            <span class="countTimeSecond">00</span> 
                        </div>
@@ -284,6 +280,8 @@ if(isset($_POST['submit'])){
                            <span class="allTimeMinute">00</span> :
                            <span class="allTimeSecond">00</span> 
                        </div>
+                   <div class="omr">
+                          
                         <?php
                         for($i=1;$i<=$_SESSION['questFinal'.$def];$i++){
                             echo "<a href=\"/solve.php/?grade=".$_GET['grade']."&year=".$_GET['year']."&month=".$_GET['month']."&subject=".$_GET['subject']."&jump=",$_SESSION['num'.$def][$i],"\" target=\"_self\">";
