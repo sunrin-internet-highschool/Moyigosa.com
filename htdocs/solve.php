@@ -47,12 +47,11 @@ if(isset($_POST['submit'])){
 <html>
 
 <head>
-    <title>문제페이지</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     
     <style>
         *{padding:0; margin:0;}
-        a{text-decoration:none; color:bisque;}
+        a{text-decoration:none; color:#333333;}
         
         #title {
             width: 100%;
@@ -65,13 +64,15 @@ if(isset($_POST['submit'])){
         }
         
         #All{
+            width:1800px;
+            background-color:#333333;
             position:relative;
         }
         
         #All_left{
+            background-color:red;
             width:1344px;
             float:left;
-            position:absolute;
         }
         
         #All_right{
@@ -88,10 +89,25 @@ if(isset($_POST['submit'])){
             height:608px;
         }
         
+        .timer{
+            text-align: center;
+            border:1px solid ;
+            border-radius:10px;
+        }
+        
+        .alltimer{
+            text-align: center;
+            border:1px solid purple;
+        }
+        
         .omr{
             padding-right:100px;
             height:608px;
             overflow: scroll;
+        }
+        
+        .omr input{
+            margin-left: 10px;
         }
         
         .submit{
@@ -105,6 +121,10 @@ if(isset($_POST['submit'])){
             position:absolute;
             margin-left:242px;
             word-wrap: break-word;
+        }
+        
+        .text span{
+            font-size: 18px;
         }
         
         .mark{
@@ -126,26 +146,29 @@ if(isset($_POST['submit'])){
             float:right;
         }
         
-        input[type='radio'] {
-            display: none;
-        }
-        
-        .mark input[type='radio']+label::before{
-            content:'';
-            display:inline-block;
-            background:url("1.gif");
-            width:20px;
-            height:20px;
-            vertical-align: middle;
-            margin:-5px 10px 0 0;
-        }
-        
-        .mark input[type='radio']:checked+label::before{
-            background: url("1_ch.gif");
-        }
-        
-        
-        
+        .mark input[type=radio] {
+           display: none;  
+       }
+
+.mark input[type=radio] + label{
+    display: inline-block; 
+    
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;
+}
+
+.mark input[type=radio]+ label:before {     
+    position: absolute;
+    content: url("/1_copy.gif");  
+    margin-right: 10px;  
+    left: 5px;  
+}
+        .mark input[type=radio]:checked + label::before {
+    position: absolute;
+    content: url("/1_ch_copy.gif");  /* 체크모양 */
+
+}
     </style>
     
     
@@ -159,6 +182,7 @@ if(isset($_POST['submit'])){
                 success:success,
                 dataType:data
             })*/
+            
             
             $(document).ready(function(){
                 var minute=0;
@@ -219,8 +243,10 @@ if(isset($_POST['submit'])){
                     all_minute=0;
                 })
             });
-                                    
+                                
         </script>
+        <title>문제페이지</title>
+    <meta charset="UTF-8">
 </head>
 
 <body>
@@ -247,7 +273,7 @@ if(isset($_POST['submit'])){
                 echo "<div class=\"text\">";
                 
                 
-                echo $_SESSION['questNum'.$def],"번 문제","<br>";
+                echo "<span>",$_SESSION['questNum'.$def],"번 문제</span>","<br>";
                 echo $_SESSION['question'.$def][$_SESSION['questNum'.$def]],"<br>";
             $picture=$_SESSION['picture'.$def][$_SESSION['questNum'.$def]];
             $example=$_SESSION['example'.$def][$_SESSION['questNum'.$def]];
@@ -264,7 +290,6 @@ if(isset($_POST['submit'])){
                 
                 
                 
-                
                 echo "<div class=\"mark\">";
             for($i=1;$i<=5;$i++){
                 if(isset($_SESSION['answer'.$def][$_SESSION['questNum'.$def]])&&$_SESSION['answer'.$def][$_SESSION['questNum'.$def]]==$i){
@@ -276,12 +301,7 @@ if(isset($_POST['submit'])){
             }
                 echo "</div>";
                 echo "</div>";
-                echo "</div>";
-                /*echo "<div class=\"btn\"><div class=\"prev\"><input type=\"submit\" value=\"이전 문제\" name=\"submit\"></div>";
-                echo "<div class=\"next\"><input type=\"submit\" value=\"다음 문제\" name=\"submit\"></div></div>";*/
-                    
-                
-                
+                echo "</div>";               
                 echo "</div>";
                 
             ?>
@@ -337,6 +357,6 @@ if(isset($_POST['submit'])){
         </div>
         </div>
     </form>
-</body>
 
+</body>
 </html>
