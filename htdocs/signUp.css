@@ -30,7 +30,6 @@ input[type="submit"]{
 }
 
 input{
-    text-align: justify;
     border:1px solid honeydew;
     border-radius:10px;
 }
