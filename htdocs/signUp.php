@@ -1,6 +1,7 @@
 <html>
     <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel= "stylesheet" type="text/css" href="signUp.css">
         <title>
             회원가입
         </title>
@@ -44,6 +45,11 @@
                     $("#password_check").html("비밀번호는 영어 대소문자 혹은 숫자로만 이루어져야 합니다.");
                     $(".password").css({'color':'red'});
                 }
+            }
+            
+            if(pw == "" && pwc != ""){
+                $("#password_confirm_check").html("비밀번호를 먼저 입력해 주십시오.");
+                $(".password_confirm").css({'color':'red'});
             }
             
             if(pw != "" && pwc != ""){
@@ -220,35 +226,53 @@
     </head>
     
     <body>
-        <form name="data" method="post" onsubmit="return Login()">
-            <span class="id">아이디</span>: <input type="text" name="id" id="id" maxlength="12" onKeyup=id_check(this)>
-            <br>
-            <span id="id_check"></span>
-            <br>
-            <span class="password">비밀번호</span>: <input type="password" name="password" id="password" maxlength="12" onKeyup=password_check(this) >
-            <br>
-            <span id="password_check"></span>
-            <br>
-            <span class="password_confirm">비밀번호 확인</span>: <input type="password" name="password_confirm" id="password_confirm" maxlength="12" onKeyup=password_check(this)>
-            <br>
-            <span id="password_confirm_check"></span>
-            <br>
-            <span class="mail">이메일</span>: <input type="email" name="mail" id="mail" onKeyup=mail_check(this)>
-            <br>
-            <span id="mail_check"></span>
-            <br>
-            <span class="name">이름</span>: <input type="text" name="name" id="name" maxlength="12" onKeyup=name_check(this)>
-            <br>
-            <span id="name_check"></span>
-            <br>
-            <span class="nick">닉네임</span>: <input type="text" name="nick" id="nick" maxlength="12" onKeyup=nick_check(this)>
-            <br>
-            <span id="nick_check"></span>
-            <p>
-                <input type="submit" value="확인">
-            </p>
-            
-        </form>
+        <div class="wrap">
+           <header>회원 가입</header>
+            <form name="data" method="post" onsubmit="return Login()">
+                <div class="login">
+                    <div class="id_wrap">
+                        <span class="id">아이디</span>: <input type="text" name="id" id="id" maxlength="12" onKeyup=id_check(this)>
+                    </div>
+                    
+                    <span id="id_check"></span>
+                    <br>
+                    <div class="password_wrap">
+                        <span class="password">비밀번호</span>: <input type="password" name="password" id="password" maxlength="12" onKeyup=password_check(this) >
+                    </div>
+                    
+                    <span id="password_check"></span>
+                    <br>
+                    <div class="password_confirm_wrap">
+                        <span class="password_confirm">비밀번호 확인</span>: <input type="password" name="password_confirm" id="password_confirm" maxlength="12" onKeyup=password_check(this)>
+                    </div>
+                    
+                    <span id="password_confirm_check"></span>
+                    <br>
+                    <div class="mail_wrap">
+                        <span class="mail">이메일</span>: <input type="email" name="mail" id="mail" onKeyup=mail_check(this)>
+                    </div>
+                    
+                    <span id="mail_check"></span>
+                    <br>
+                    <div class="name_wrap">
+                        <span class="name">이름</span>: <input type="text" name="name" id="name" maxlength="12" onKeyup=name_check(this)>
+                    </div>
+                    
+                    <span id="name_check"></span>
+                    <br>
+                    <div class="nick_wrap">
+                        <span class="nick">닉네임</span>: <input type="text" name="nick" id="nick" maxlength="12" onKeyup=nick_check(this)>
+                    </div>
+                    
+                    <span id="nick_check"></span>
+                    <br>
+                    <p>
+                        <input type="submit" value="확인">
+                    </p>
+                </div>
+                
+            </form>
+        </div>
         <?php
         
 if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['nick'])){
