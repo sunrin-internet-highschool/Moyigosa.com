@@ -126,6 +126,26 @@ if(isset($_POST['submit'])){
             float:right;
         }
         
+        input[type='radio'] {
+            display: none;
+        }
+        
+        .mark input[type='radio']+label::before{
+            content:'';
+            display:inline-block;
+            background:url("1.gif");
+            width:20px;
+            height:20px;
+            vertical-align: middle;
+            margin:-5px 10px 0 0;
+        }
+        
+        .mark input[type='radio']:checked+label::before{
+            background: url("1_ch.gif");
+        }
+        
+        
+        
     </style>
     
     
