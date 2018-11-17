@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel= "stylesheet" type="text/css" href="signUp.css">
+        <link rel= "stylesheet" type="text/css" href="css/signUp.css">
         <title>
             회원가입
         </title>
@@ -25,10 +25,7 @@
                 $("#id_check").html("");
                 $(".id").css({'color':'green'});
             }
-            
-            $("#id").blur(function(){
-                $("#id_check").html("");
-            })
+
         }
         
         function password_check(obj){
@@ -68,9 +65,7 @@
                 $(".password").css({'color':'green'});
             }
             
-            $("#password").blur(function(){
-                $("#password_check").html("");
-            })
+
         }
         
         function mail_check(obj){
@@ -86,10 +81,7 @@
                 $("#mail_check").html("");
                 $(".mail").css({'color':'green'});
             }
-            
-            $("#mail").blur(function(){
-                $("#mail_check").html("");
-            })
+
         }
         
         function name_check(obj){
@@ -106,10 +98,10 @@
                 $("#name_check").html("");
                 $(".name").css({'color':'green'});
             }
-            
+            /*
             $("#name").blur(function(){
                 $("#name_check").html("");
-            })
+            })*/
         }
         
         function nick_check(obj){
@@ -127,9 +119,7 @@
                 $(".nick").css({'color':'green'});
             }
             
-            $("#nick").blur(function(){
-                $("#nick_check").html("");
-            })
+
         }
         
     function Login(){
@@ -249,7 +239,7 @@
                     <span id="password_confirm_check"></span>
                     <br>
                     <div class="mail_wrap">
-                        <span class="mail">이메일</span>: <input type="email" name="mail" id="mail" onKeyup=mail_check(this)>
+                        <span class="mail">이메일</span>: <input type="text" name="mail" id="mail" onKeyup=mail_check(this)>
                     </div>
                     
                     <span id="mail_check"></span>
