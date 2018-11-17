@@ -22,6 +22,9 @@ if(isset($_POST['change'])){
 <html>
 
 <head>
+    <link rel= "stylesheet" type="text/css" href="/user.css">
+    <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="/user.js"></script>
     <title>
         <?php
                 echo $_SESSION['nick']."님의 회원정보";

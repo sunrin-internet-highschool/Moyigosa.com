@@ -40,7 +40,7 @@ while($row = $result->fetch_assoc()){
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel= "stylesheet" type="text/css" href="/css/index.css">
+    <link rel= "stylesheet" type="text/css" href="/index.css">
     <title>모의고사풀이사이트</title>
 </head>
 
