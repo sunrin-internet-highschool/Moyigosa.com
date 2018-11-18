@@ -98,9 +98,9 @@ if(isset($_POST['submit'])){
                 echo "<div class=\"mark\">";
             for($i=1;$i<=5;$i++){
                 if(isset($_SESSION['answer'.$def][$_SESSION['questNum'.$def]])&&$_SESSION['answer'.$def][$_SESSION['questNum'.$def]]==$i){
-                    echo "<input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",$_SESSION['select'.$i.$def][$_SESSION['questNum'.$def]],"</label><br>";
+                    echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",$_SESSION['select'.$i.$def][$_SESSION['questNum'.$def]],"</label></div><br>";
                 }else{
-                    echo "<input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for=\"$i\">",$_SESSION['select'.$i.$def][$_SESSION['questNum'.$def]],"</label><br>";
+                    echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for = \"$i\">",$_SESSION['select'.$i.$def][$_SESSION['questNum'.$def]],"</label></div><br>";
                 }
                 
             }
@@ -117,6 +117,7 @@ if(isset($_POST['submit'])){
                 
                 <div class="omr_form">
                     <div class="timer">
+                          
                            <span class="countTimeMinute">00</span> :
                            <span class="countTimeSecond">00</span> 
                        </div>
@@ -129,12 +130,13 @@ if(isset($_POST['submit'])){
                           
                         <?php
                         for($i=1;$i<=$_SESSION['questFinal'.$def];$i++){
-                            echo "<a href=\"/solve.php/?grade=".$_GET['grade']."&year=".$_GET['year']."&month=".$_GET['month']."&subject=".$_GET['subject']."&jump=",$_SESSION['num'.$def][$i],"\" target=\"_self\">";
+                            echo "<div class=\"omr_float\">";
+                            echo "<div class=\"number\"><a href=\"/solve.php/?grade=".$_GET['grade']."&year=".$_GET['year']."&month=".$_GET['month']."&subject=".$_GET['subject']."&jump=",$_SESSION['num'.$def][$i],"\" target=\"_self\">";
                             if($_SESSION['num'.$def][$i]<10)
                                     echo "0".$_SESSION['num'.$def][$i].".";
                                 else
                                     echo $_SESSION['num'.$def][$i].".";
-                                echo "</a>";
+                                echo "</a></div>";
                                 for($j=1;$j<6;$j++){
                                     if(isset($_SESSION['answer'.$def][$i])){
                                         $defualt=$_SESSION['answer'.$def][$i];
@@ -142,15 +144,17 @@ if(isset($_POST['submit'])){
                                         $defualt=0;
                                     }
                                     if($j==$defualt){
-                                        echo "<input type=\"radio\" name=\"".$_SESSION['num'.$def][$i]."\" value=\"$j\" checked=\"checked\">";
+                                        echo "<div class=\"omr".$j."\"><input type=\"radio\" name=\"".$_SESSION['num'.$def][$i]."\" value=\"$j\" id=\"omr".$i."_".$j."\" checked=\"checked\"><label for=\"omr".$i."_".$j."\"></label></div>";
                                     }else{
-                                        echo "<input type=\"radio\" name=\"".$_SESSION['num'.$def][$i]."\" value=\"$j\">";
+                                        echo "<div class=\"omr".$j."\"><input type=\"radio\" name=\"".$_SESSION['num'.$def][$i]."\" value=\"$j\" id=\"omr".$i."_".$j."\"><label for=\"omr".$i."_".$j."\"></label></div>";
                                     }
                                     
                                 }
+                            echo "</div>";
                             echo "정답 :".$_SESSION['correct'.$def][$i];
                             echo "<br>";
                             }
+                       
                         ?>
                         </div>
                     
