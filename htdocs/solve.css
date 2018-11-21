@@ -298,3 +298,39 @@
         .omr5 input[type=radio]:checked+label::before{
             content:url("/picture/button/5_ch_cp.gif");
         }
+
+        .joe_table{ //문제 표
+   		border-collapse: collapse;
+   		margin : 20px 10px;
+   		border: 1px solid;		
+
+   	}
+
+	.joe_table th,td{
+		border-collapse: collapse;
+		text-align: center;
+		border: 1px solid;	
+		padding: 5px;
+	}
+
+	.joe_table caption{
+		font-weight:bold;
+	}
+
+	.joe_example_box{
+		width: auto;
+		border:1px solid;
+		padding:10px;
+		margin-left: 70px;
+		margin-right:70px;
+		word-break: break-all;
+	}
+
+ 	.joe_example_box h1,h2,h3,h4,h5,h6{
+ 		padding: 0px;
+ 		margin: 0px;
+ 	}
+
+ 	.joe_example_box h1,h6 {
+ 		text-align: center;
+ 	}
