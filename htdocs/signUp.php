@@ -67,7 +67,7 @@ if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset(
     }
     if(empty($id)){
         mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['password']."','".$_POST['name']."','".$_POST['mail']."','".$_POST['nick']."')");
-        mysqli_query($conn, "create table ".$_POST['id']."(num int not null, answer int,year int not null, month int not null, subject varchar(11) not null, grade int not null)");
+        mysqli_query($conn, "create table ".$_POST['id']."(num int not null, answer int,year int not null, month int not null, grade int not null,subject varchar(11) not null)");
         echo"<script>alert('회원가입이 성공적으로 끝났습니다!');self.close();</script>";
     }   
 }

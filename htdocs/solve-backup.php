@@ -1,76 +1,95 @@
 <?php
+require_once ('checkError.php');
 session_start();
-$conn = mysqli_connect(
-    'localhost',
-    'root',
-    'apmsetup',
-    'test');
-if(isset($_GET['year'])&&isset($_GET['grade'])&&isset($_GET['month'])&&isset($_GET['subject'])){
-    $_SESSION['year']=$_GET['year'];
-    $_SESSION['grade']=$_GET['grade'];
-    $_SESSION['month']=$_GET['month'];
-    $_SESSION['subject']=$_GET['subject'];
-    if(!isset($_SESSION['questNum'])){
-        $_SESSION['questNum']=1;
-    }
-        $result = mysqli_query($conn, "SELECT count(num) FROM list WHERE grade=".$_SESSION['grade']." AND year=".$_SESSION['year']." AND month=".$_SESSION['month']." AND subject='".$_SESSION['subject']."'");
-    while($row = $result->fetch_assoc()) {
-        $_SESSION['questFinal']=$row['count(num)'];
-    }
+$def=$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject'];
+$select=" WHERE grade=".$_GET['grade']." AND year=".$_GET['year']." AND month=".$_GET['month']." AND subject='".$_GET['subject']."'";
+if(!isset($_SESSION['num'.$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject']][1])){
+    require_once ('setup.php');
 }
-if(isset($_POST['submit'])){
-    for($i=1;$i<=$_SESSION['questFinal'];$i++){
+if(isset($_GET['submit'])){
+    if(isset($_GET['answer'])){
+            $_SESSION['answer'.$def][$_GET['jump']]=$_GET['answer'];
+            $_GET["".$_GET['jump'].""]=$_GET['answer'];
+        }
+    if(isset($_SESSION['id'])){
+        $say="";
+        for($i=1;$i<=$_SESSION['questFinal'.$def];$i++){
         $temp="".$i."";
-        if(isset($_POST[$temp])&&!empty($_POST[$temp])){
-            
-        mysqli_query($conn, "delete from ".$_SESSION['id']." where year=".$_SESSION['year']." && month=".$_SESSION['month']." && grade=".$_SESSION['grade']." && subject='".$_SESSION['subject']."'"."&&num=".$temp);
-        mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$temp.",".$_POST[$temp].",".$_SESSION['year'].",".$_SESSION['month'].",'".$_SESSION['subject']."',".$_SESSION['grade'].")");
+        if(isset($_GET[$temp])&&!empty($_GET[$temp])){
+            if(!empty($say))
+                $say.=",";
+            $say.="(".$temp.",".$_GET[$temp].",".$_GET['year'].",".$_GET['month'].",'".$_GET['subject']."',".$_GET['grade'].",'".$def."')";
+            $_SESSION['answer'.$def][$i]=$_GET[$temp];
         }
     }
-}
-if(isset($_POST['submit'])&&!empty($_POST['submit'])){
-    if(isset($_POST['answer'])){
-        mysqli_query($conn, "delete from ".$_SESSION['id']." where year=".$_SESSION['year']." && month=".$_SESSION['month']." && grade=".$_SESSION['grade']." && subject='".$_SESSION['subject']."'"."&&num=".$_SESSION['questNum']);
-        mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_SESSION['questNum'].",".$_POST['answer'].",".$_SESSION['year'].",".$_SESSION['month'].",'".$_SESSION['subject']."',".$_SESSION['grade'].")");
-    }
-    if($_POST['submit']=="이전 문제"&&$_SESSION['questNum']>1){
-        $_SESSION['questNum']--;
-    }else if($_POST['submit']=="다음 문제"){
-        $_SESSION['questNum']++;
+        if(isset($say)){
+            require_once('cnn.php');
+            mysqli_query($conn, "delete from ".$_SESSION['id'].$select);
+            mysqli_query($conn,  "insert into ".$_SESSION['id']." values".$say);
+        }
     }else{
+        for($i=1;$i<=$_SESSION['questFinal'.$def];$i++){
+        $temp="".$i."";
+        if(isset($_GET[$temp])&&!empty($_GET[$temp])){
+            $_SESSION['answer'.$def][$i]=$_GET[$temp];
+        }
+    }
+    }
+if(isset($_GET['jump'])&&!empty($_GET['jump'])){
+    if($_GET['submit']=="이전 문제"&&$_GET['jump']>1){
+        $_GET['jump']--;
+    }else if($_GET['submit']=="다음 문제"&&$_GET['jump']<$_SESSION['questFinal'.$def]){
+        $_GET['jump']++;
     }
 }
-if(!isset($_POST['submit'])&&isset($_GET['jump'])&&!empty($_GET['jump'])){
-    $_SESSION['questNum']=$_GET['jump'];
 }
 ?>
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="/solve.css">
+    <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="/solve.js"></script>
     <title>문제페이지</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
 </head>
 
 <body>
-    <form action="" method="post">
-    <div id="title">
+    <form action="" method="get">
         <?php
-            echo $_SESSION['year'],"년 ",$_SESSION['month'],"월 ",$_SESSION['subject']," 모의고사";
+        echo "<input type=\"hidden\" name=\"year\" value=\"".$_GET['year']."\">";
+        echo "<input type=\"hidden\" name=\"month\" value=\"".$_GET['month']."\">";
+        echo "<input type=\"hidden\" name=\"grade\" value=\"".$_GET['grade']."\">";
+        echo "<input type=\"hidden\" name=\"subject\" value=\"".$_GET['subject']."\">";
+        echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
         ?>
-    </div>
-    <div id="body">
-        <?php
+        <div id="title">
+            <?php
+            echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['subject']," 모의고사";
+        ?>
+        </div>
+        <div id="body">
+            <?php
         
         ?>
-        <div id="quest">
-            <?php
-                echo $_SESSION['questNum'],"번 문제","<br>";
-            $result = mysqli_query($conn, "SELECT question,example,picture,select1, select2, select3, select4, select5,sound FROM list WHERE grade=".$_SESSION['grade']." AND year=".$_SESSION['year']." AND month=".$_SESSION['month']." AND subject='".$_SESSION['subject']."' AND num=".$_SESSION['questNum']);
-            while($row = $result->fetch_assoc()) {
-                $sound=$row['sound'];
-                $example=$row['example'];
-                $picture=$row['picture'];
-                echo $row['question'],"<br>";
+            <div id="All">
+                <div id="All_left">
+                    <div id="quest">
+                        <?php
+                echo "<div class=\"wrap\">";                           
+                echo "<div class=\"text_wrap\">";
+                
+                echo "<div class=\"btn\"><div class=\"prev\"><input type=\"submit\" value=\"이전 문제\" name=\"submit\"></div>";
+                echo "<div class=\"next\"><input type=\"submit\" value=\"다음 문제\" name=\"submit\"></div></div>";
+                
+                echo "<div class=\"text\">";
+                
+                
+                echo "<span>",$_GET['jump'],"번 문제</span>","<br>";
+                echo $_SESSION['question'.$def][$_GET['jump']],"<br>";
+            $picture=$_SESSION['picture'.$def][$_GET['jump']];
+            $example=$_SESSION['example'.$def][$_GET['jump']];
+            $sound=$_SESSION['sound'.$def][$_GET['jump']];
                 if(!empty($picture)&&$picture!=""&&$picture!=" "){
                     echo "<img src=\"",$picture,"\">";
                 }
@@ -80,55 +99,81 @@ if(!isset($_POST['submit'])&&isset($_GET['jump'])&&!empty($_GET['jump'])){
                 if(!empty($sound)&&$sound!=""&&$sound!=" "){
                     echo "<audio src=\"$sound\" controls=\"controls\"></audio>";
                 }
-                echo "<input type=\"radio\" name=\"answer\" value=\"1\" id=\"1\"> <label for=\"1\">",$row['select1'],"</label><br>";
-                echo "<input type=\"radio\" name=\"answer\" value=\"2\" id=\"2\"> <label for=\"2\">",$row['select2'],"</label><br>";
-                echo "<input type=\"radio\" name=\"answer\" value=\"3\" id=\"3\"> <label for=\"3\">",$row['select3'],"</label><br>";
-                echo "<input type=\"radio\" name=\"answer\" value=\"4\" id=\"4\"> <label for=\"4\">",$row['select4'],"</label><br>";
-                echo "<input type=\"radio\" name=\"answer\" value=\"5\" id=\"5\"> <label for=\"5\">",$row['select5'],"</label>";
-                echo "<input type=\"submit\" value=\"이전 문제\" name=\"submit\">";
-                echo "<input type=\"submit\" value=\"다음 문제\" name=\"submit\">";
+                
+                
+                
+                echo "<div class=\"mark\">";
+            for($i=1;$i<=5;$i++){
+                if(isset($_SESSION['answer'.$def][$_GET['jump']])&&$_SESSION['answer'.$def][$_GET['jump']]==$i){
+                    echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",$_SESSION['select'.$i.$def][$_GET['jump']],"</label></div><br>";
+                }else{
+                    echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for = \"$i\">",$_SESSION['select'.$i.$def][$_GET['jump']],"</label></div><br>";
+                }
+                
             }
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";               
+                echo "</div>";
+                
             ?>
-        </div>
-        <div class="omr">
-                <?php
-                    $result = mysqli_query($conn, "SELECT distinct num FROM list WHERE grade=".$_SESSION['grade']." AND year=".$_SESSION['year']." AND month=".$_SESSION['month']." AND subject='".$_SESSION['subject']."'");
-                    while($row = $result->fetch_assoc()) {
-                            $num=$row['num'];
-                            $result1 = mysqli_query($conn, "select answer from ".$_SESSION['id']." where num=".$num."&& grade=".$_SESSION['grade']." AND year=".$_SESSION['year']." AND month=".$_SESSION['month']." AND subject='".$_SESSION['subject']."'");
-                        $count=0;
-                            while($row1 = $result1->fetch_assoc()) {
-                                $temp = $row1['answer'];
-                                $count=1;
+                    </div>
+                </div>
+
+                <div id="All_right">
+
+                    <div class="omr_form">
+                        <div class="timer">
+
+                            <span class="countTimeMinute">00</span> :
+                            <span class="countTimeSecond">00</span>
+                        </div>
+
+                        <div class="alltimer">
+                            <span class="allTimeMinute">00</span> :
+                            <span class="allTimeSecond">00</span>
+                        </div>
+                        <div class="omr">
+
+                            <?php
+                        for($i=1;$i<=$_SESSION['questFinal'.$def];$i++){
+                            echo "<div class=\"omr_float\">";
+                            echo "<div class=\"number\"><a href=\"/solve.php/?grade=".$_GET['grade']."&year=".$_GET['year']."&month=".$_GET['month']."&subject=".$_GET['subject']."&jump=",$_SESSION['num'.$def][$i],"\" target=\"_self\">";
+                            if($_SESSION['num'.$def][$i]<10)
+                                    echo "0".$_SESSION['num'.$def][$i].".";
+                                else
+                                    echo $_SESSION['num'.$def][$i].".";
+                                echo "</a></div>";
+                                for($j=1;$j<6;$j++){
+                                    if(isset($_SESSION['answer'.$def][$i])){
+                                        $defualt=$_SESSION['answer'.$def][$i];
+                                    }else{
+                                        $defualt=0;
+                                    }
+                                    if($j==$defualt){
+                                        echo "<div class=\"omr".$j."\"><input type=\"radio\" name=\"".$_SESSION['num'.$def][$i]."\" value=\"$j\" id=\"omr".$i."_".$j."\" checked=\"checked\"><label for=\"omr".$i."_".$j."\"></label></div>";
+                                    }else{
+                                        echo "<div class=\"omr".$j."\"><input type=\"radio\" name=\"".$_SESSION['num'.$def][$i]."\" value=\"$j\" id=\"omr".$i."_".$j."\"><label for=\"omr".$i."_".$j."\"></label></div>";
+                                    }
+                                    
+                                }
+                            echo "</div>";
+                            echo "정답 :".$_SESSION['correct'.$def][$i];
+                            echo "<br>";
                             }
-                        if($count==1){
-                            $defualt=$temp;
-                        }else{
-                            $defualt=0;
-                        }
-                        echo "<a href=\"/solve.php/?jump=",$num,"\" target=\"_self\">";
-                        if($num<10)
-                            echo "0$num.";
-                        else
-                            echo "$num.";
-                        echo "</a>";
-                        for($i=1;$i<6;$i++){
-                            
-                            if($i==$defualt){
-                                echo "<input type=\"radio\" name=\"$num\" value=\"$i\" checked=\"checked\">";
-                            }else{
-                                echo "<input type=\"radio\" name=\"$num\" value=\"$i\">";
-                            }
-                            
-                        }
-                        echo "<br>";
-                    }
-                ?>
-                <input type="submit" value="제출" name="submit">
-            
+                       
+                        ?>
+                        </div>
+
+                        <div class="submit">
+                            <input type="submit" value="제출" name="submit" class="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+
 </body>
 
 </html>

@@ -1,8 +1,5 @@
 <?php
-
-session_start();
 require_once ('cnn.php');
-
 $i=0;
 $sql = "SELECT distinct year FROM list";
 $result = mysqli_query($conn, $sql);
@@ -51,14 +48,21 @@ while($row = $result->fetch_assoc()){
         <div id="user">
             <?php
             if(isset($_POST['logout'])){
-                session_unset();
-                echo"<script>alert('로그아웃되었습니다');</script>";
+                setcookie('id',null,time()-1);
+                setcookie('pw',null,time()-1);
+                setcookie('nick',null,time()-1);
+                setcookie('name',null,time()-1);
+                setcookie('email',null,time()-1);
+                unset($_POST['id']);
+                unset($_POST['password']);
+                unset($_POST['logout']);
+                echo"<script>alert('로그아웃되었습니다');window.location.href=window.location.href;</script>";
+                exit();
             }
                             
             if(!empty($_POST['id'])&&!empty($_POST['pw'])){
                 $result = mysqli_query($conn, "SELECT * FROM users where id='".$_POST['id']."' and password='".$_POST['pw']."'");
             while($row = $result->fetch_assoc()) {
-                session_unset();
                 $id=$row['id'];                  
                 $pw=$row['password'];
                 $nick=$row['nick'];
@@ -67,25 +71,30 @@ while($row = $result->fetch_assoc()){
                 
             }
                 if(!isset($id)||!isset($pw)){
-                echo"<script>alert('입력하신 아이디나 비밀번호가 잘못되었습니다.');</script>";
+                echo"<script>alert('입력하신 아이디나 비밀번호가 잘못되었습니다.');window.location.href=window.location.href;</script>";
+                exit();
             } 
+                unset($_POST['id']);
+                unset($_POST['password']);
             }
             
-            if(!empty($id)&&!empty($pw)){
-                $_SESSION['nick']=$nick;
-                $_SESSION['id']=$id;
-                $_SESSION['pw']=$pw;
-                $_SESSION['name']=$name;
-                $_SESSION['email']=$email;
-                unset($nick);
+            if(isset($id)&&isset($pw)&&!empty($id)&&!empty($pw)){
+                setcookie('id',$id,time()+60*60*24*30);
+                setcookie('pw',$pw,time()+60*60*24*30);
+                setcookie('nick',$nick,time()+60*60*24*30);
+                setcookie('name',$name,time()+60*60*24*30);
+                setcookie('email',$email,time()+60*60*24*30);
                 unset($id);
                 unset($pw);
-                unset($name);
+                unset($nick);
                 unset($email);
+                unset($name);
+                echo"<script>window.location.href=window.location.href;</script>";
+                exit();
             }       
             
-            if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
-                echo "hello ",$_SESSION['nick'],".";
+            if(isset($_COOKIE['id'])&&isset($_COOKIE['pw'])){//로그인 된 상태
+                echo "hello ",$_COOKIE['nick'],".";
                 echo "<form action=\"\" method=\"post\">";
                 echo "<input type=\"submit\" value=\"로그아웃\" name=\"logout\">";
                 echo "</form>";
@@ -162,7 +171,7 @@ while($row = $result->fetch_assoc()){
         if(isset($_GET['subject'])&&"선택안함"!=$_GET['subject']){
             $say.="&&subject=\"".$_GET['subject']."\"";
         }
-        $result2 = mysqli_query($conn, ("select distinct year,month,grade,subject from list where year is not null ".$say));
+        $result = mysqli_query($conn, ("select distinct year,month,grade,subject from list where year is not null ".$say));
         ?>
 
             <table class="list">
@@ -174,52 +183,40 @@ while($row = $result->fetch_assoc()){
                     <td colspan="2">현황</td>
                 </tr>
                 <?php
-                if(isset($_SESSION['id'])){
-                    $result = mysqli_query($conn, "select * from ".$_SESSION['id']);
-                    while($row = $result->fetch_assoc()) {
-                        $year=$row['year'];
-                        $month=$row['month'];
-                        $subject=$row['subject'];
-                        $grade=$row['grade'];
-                        $num=$row['num'];
-                        $answer=$row['answer'];
-                        $def=$year.$month.$grade.$subject;
-                        $_SESSION['answer'.$def][$num]=$answer;
-                }
-                }
-                $i=0;
-                while($row = $result2->fetch_assoc()) {
-                $year=$row["year"];
-                $month=$row["month"];
-                $grade=$row["grade"];
-                $subject=$row["subject"];
-                if(isset($_SESSION['answer'.$year.$month.$grade.$subject])){
+                while($row = $result->fetch_assoc()) {
                     $count=0;
-                    $select=" WHERE grade=".$grade." AND year=".$year." AND month=".$month." AND subject='".$subject."'";
-                    $result1 = mysqli_query($conn, "SELECT count(num) FROM list".$select);
-                    while($row1 = $result1->fetch_assoc()) {
-                    $_SESSION['questFinal'.$year.$month.$grade.$subject]=$row1['count(num)'];
-                    }
-                    for($i=1;$i<=$_SESSION['questFinal'.$year.$month.$grade.$subject];$i++){
-                        if(isset($_SESSION['answer'.$year.$month.$grade.$subject][$i])){
-                            $count++;
+                    $year=$row['year'];
+                    $month=$row['month'];
+                    $grade=$row['grade'];
+                    $subject=$row['subject'];
+                    $def=$year.$month.$grade.$subject;
+                    if(isset($_COOKIE['id'])){
+                        $result1 = mysqli_query($conn,"select count(num) from ".$_COOKIE['id']." where year=$year and month=$month and grade=$grade and subject='$subject'");
+                        while($row1 = $result1->fetch_assoc()) {
+                            $count=$row1['count(num)'];
+                        }
+                    }else if(isset($_COOKIE['1'.$def])){
+                        for($i=1;isset($_COOKIE[$i.$def]);$i++){
+                            if($_COOKIE[$i.$def]>=1&&$_COOKIE[$i.$def]<=5)
+                                $count++;
                         }
                     }
-                    $count=$count*10/$_SESSION['questFinal'.$year.$month.$grade.$subject];
-                }else{
-                    $count=0;
+                    
+                   if($count){
+                        $result2 = mysqli_query($conn,"select count(num) from list where year=$year and month=$month and grade=$grade and subject='$subject'");
+                        while($row2 = $result2->fetch_assoc()) {
+                            $maxNum=$row2['count(num)'];
+                        }
+                       $count=$count/$maxNum*100;
+                    }
+                    echo "<tr onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1')\" style=\"cursor:hand\">";                
+                    echo "<td>",$grade,"학년</td>";
+                    echo "<td>",$year,"</td>";
+                    echo "<td>",$month,"</td>";
+                    echo "<td>",$subject,"</td>";
+                    echo "<td><div class=\"background\"><div class=\"bar\" style=\"width:",$count,"%;\"></div></div></td>";
+                    echo "</tr>";
                 }
-                echo "<tr>";                
-                echo "<td onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject')\" style=\"cursor:hand\">",$grade,"학년</td>";
-                echo "<td onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject')\" style=\"cursor:hand\">",$year,"</td>";
-                echo "<td onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject')\" style=\"cursor:hand\">",$month,"</td>";
-                echo "<td onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject')\" style=\"cursor:hand\">",$subject,"</td>";
-                echo "<td onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject')\" style=\"cursor:hand\"><div class=\"background\"><div class=\"bar\" style=\"width:",$count,"em;\"></div></div></td>";
-                echo "<td><input type=\"button\" value=\"↓\" class=\"show$i\"></td>";
-                echo "</tr>";
-                    echo "<tr class=\"show_data$i\" style=\"display:none\"><td colspan=\"6\" id=\"show_data$i\"><div>1.맞은문제<br>2.틀린문제<br>3.안푼문제<br>4.마지막으로 푼문제이동</div></td></tr>";
-                    $i+=1;
-            }
         ?>
             </table>
         </div>
