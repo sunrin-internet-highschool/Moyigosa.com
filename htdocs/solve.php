@@ -29,7 +29,7 @@ if(!isset($_COOKIE['1'.$def])){
 $i=1;
 $result = mysqli_query($conn, "SELECT correct FROM list".$select." order by num");
 while($row = $result->fetch_assoc()) {
-    $correct[$i]=$row['correct'];
+    $correct[$i.$def]=$row['correct'];
     $i++;
 }//$COOKIE['correct'.$def][$i] = 문제집 정답 불러오기
 
@@ -118,34 +118,41 @@ while($row = $result->fetch_assoc()) {
                 <div id="All_left">
                     <div id="quest">
                         <?php
-                               echo "<div class=\"wrap\">"; 
-                               echo "<div class=\"text_wrap\">";
-                               echo "<div class=\"btn\"><div class=\"prev\"><input type=\"submit\" value=\"이전 문제\" name=\"submit\"></div>";
-                               echo "<div class=\"next\"><input type=\"submit\" value=\"다음 문제\" name=\"submit\"></div></div>";
-                               echo "<div class=\"text\">";
-                               echo "<span>",$_GET['jump'],"번 문제</span>","<br>";
-                               echo $question,"<br>";
-                               if(!empty($picture)&&$picture!=""&&$picture!=" "){
-                                   echo "<img src=\"",$picture,"\">";
-                               }
-                               if(!empty($example)&&$example!=""&&$example!=" "){
-                                   echo $example;
-                               }
-                               if(!empty($sound)&&$sound!=""&&$sound!=" "){
-                                   echo "<audio src=\"$sound\" controls=\"controls\"></audio>";
-                               }
-                               echo "<div class=\"mark\">";
-                               for($i=1;$i<=5;$i++){
-                                   if($_COOKIE[$_GET['jump'].$def]==$i){
-                                       echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
-                                   }else{
-                                       echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for = \"$i\">",${"select".$i},"</label></div><br>";
-                                   }
-                               }
-                               echo "</div>";
-                               echo "</div>";
-                               echo "</div>";
-                               echo "</div>";
+                        echo "<div class=\"wrap\">"; 
+                        echo "<div class=\"text_wrap\">";
+                        echo "<div class=\"btn\"><div class=\"prev\"><input type=\"submit\" value=\"이전 문제\" name=\"submit\"></div>";
+                        echo "<div class=\"next\"><input type=\"submit\" value=\"다음 문제\" name=\"submit\"></div></div>";
+                        echo "<div class=\"text\">";
+                        echo "<span>",$_GET['jump'],"번 문제</span>";
+                        if($correct[$_GET['jump'].$def]==$_COOKIE[$_GET['jump'].$def]){
+                            echo "<div class=\"correct\">맞았습니다!</div>";
+                        }else{
+                            echo "<div class=\"uncorrect\">틀렸습니다!</div>";
+                        }//정답 일치 판별 후 출력
+                        echo $question,"<br>";
+                        if(!empty($picture)&&$picture!=""&&$picture!=" "){
+                            echo "<img src=\"",$picture,"\">";
+                        }
+                        if(!empty($example)&&$example!=""&&$example!=" "){
+                            echo $example;
+                        }
+                        if(!empty($sound)&&$sound!=""&&$sound!=" "){
+                            echo "<audio src=\"$sound\" controls=\"controls\"></audio>";
+                        }
+                        echo "<div class=\"mark\">";
+                        for($i=1;$i<=5;$i++){
+                            if($_COOKIE[$_GET['jump'].$def]==$i){
+                                echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
+                            }else if($correct[$_GET['jump'].$def]==$i){
+                                echo "<div class=\"radio".$i."c\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
+                            }else{
+                                echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for = \"$i\">",${"select".$i},"</label></div><br>";
+                            }
+                        }
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
                         ?>
                     </div>
                 </div>
