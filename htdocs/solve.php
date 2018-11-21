@@ -20,9 +20,9 @@ while($row = $result->fetch_assoc()) {
 if(!isset($_COOKIE['1'.$def])){
     for($i=1;$i<=$maxNum;$i++){
         setcookie($i.$def,0,time()+60*60*24*30);
+        $_COOKIE[$i.$def]=0;
     }
-    echo"<script>window.location.href=window.location.href;</script>";
-    exit();
+    $restart=true;
 }//setcookie('answer'.$def); = 계정 정답 저장용 변수 생성
 
 
@@ -37,6 +37,7 @@ while($row = $result->fetch_assoc()) {
 if(isset($_COOKIE['id'])){
     $result = mysqli_query($conn, "SELECT answer,num FROM ".$_COOKIE['id'].$select);
     while($row = $result->fetch_assoc()) {
+        setcookie($row['num'].$def,$row['answer']);
         $_COOKIE[$row['num'].$def]=$row['answer'];
     }
 }//$COOKIE['answer'.$def][$i] = 계정 정답 불러오기
@@ -52,6 +53,7 @@ if(isset($_GET['submit'])){
                mysqli_query($conn, "delete from ".$_COOKIE['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
                mysqli_query($conn, "insert into ".$_COOKIE['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
            }
+           setcookie($i.$def,$_GET[$i]);
            $_COOKIE[$i.$def]=$_GET[$i];
        }
     }
@@ -60,6 +62,7 @@ if(isset($_GET['submit'])){
                 mysqli_query($conn, "delete from ".$_COOKIE['id']." where num=".$_GET['jump']);
                 mysqli_query($conn, "insert into ".$_COOKIE['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
             }
+            setcookie($_GET['jump'].$def,$_GET['answer']);
             $_COOKIE[$_GET['jump'].$def]=$_GET['answer'];
         }
         if($_GET['submit']=="다음 문제"&&$_GET['jump']<=$maxNum){
@@ -82,8 +85,6 @@ while($row = $result->fetch_assoc()) {
     $sound=$row['sound'];
     $picture=$row['picture'];
 }//해당 문제 정보 불러오기
-
-
 ?>
 <html>
 
@@ -171,7 +172,6 @@ while($row = $result->fetch_assoc()) {
                             <span class="allTimeSecond">00</span>
                         </div>
                         <div class="omr">
-
                             <?php
                                for($i=1;$i<=$maxNum;$i++){
                                    echo "<div class=\"omr_float\">";
