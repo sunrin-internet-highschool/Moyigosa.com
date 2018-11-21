@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once ('cnn.php');
 $i=0;
 $sql = "SELECT distinct year FROM list";
@@ -48,15 +49,8 @@ while($row = $result->fetch_assoc()){
         <div id="user">
             <?php
             if(isset($_POST['logout'])){
-                setcookie('id',null,time()-1);
-                setcookie('pw',null,time()-1);
-                setcookie('nick',null,time()-1);
-                setcookie('name',null,time()-1);
-                setcookie('email',null,time()-1);
-                unset($_POST['id']);
-                unset($_POST['password']);
-                unset($_POST['logout']);
-                echo"<script>alert('로그아웃되었습니다');window.location.href=window.location.href;</script>";
+                session_unset();
+                echo"<script>alert('로그아웃되었습니다');</script>";
                 exit();
             }
                             
@@ -71,7 +65,7 @@ while($row = $result->fetch_assoc()){
                 
             }
                 if(!isset($id)||!isset($pw)){
-                echo"<script>alert('입력하신 아이디나 비밀번호가 잘못되었습니다.');window.location.href=window.location.href;</script>";
+                echo"<script>alert('입력하신 아이디나 비밀번호가 잘못되었습니다.');</script>";
                 exit();
             } 
                 unset($_POST['id']);
@@ -79,22 +73,15 @@ while($row = $result->fetch_assoc()){
             }
             
             if(isset($id)&&isset($pw)&&!empty($id)&&!empty($pw)){
-                setcookie('id',$id,time()+60*60*24*30);
-                setcookie('pw',$pw,time()+60*60*24*30);
-                setcookie('nick',$nick,time()+60*60*24*30);
-                setcookie('name',$name,time()+60*60*24*30);
-                setcookie('email',$email,time()+60*60*24*30);
-                unset($id);
-                unset($pw);
-                unset($nick);
-                unset($email);
-                unset($name);
-                echo"<script>window.location.href=window.location.href;</script>";
-                exit();
+                $_SESSION['id']=$id;
+                $_SESSION['pw']=$pw;
+                $_SESSION['nick']=$nick;
+                $_SESSION['name']=$name;
+                $_SESSION['email']=$email;
             }       
             
-            if(isset($_COOKIE['id'])&&isset($_COOKIE['pw'])){//로그인 된 상태
-                echo "hello ",$_COOKIE['nick'],".";
+            if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
+                echo "hello ",$_SESSION['nick'],".";
                 echo "<form action=\"\" method=\"post\">";
                 echo "<input type=\"submit\" value=\"로그아웃\" name=\"logout\">";
                 echo "</form>";
@@ -190,8 +177,8 @@ while($row = $result->fetch_assoc()){
                     $grade=$row['grade'];
                     $subject=$row['subject'];
                     $def=$year.$month.$grade.$subject;
-                    if(isset($_COOKIE['id'])){
-                        $result1 = mysqli_query($conn,"select count(num) from ".$_COOKIE['id']." where year=$year and month=$month and grade=$grade and subject='$subject'");
+                    if(isset($_SESSION['id'])){
+                        $result1 = mysqli_query($conn,"select count(num) from ".$_SESSION['id']." where year=$year and month=$month and grade=$grade and subject='$subject'");
                         while($row1 = $result1->fetch_assoc()) {
                             $count=$row1['count(num)'];
                         }

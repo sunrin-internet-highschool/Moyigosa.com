@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once ('checkError.php');//get방식으로 불러오는 변수 존재 여부 확인
 
 
@@ -34,8 +35,8 @@ while($row = $result->fetch_assoc()) {
 }//$COOKIE['correct'.$def][$i] = 문제집 정답 불러오기
 
 
-if(isset($_COOKIE['id'])){
-    $result = mysqli_query($conn, "SELECT answer,num FROM ".$_COOKIE['id'].$select);
+if(isset($_SESSION['id'])){
+    $result = mysqli_query($conn, "SELECT answer,num FROM ".$_SESSION['id'].$select);
     while($row = $result->fetch_assoc()) {
         setcookie($row['num'].$def,$row['answer']);
         $_COOKIE[$row['num'].$def]=$row['answer'];
@@ -49,18 +50,18 @@ if(isset($_COOKIE['id'])){
 if(isset($_GET['submit'])){
     for($i=1;$i<=$maxNum;$i++){
        if(isset($_GET[$i])&&!empty($_GET[$i])){
-           if(isset($_COOKIE['id'])){
-               mysqli_query($conn, "delete from ".$_COOKIE['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
-               mysqli_query($conn, "insert into ".$_COOKIE['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+           if(isset($_SESSION['id'])){
+               mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
+               mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
            }
            setcookie($i.$def,$_GET[$i]);
            $_COOKIE[$i.$def]=$_GET[$i];
        }
     }
         if(isset($_GET['answer'])&&!empty($_GET['answer'])){
-            if(isset($_COOKIE['id'])){
-                mysqli_query($conn, "delete from ".$_COOKIE['id']." where num=".$_GET['jump']);
-                mysqli_query($conn, "insert into ".$_COOKIE['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+            if(isset($_SESSION['id'])){
+                mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
+                mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
             }
             setcookie($_GET['jump'].$def,$_GET['answer']);
             $_COOKIE[$_GET['jump'].$def]=$_GET['answer'];
