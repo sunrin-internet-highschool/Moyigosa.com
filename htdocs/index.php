@@ -38,6 +38,8 @@ while($row = $result->fetch_assoc()){
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    
     <link rel= "stylesheet" type="text/css" href="/index.css">
     <title>모의고사풀이사이트</title>
 </head>
@@ -180,13 +182,15 @@ while($row = $result->fetch_assoc()){
             ?>
         
                 <table class="list">
-                    <tr>
-                        <td>학년</td>
-                        <td>년도</td>
-                        <td>월</td>
-                        <td>과목</td>
-                        <td colspan="2">현황</td>
-                    </tr>
+                        
+                            <tr>
+                                <td>학년</td>
+                                <td>년도</td>
+                                <td>월</td>
+                                <td>과목</td>
+                                <td>현황</td>
+                            </tr>
+
                     <?php
                     while($row = $result->fetch_assoc()) {
                         $count=0;
@@ -215,7 +219,7 @@ while($row = $result->fetch_assoc()){
                            $count=$count/$maxNum*100;
                         }
                         echo "<tr onClick=\"window.open('solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1')\" style=\"cursor:hand\">";                
-                        echo "<td>",$grade,"학년</td>";
+                        echo "<td><img src=\"/picture/index_img/index.png\"><span>",$grade,"학년</span></td>";
                         echo "<td>",$year,"</td>";
                         echo "<td>",$month,"</td>";
                         echo "<td>",$subject,"</td>";
