@@ -1,42 +1,99 @@
 *{margin:0; padding:0;}
 
 body{
-   background-color: lavender; 
+    background-color: white;
+    height:1200px;
+}
+
+header img{
+    height:100px;
+    width:200px;
 }
 
 header{
+    height:100px;
     text-align: center;
     font-size: 50px;
     font-weight: bold;
     width: 100%;
-    background-color: slategray;
+    color: white;
+}
+            
+.bar{
+    width:100%;
+    background-color: #333333;
+    height:90px;
+    margin-bottom: 40px;
+}
+
+.bar td{
+    color:white;
+    width:25%;
+    text-align: center;
+}
+            
+#last{
+    border:none;
+}
+            
+.bar td span{
+    display:block;
+    height:30px;
+    line-height: 30px;
+    border-right: 1px solid white;
+    width:100%;
+}
+        
+.login_wrap{
+    width:100%;
+}
+            
+.login{  
+    text-align: center;
+    margin-left: 37%;
+    width:500px;
+    padding-bottom: 50px;
+    border:1px solid black;
+            }
+            
+#login_title{
+    display: block;
+    font-size: 30px;
+    font-weight:bold;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+    
+.login div:nth-child(n) span{
+    display: block;
+    text-align: left;
+    margin-left:50px;
+    margin-bottom: 5px;
+}
+            
+.login span{
+    text-align: left;
+}
+            
+input[type="submit"]{
+    margin-top: 10px;
+    background-color: #5B4C43;
+    border:0;
+    cursor: pointer;
+    height: 40px;
+    width:400px;
     color: white;
 }
 
-.login{  
-    background-color: lavenderblush;
-    text-align: center;
-    margin-left: 480px;
-    width:960px;
-    height:480px;
-    border:1px solid lightgrey;
-    border-radius:10%;
-}
-
-input[type="submit"]{
-    margin-top: 10px;
-    border:1px solid slategrey;
-    width:40px;
-}
-
 input[type="text"],[type="password"]{
-    border:1px solid honeydew;
-    border-radius:10px;
-    width:300px;
+    background-color: #E6E6E6;
+    border:0px;
+    height:40px;
+    width:400px;
 }
 
 .login div:nth-child(n){
     padding-bottom: 10px;
     padding-top: 10px;
 }
-
