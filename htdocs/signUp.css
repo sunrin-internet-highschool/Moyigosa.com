@@ -6,8 +6,9 @@ body{
 }
 
 header img{
-    height:100px;
-    width:200px;
+    margin-top:20px;
+    height:50px;
+    width:150px;
 }
 
 header{
@@ -43,14 +44,14 @@ header{
     border-right: 1px solid white;
     width:100%;
 }
-        
+     
 .login_wrap{
     width:100%;
 }
             
 .login{  
     text-align: center;
-    margin-left: 37%;
+    margin: 0 auto;
     width:500px;
     padding-bottom: 50px;
     border:1px solid black;
@@ -97,3 +98,40 @@ input[type="text"],[type="password"]{
     padding-bottom: 10px;
     padding-top: 10px;
 }
+          
+@media all and (max-width:720px){
+    .login{
+        width:450px;
+    }
+                
+    #login_title{
+        font-size:30px;
+    }
+                
+    input[type="text"],[type="password"]{
+        width:350px;
+    }
+    input[type="submit"]{
+        width:350px;
+    }
+}
+            
+            
+@media all and (max-width:540px){
+    .login{
+    width:400px;
+    }
+        
+    #login_title{
+        font-size:25px;
+    }
+    
+    input[type="text"],[type="password"]{
+        width:300px;
+    }
+
+    input[type="submit"]{
+        width:300px;
+    }
+}
+            
