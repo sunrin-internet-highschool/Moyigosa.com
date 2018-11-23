@@ -128,7 +128,7 @@ while($row = $result->fetch_assoc()) {
                         echo "<div class=\"text\">";
                         echo "<span>",$_GET['jump'],"번 문제</span>";
                         if(isset($_SESSION[$def][0][$_GET['jump']])&&$_SESSION[$def][0][$_GET['jump']]==1){
-                            if($correct[$_GET['jump'].$def]==$_SESSION[$def][1][$_GET['jump']]){
+                            if(isset($_SESSION[$def][1][$_GET['jump']])&&$correct[$_GET['jump'].$def]==$_SESSION[$def][1][$_GET['jump']]){
                                 echo "<div class=\"correct\">맞았습니다!</div>";
                             }else{
                                 echo "<div class=\"uncorrect\">틀렸습니다!</div>";
