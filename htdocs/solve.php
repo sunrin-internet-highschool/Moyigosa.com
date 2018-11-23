@@ -17,16 +17,6 @@ while($row = $result->fetch_assoc()) {
     $maxNum=$row['count(num)'];
 }//$maxNum = 문제집 문제 갯수
 
-
-if(!isset($_COOKIE['1'.$def])){
-    for($i=1;$i<=$maxNum;$i++){
-        setcookie($i.$def,0,time()+60*60*24*30);
-        $_COOKIE[$i.$def]=0;
-    }
-    $restart=true;
-}//setcookie('answer'.$def); = 계정 정답 저장용 변수 생성
-
-
 $i=1;
 $result = mysqli_query($conn, "SELECT correct FROM list".$select." order by num");
 while($row = $result->fetch_assoc()) {
@@ -38,8 +28,7 @@ while($row = $result->fetch_assoc()) {
 if(isset($_SESSION['id'])){
     $result = mysqli_query($conn, "SELECT answer,num FROM ".$_SESSION['id'].$select);
     while($row = $result->fetch_assoc()) {
-        setcookie($row['num'].$def,$row['answer']);
-        $_COOKIE[$row['num'].$def]=$row['answer'];
+        $_SESSION[$def][1][$row['num']]=$row['answer'];
     }
 }//$COOKIE['answer'.$def][$i] = 계정 정답 불러오기
 
@@ -52,24 +41,34 @@ if(isset($_GET['submit'])){
        if(isset($_GET[$i])&&!empty($_GET[$i])){
            if(isset($_SESSION['id'])){
                mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
-               mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+               mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."',0)");
            }
-           setcookie($i.$def,$_GET[$i]);
-           $_COOKIE[$i.$def]=$_GET[$i];
+           $_SESSION[$def][1][$i]=$_GET[$i];
        }
     }
         if(isset($_GET['answer'])&&!empty($_GET['answer'])){
             if(isset($_SESSION['id'])){
                 mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
-                mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+                mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."',0)");
             }
-            setcookie($_GET['jump'].$def,$_GET['answer']);
-            $_COOKIE[$_GET['jump'].$def]=$_GET['answer'];
+            $_SESSION[$def][1][$_GET['jump']]=$_GET['answer'];
         }
-        if($_GET['submit']=="다음 문제"&&$_GET['jump']<=$maxNum){
+        if($_GET['submit']=="다음 문제"&&$_GET['jump']<$maxNum){
             $_GET['jump']++;
         }else if($_GET['submit']=="이전 문제"&&$_GET['jump']>1){
             $_GET['jump']--;
+        }else if($_GET['submit']=="단일 채점"){
+            $_SESSION[$def][0][$_GET['jump']]=1;
+        }else if($_GET['submit']=="일괄 채점"){
+            for($i=1;$i<=$maxNum;$i++){
+                $_SESSION[$def][0][$i]=1;
+            }
+        }else if($_GET['submit']=="단일 채점 취소"){
+            $_SESSION[$def][0][$_GET['jump']]=0;
+        }else if($_GET['submit']=="일괄 채점 취소"){
+            for($i=1;$i<=$maxNum;$i++){
+                $_SESSION[$def][0][$i]=0;
+            }
         }//문제간 이동 설정
 }//버튼 이벤트 확인
 
@@ -124,13 +123,18 @@ while($row = $result->fetch_assoc()) {
                         echo "<div class=\"text_wrap\">";
                         echo "<div class=\"btn\"><div class=\"prev\"><input type=\"submit\" value=\"이전 문제\" name=\"submit\"></div>";
                         echo "<div class=\"next\"><input type=\"submit\" value=\"다음 문제\" name=\"submit\"></div></div>";
+                        echo "<input type=\"submit\" value=\"단일 채점\" name=\"submit\">";
+                        echo "<input type=\"submit\" value=\"단일 채점 취소\" name=\"submit\">";
                         echo "<div class=\"text\">";
                         echo "<span>",$_GET['jump'],"번 문제</span>";
-                        if($correct[$_GET['jump'].$def]==$_COOKIE[$_GET['jump'].$def]){
-                            echo "<div class=\"correct\">맞았습니다!</div>";
-                        }else{
-                            echo "<div class=\"uncorrect\">틀렸습니다!</div>";
-                        }//정답 일치 판별 후 출력
+                        if(isset($_SESSION[$def][0][$_GET['jump']])&&$_SESSION[$def][0][$_GET['jump']]==1){
+                            if($correct[$_GET['jump'].$def]==$_SESSION[$def][1][$_GET['jump']]){
+                                echo "<div class=\"correct\">맞았습니다!</div>";
+                            }else{
+                                echo "<div class=\"uncorrect\">틀렸습니다!</div>";
+                            }//정답 일치 판별 후 출력
+                        }
+                        
                         echo $question,"<br>";
                         if(!empty($picture)&&$picture!=""&&$picture!=" "){
                             echo "<img src=\"",$picture,"\">";
@@ -143,9 +147,9 @@ while($row = $result->fetch_assoc()) {
                         }
                         echo "<div class=\"mark\">";
                         for($i=1;$i<=5;$i++){
-                            if($_COOKIE[$_GET['jump'].$def]==$i){
+                            if(isset($_SESSION[$def][1][$_GET['jump']])&&$_SESSION[$def][1][$_GET['jump']]==$i){
                                 echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
-                            }else if($correct[$_GET['jump'].$def]==$i){
+                            }else if(isset($_SESSION[$def][0][$_GET['jump']])&&$_SESSION[$def][0][$_GET['jump']]==1&&$correct[$_GET['jump'].$def]==$i){
                                 echo "<div class=\"radio".$i."c\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
                             }else{
                                 echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for = \"$i\">",${"select".$i},"</label></div><br>";
@@ -176,6 +180,17 @@ while($row = $result->fetch_assoc()) {
                             <?php
                                for($i=1;$i<=$maxNum;$i++){
                                    echo "<div class=\"omr_float\">";
+                                   if(isset($_SESSION[$def][0][$i])&&$_SESSION[$def][0][$i]==1){
+                                           if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]==$correct[$i.$def]){
+                                               echo "<div class=\"omr_float\" style=\"background-color:green;\">";
+                                           }else{
+                                               echo "<div class=\"omr_float\" style=\"background-color:red;\">";
+                                           }
+                                       }else{
+                                           echo "<div class=\"omr_float\">";
+                                       }
+                                   
+                                   
                                    echo "<div class=\"number\"><a href=\"/solve.php/?grade=".$_GET['grade']."&year=".$_GET['year']."&month=".$_GET['month']."&subject=".$_GET['subject']."&jump=",$i,"\" target=\"_self\">";
                                    if($i<10)
                                        echo "0".$i.".";
@@ -183,11 +198,13 @@ while($row = $result->fetch_assoc()) {
                                        echo $i.".";
                                    echo "</a></div>";
                                    for($j=1;$j<6;$j++){
-                                       if($_COOKIE[$i.$def]==$j){
-                                           echo "<div class=\"omr".$j."\"><input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"omr".$i."_".$j."\" checked=\"checked\"><label for=\"omr".$i."_".$j."\"></label></div>";
+                                       echo "<div class=\"omr".$j."\">";
+                                       if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]==$j){
+                                           echo "<input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"omr".$i."_".$j."\" checked=\"checked\"><label for=\"omr".$i."_".$j."\"></label>";
                                        }else{
-                                           echo "<div class=\"omr".$j."\"><input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"omr".$i."_".$j."\"><label for=\"omr".$i."_".$j."\"></label></div>";
+                                           echo "<input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"omr".$i."_".$j."\"><label for=\"omr".$i."_".$j."\"></label>";
                                        }
+                                       echo "</div>";
                                    }
                                    echo "</div>";
                                    echo "<br>";
@@ -196,6 +213,8 @@ while($row = $result->fetch_assoc()) {
                         </div>
                         <div class="submit">
                             <input type="submit" value="제출" name="submit" class="submit">
+                            <input type="submit" value="일괄 채점" name="submit" class="submit">
+                            <input type="submit" value="일괄 채점 취소" name="submit" class="submit">
                         </div>
                     </div>
                 </div>
