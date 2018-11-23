@@ -1,25 +1,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        
-        
-        <style>
-
-
-
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="viewport">
         
         <link rel= "stylesheet" type="text/css" href="/signUp.css">
         <title>
             회원가입
         </title>
         <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="/signUp.js"></script>
     </head>
     
     <body>
         <div class="wrap">
-           <header><img src="/picture/index_img/logo.png" alt="로고"></header>
+           <header><img src="/picture/signUp_img/logo.png" alt="로고"></header>
            
            <table class="bar">
                <tr>
