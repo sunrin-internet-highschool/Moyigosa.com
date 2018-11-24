@@ -1,45 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:700|Playfair+Display&subset=korean');
 *{
-    margin: 0;
-    padding: 0;
+    margin:0 0 0 0;
+    padding: 0 0 0 0;
 }
 
-body{
-    height:1200px;
-}
-        
-        
-.background_book{
+#title{
     width:100%;
-    height:400px;
-    position: relative;
-    background: url("picture/index_img/book.png");
-    background-repeat: no-repeat;
+    background-image: url(/picture/index_img/book.png);
     background-size: cover;
-    //background-position: 0 -150px;
+    padding-bottom: 0.5em;
 }
 
-.background #book{
-    width:100%;
-    height:400px;
-}
-
-#logo{
-    width:170px;
-    height:80px;
-    z-index: 1;
-}
-
-#title {
-    width: 100%;
+#title .logo{
+    padding-top:0.5em;
     text-align: center;
-    position:relative;
 }
 
-#title .title{
-    font-size: 2em;
-    font-weight: bold;
-    color: slategray;
-    text-decoration: none;
+#title .logo img{
+    width:auto;
+    height:3em;
 }
 
 #user{
@@ -69,104 +48,71 @@ body{
     right:0;
 }
 
-.ps{
-    margin-left: 20px;
-    margin-top:200px;
+#title .text{
+    font-family: 'Gothic A1', sans-serif;
     color:white;
-    width:500px;
-    height:100px;
+    font-size:3em;
+    margin-left:0.25em;
 }
 
-.pencil{
-    width:100px;
-    height:100px;
+#title .text img{
+    height:1.25em;
+    width:auto;
+    vertical-align: middle;
 }
 
-.ps_left{
-    width:100px;
-    height:100px;
-    float:left;
-}
-
-.ps_right{
-    width:400px;
-    height:100px;
-    float:left;
-}
-
-.ps_right p{
-    line-height: 100px;
-    font-size:50px;
-    margin-right: 5px;
-}
-
-.ps span{
-    font-size:16px;
-}
-
-.main_wrap{
-    width:100%;
+#title .text span{
+    font-size: 0.4em;
+    font-family: 'Playfair Display', serif;
 }
 
 #main{
-    margin-top:35px;
-    margin-left: 30px;
-    margin-right: 30px;
-    
+    width:100em;
+    margin: 0.5em auto;
 }
 
 #sebu{
-    font-family: "삼성 고딕체 보통", "Centaur 보통";
-    font-size: 40px;
-    width:180px;
+    margin:0.5em 0;
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 2em;
+    width:4.25em;
     color:#5B4C43;
-    border-bottom: 4px solid #5B4C43;
+    border-bottom: 0.1em solid #5B4C43;
 }
 
 #menu{
     text-align: center;
     background-color: #5B4C43;
-    margin-top:20px;
-    border:1px solid #5B4C43;
-    border-radius:5px;
+    border-radius:0.5em;
 }
 
 select{
-    margin:10px 0;
-    height:40px;
-    width:300px;
+    padding-left: 0.5em;
+    margin:1.5em 2em;
+    height:3em;
+    width: 15em;
+    border:none;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;
+    background: url('/picture/index_img/selection.png') no-repeat 95% 50% #fff; /* 화살표 아이콘 추가 */  
+    background-size: 1em;
+    color:#717070;
 }
 
-.submit_wrap {
-    display:inline-block;
+.search{
+    height:3.5em;
+    width:auto;
+    vertical-align: middle;
+    cursor: pointer;
 }
-
-.submit_wrap input[type=submit]{
-    display:none;
-}
-
-.submit_wrap input[type=submit]+label{
-    display:inline-block;
-}
-
-.submit_wrap input[type=submit]+label::before{
-    content:url("/picture/index_img/search.png");
-    margin-right: 10px;
-    left:5;
-}
-
-.submit_wrap{
-    margin-top:5px;
-    margin-left: 20px;
-    position:absolute;
-}   
         
 #list{
     width:100%;
 }
         
 .list{
-    margin-top: 30px;
+    margin-top: 1em;
     width:100%;
     border-collapse: collapse;
 }
@@ -175,42 +121,41 @@ select{
     width:100%;
 }
         
-#list tr td{
-    width:100px;
-    height:50px;
+#list tr .td{
+    width:20%;
+    height:3em;
     text-align: center;
 }
         
 .list tr:nth-child(1){
-    width:70px;
     color:white;
     background-color: #72635B;
 }
         
 .list tr:nth-child(n+2){
     color:#5B4C43;
-    height:100px;
-    border-bottom:1px solid gainsboro;
+    height:6em;
+    border-bottom:0.1em solid gainsboro;
 }
         
-td img{
-    width:30px;
-    height:30px;
+.href img{
+    width:auto;
+    height:2.5em;
     float:left;
 }
-        
-td span{
-    padding-right: 30px;
-}
-        
+
 .background{
-    border:2px solid #72635B;
-    border-radius: 10px;
-    height:25px;
+    display: inline-block;
+    border:0.15em solid #72635B;
+    height:2em;
     width:50%;
-    margin-left: 25%;
 }
 
+.bar{
+    background-color:#72635B;
+    height:2em;
+}
+/*
         @media (min-width:480px){
             .ps_right span{
                 display:none;
@@ -225,4 +170,4 @@ td span{
             #menu{
                 text-align: center;
             }
-        }
+        }*/
