@@ -36,7 +36,7 @@ if(isset($_SESSION['id'])){
 //초기 설정
 
 
-if(isset($_GET['submit'])){
+if(isset($_GET['submit'])||isset($_GET['jump_button'])){
     for($i=1;$i<=$maxNum;$i++){
        if(isset($_GET[$i])&&!empty($_GET[$i])){
            if(isset($_SESSION['id'])){
@@ -53,21 +53,30 @@ if(isset($_GET['submit'])){
             }
             $_SESSION[$def][1][$_GET['jump']]=$_GET['answer'];
         }
-        if($_GET['submit']=="다음 문제"&&$_GET['jump']<$maxNum){
+        if(isset($_GET['submit'])&&$_GET['submit']=="다음 문제"&&$_GET['jump']<$maxNum){
             $_GET['jump']++;
-        }else if($_GET['submit']=="이전 문제"&&$_GET['jump']>1){
+        }else if(isset($_GET['submit'])&&$_GET['submit']=="이전 문제"&&$_GET['jump']>1){
             $_GET['jump']--;
-        }else if($_GET['submit']=="단일 채점"){
+        }else if(isset($_GET['submit'])&&$_GET['submit']=="하나 채점"){
             $_SESSION[$def][0][$_GET['jump']]=1;
-        }else if($_GET['submit']=="일괄 채점"){
+        }else if(isset($_GET['submit'])&&$_GET['submit']=="전부 채점"){
             for($i=1;$i<=$maxNum;$i++){
                 $_SESSION[$def][0][$i]=1;
             }
-        }else if($_GET['submit']=="단일 채점 취소"){
+        }else if(isset($_GET['submit'])&&$_GET['submit']=="하나 채점 취소"){
             $_SESSION[$def][0][$_GET['jump']]=0;
-        }else if($_GET['submit']=="일괄 채점 취소"){
+        }else if(isset($_GET['submit'])&&$_GET['submit']=="전부 채점 취소"){
             for($i=1;$i<=$maxNum;$i++){
                 $_SESSION[$def][0][$i]=0;
+            }
+        }else if(isset($_GET['jump_button'])){
+            for($i=1;$i<=$maxNum;$i++){
+                if($_GET['jump_button']==$i){
+                    $_GET['jump']=$i;
+                    break;
+                }else if($_GET['jump_button']=='0'.$i){
+                    $_GET['jump']=substr($i,2,1);
+                }
             }
         }//문제간 이동 설정
 }//버튼 이벤트 확인
@@ -104,119 +113,112 @@ while($row = $result->fetch_assoc()) {
         echo "<input type=\"hidden\" name=\"grade\" value=\"".$_GET['grade']."\">";
         echo "<input type=\"hidden\" name=\"subject\" value=\"".$_GET['subject']."\">";
         echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
+        echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
         //필요 get 정보 자동 기입
         ?>
         <div id="title">
-            <?php
-            echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['subject']," 모의고사";
+                <?php
+            echo "전국연합모의평가 ",$_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'],"영역";
         ?>
+            </span>
         </div>
         <div id="body">
             <?php
         
         ?>
-            <div id="All">
-                <div id="All_left">
-                    <div id="quest">
-                        <?php
-                        echo "<div class=\"wrap\">"; 
-                        echo "<div class=\"text_wrap\">";
-                        echo "<div class=\"btn\"><div class=\"prev\"><input type=\"submit\" value=\"이전 문제\" name=\"submit\"></div>";
-                        echo "<div class=\"next\"><input type=\"submit\" value=\"다음 문제\" name=\"submit\"></div></div>";
-                        echo "<input type=\"submit\" value=\"단일 채점\" name=\"submit\">";
-                        echo "<input type=\"submit\" value=\"단일 채점 취소\" name=\"submit\">";
-                        echo "<div class=\"text\">";
-                        echo "<span>",$_GET['jump'],"번 문제</span>";
+            <div id="quest">
+                <?php
+                        echo "<div class=\"quest\">";;
                         if(isset($_SESSION[$def][0][$_GET['jump']])&&$_SESSION[$def][0][$_GET['jump']]==1){
                             if(isset($_SESSION[$def][1][$_GET['jump']])&&$correct[$_GET['jump'].$def]==$_SESSION[$def][1][$_GET['jump']]){
-                                echo "<div class=\"correct\">맞았습니다!</div>";
+                                echo "<img src=\"/picture/solve_img/ox/MarkO.png\">";
                             }else{
-                                echo "<div class=\"uncorrect\">틀렸습니다!</div>";
+                                echo "<img src=\"/picture/solve_img/ox/MarkX.png\">";
                             }//정답 일치 판별 후 출력
                         }
+                        echo $_GET['jump'],". $question</div>";
+                        echo "<div class=\"text\">";
                         
-                        echo $question,"<br>";
                         if(!empty($picture)&&$picture!=""&&$picture!=" "){
                             echo "<img src=\"",$picture,"\">";
                         }
                         if(!empty($example)&&$example!=""&&$example!=" "){
-                            echo $example;
+                            echo "<div class=\"example\">$example</div>";
                         }
                         if(!empty($sound)&&$sound!=""&&$sound!=" "){
                             echo "<audio src=\"$sound\" controls=\"controls\"></audio>";
                         }
+                        echo "</div>";
                         echo "<div class=\"mark\">";
                         for($i=1;$i<=5;$i++){
                             if(isset($_SESSION[$def][1][$_GET['jump']])&&$_SESSION[$def][1][$_GET['jump']]==$i){
-                                echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
+                                echo "<input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"b$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
                             }else if(isset($_SESSION[$def][0][$_GET['jump']])&&$_SESSION[$def][0][$_GET['jump']]==1&&$correct[$_GET['jump'].$def]==$i){
-                                echo "<div class=\"radio".$i."c\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for=\"$i\">",${"select".$i},"</label></div><br>";
+                                echo "<input type=\"radio\" name=\"answer\" value=\"$i\" id=\"b$i"."c\"><label for=\"b$i"."c\">&nbsp;",${"select".$i},"</label><br>";
                             }else{
-                                echo "<div class=\"radio".$i."\"><input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"> <label for = \"$i\">",${"select".$i},"</label></div><br>";
+                                echo "<input type=\"radio\" name=\"answer\" value=\"$i\" id=\"b$i\"><label for = \"b$i\">&nbsp;",${"select".$i},"</label><br>";
                             }
                         }
                         echo "</div>";
-                        echo "</div>";
-                        echo "</div>";
+                        echo "<div class=\"button\">";
+                        echo "<input type=\"submit\" value=\"하나 채점\" name=\"submit\"><br>";
+                        echo "<input type=\"submit\" value=\"하나 채점 취소\" name=\"submit\">";
                         echo "</div>";
                         ?>
-                    </div>
+
+                <input type="image" src="/picture/solve_img/arrow/beforeproblem.png" value="이전 문제" name="submit" class="back">
+                <input type="image" src="/picture/solve_img/arrow/nextproblem.png" value="다음 문제" name="submit" class="front">
+            </div>
+
+        </div>
+        <div id="omr">
+            <div class="bar"><img src="/picture/solve_img/arrow/left.png"></div>
+            <div class="body">
+                <div class="text"><img src="/picture/solve_img/timer/clock.png">&nbsp;경과시간</div>
+                <div class="timer">
+                    <span>
+                    <span class="countTimeMinute">00</span> :
+                    <span class="countTimeSecond">00</span>
+                    </span>
                 </div>
-
-                <div id="All_right">
-
-                    <div class="omr_form">
-                        <div class="timer">
-
-                            <span class="countTimeMinute">00</span> :
-                            <span class="countTimeSecond">00</span>
-                        </div>
-
-                        <div class="alltimer">
-                            <span class="allTimeMinute">00</span> :
-                            <span class="allTimeSecond">00</span>
-                        </div>
-                        <div class="omr">
-                            <?php
+                
+                <div class="text"><img src="/picture/solve_img/timer/clock.png">&nbsp;총 경과시간</div>
+                <div class="alltimer">
+                    <span>
+                    <span class="allTimeMinute">00</span> :
+                    <span class="allTimeSecond">00</span>
+                    </span>
+                </div>
+                <div class="omr">
+                    <?php
                                for($i=1;$i<=$maxNum;$i++){
-                                   echo "<div class=\"omr_float\">";
                                    if(isset($_SESSION[$def][0][$i])&&$_SESSION[$def][0][$i]==1){
                                            if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]==$correct[$i.$def]){
-                                               echo "<div class=\"omr_float\" style=\"background-color:green;\">";
+                                               echo "<div class=\"omr_float_correct\">";
                                            }else{
-                                               echo "<div class=\"omr_float\" style=\"background-color:red;\">";
+                                               echo "<div class=\"omr_float_uncorrect\">";
                                            }
                                        }else{
                                            echo "<div class=\"omr_float\">";
                                        }
-                                   
-                                   
-                                   echo "<div class=\"number\"><a href=\"/solve.php/?grade=".$_GET['grade']."&year=".$_GET['year']."&month=".$_GET['month']."&subject=".$_GET['subject']."&jump=",$i,"\" target=\"_self\">";
-                                   if($i<10)
-                                       echo "0".$i.".";
-                                   else
-                                       echo $i.".";
-                                   echo "</a></div>";
-                                   for($j=1;$j<6;$j++){
-                                       echo "<div class=\"omr".$j."\">";
-                                       if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]==$j){
-                                           echo "<input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"omr".$i."_".$j."\" checked=\"checked\"><label for=\"omr".$i."_".$j."\"></label>";
-                                       }else{
-                                           echo "<input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"omr".$i."_".$j."\"><label for=\"omr".$i."_".$j."\"></label>";
-                                       }
-                                       echo "</div>";
+                                   if($i<10){
+                                       echo "<input type=\"submit\" class=\"num\" value=\"0$i\" name=\"jump_button\">";
+                                   }else{
+                                       echo "<input type=\"submit\" class=\"num\" value=\"$i\" name=\"jump_button\">";
                                    }
-                                   echo "</div>";
-                                   echo "<br>";
+                                   for($j=1;$j<6;$j++){
+                                       if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]==$j){
+                                           echo "<input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"$i-".$j."\" checked=\"checked\" class=\"omr$j\"><label for=\"$i-".$j."\"></label>";
+                                       }else{
+                                           echo "<input type=\"radio\" name=\"".$i."\" value=\"$j\" id=\"$i-".$j."\" class=\"omr$j\"><label for=\"$i-".$j."\"></label>";
+                                       }
+                                   }
+                                    echo "</div>";
                                }
                             ?>
-                        </div>
-                        <div class="submit">
-                            <input type="submit" value="제출" name="submit" class="submit">
-                            <input type="submit" value="일괄 채점" name="submit" class="submit">
-                            <input type="submit" value="일괄 채점 취소" name="submit" class="submit">
-                        </div>
-                    </div>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="전부 채점" name="submit" class="submit_button"><input type="submit" value="전부 채점 취소" name="submit" class="submit_button">
                 </div>
             </div>
         </div>
