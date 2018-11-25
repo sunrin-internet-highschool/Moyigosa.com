@@ -1,7 +1,4 @@
 <?php
-if(){
-    
-}else{
   if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['nick'])){
         require_once ('cnn.php');
     $result = mysqli_query($conn, "SELECT id FROM users where id='".$_POST['id']."'");
@@ -14,7 +11,6 @@ if(){
         echo"<script>alert('회원가입이 성공적으로 끝났습니다!');self.close();</script>";
     }   
 }  
-}
 ?>
 <html>
 

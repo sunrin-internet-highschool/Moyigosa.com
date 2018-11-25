@@ -41,7 +41,7 @@ if(isset($_GET['submit'])||isset($_GET['jump_button'])){
        if(isset($_GET[$i])&&!empty($_GET[$i])){
            if(isset($_SESSION['id'])){
                mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
-               mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."',0)");
+               mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
            }
            $_SESSION[$def][1][$i]=$_GET[$i];
        }
@@ -49,7 +49,7 @@ if(isset($_GET['submit'])||isset($_GET['jump_button'])){
         if(isset($_GET['answer'])&&!empty($_GET['answer'])){
             if(isset($_SESSION['id'])){
                 mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
-                mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."',0)");
+                mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
             }
             $_SESSION[$def][1][$_GET['jump']]=$_GET['answer'];
         }
