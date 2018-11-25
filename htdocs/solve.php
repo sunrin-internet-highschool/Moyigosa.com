@@ -100,9 +100,104 @@ while($row = $result->fetch_assoc()) {
 <head>
     <link rel="stylesheet" type="text/css" href="/solve.css">
     <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="/solve.js"></script>
+    <!--<script src="/solve.js"></script>-->
+    <script>
+        var all_minute=0;
+        var all_second=0;
+        
+        $(document).ready(function(){
+            
+                
+                var minute=0;
+                var second=0;
+                var cnt_sec=0;
+
+                $(".countTimeMinute").html(minute);
+                $(".countTimeSecond").html(second);
+                $(".allTimeMinute").html(all_minute);
+                $(".allTimeSecond").html(all_second);
+                
+                var timer = setInterval(countTime,1000);
+                var all_timer = setInterval(alltimer, 1000);
+                
+                function countTime(){
+                    $(".countTimeMinute").html(minute);
+                    $(".countTimeSecond").html(second);
+                    
+                    cnt_sec++;
+                    second++;
+                    if(second==60){
+                        minute++;
+                        second=0;
+                    }
+                    if(cnt_sec>=90){
+                        $('.timer span').css({'color':'red'});
+                    }
+                    
+                }   
+                function alltimer(){
+                    $(".allTimeMinute").html(all_minute);
+                    $(".allTimeSecond").html(all_second);
+                    all_second++;
+                    if(all_second==60){
+                        all_minute++;
+                        all_second=0;
+                    } 
+                }
+                
+                $(".prev").click(function(){
+                    minute=0;
+                    second=0;
+                    cnt_sec=0;
+                    $('.timer span').css({'color':'black'});
+                })
+                
+                $(".next").click(function(){
+                    minute=0;
+                    second=0;
+                    cnt_sec=0;
+                    $('.timer span').css({'color':'black'});
+                })
+                
+                $(".submit").click(function(){
+                    all_sec=0;
+                    all_minute=0;
+                })
+            
+            
+            
+            var cnt=0;
+                $("#slide_img").click(function(){
+                    if(cnt==0){
+                        $("#omr").animate({'right':'-17em'},1000);
+                        cnt++;
+                    }
+                    else{
+                        $("#omr").animate({'right':'0'},1000);
+                        cnt=0;
+                    }
+                })
+            
+    $(".back").mouseover(function(){
+        document.getElementById("move").value = '이전 문제';
+    })
+    $(".back").mouseout(function(){
+        document.getElementById("move").value = '0';
+    })
+    $(".front").mouseover(function(){
+        document.getElementById("move").value = '다음 문제';
+    })
+    $(".front").mouseout(function(){
+        document.getElementById("move").value = '0';
+    })
+
+            
+            });
+
+    </script>
     <title>문제페이지</title>
     <meta charset="UTF-8">
+    
 </head>
 
 <body>
@@ -114,17 +209,23 @@ while($row = $result->fetch_assoc()) {
         echo "<input type=\"hidden\" name=\"subject\" value=\"".$_GET['subject']."\">";
         echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
         echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
+        echo "<input type=\"hidden\" name=\"all_minute\" value=\"".$_GET['all_minute']."\">";
+        echo "<input type=\"hidden\" name=\"all_second\" value=\"".$_GET['all_second']."\">";
+        echo "<input type=\"hidden\" name=\"minute\" value=\"".$_GET['minute']."\">";
+        echo "<input type=\"hidden\" name=\"second\" value=\"".$_GET['second']."\">";
+        echo "<input id=\"move\" type=\"hidden\" name=\"submit\" value=\"0\">";
+        
+        
         //필요 get 정보 자동 기입
         ?>
         <div id="title">
                 <?php
             echo "전국연합모의평가 ",$_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'],"영역";
         ?>
-            </span>
         </div>
         <div id="body">
             <?php
-        
+            
         ?>
             <div id="quest">
                 <?php
@@ -166,13 +267,13 @@ while($row = $result->fetch_assoc()) {
                         echo "</div>";
                         ?>
 
-                <input type="image" src="/picture/solve_img/arrow/beforeproblem.png" value="이전 문제" name="submit" class="back">
-                <input type="image" src="/picture/solve_img/arrow/nextproblem.png" value="다음 문제" name="submit" class="front">
+                <input type="image" src="/picture/solve_img/arrow/beforeproblem.png" value="이전 문제" name="submit" class="back" >
+                <input type="image" src="/picture/solve_img/arrow/nextproblem.png" value="다음 문제" name="submit" class="front" >
             </div>
 
         </div>
         <div id="omr">
-            <div class="bar"><img src="/picture/solve_img/arrow/left.png"></div>
+            <div class="bar"><img id="slide_img" src="/picture/solve_img/arrow/left.png"></div>
             <div class="body">
                 <div class="text"><img src="/picture/solve_img/timer/clock.png">&nbsp;경과시간</div>
                 <div class="timer">
