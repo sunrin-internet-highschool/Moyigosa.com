@@ -57,6 +57,11 @@ body {
     text-align: center;
 }
 
+#quest .text img{
+    width:80%;
+    height:auto;
+}
+
 #quest .text .example {
     display: inline-block;
     width: 76em;
