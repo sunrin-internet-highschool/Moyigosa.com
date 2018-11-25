@@ -100,101 +100,8 @@ while($row = $result->fetch_assoc()) {
 <head>
     <link rel="stylesheet" type="text/css" href="/solve.css">
     <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <!--<script src="/solve.js"></script>-->
-    <script>
-        var all_minute=0;
-        var all_second=0;
-        
-        $(document).ready(function(){
-            
-                
-                var minute=0;
-                var second=0;
-                var cnt_sec=0;
+    <script src="/solve.js"></script>
 
-                $(".countTimeMinute").html(minute);
-                $(".countTimeSecond").html(second);
-                $(".allTimeMinute").html(all_minute);
-                $(".allTimeSecond").html(all_second);
-                
-                var timer = setInterval(countTime,1000);
-                var all_timer = setInterval(alltimer, 1000);
-                
-                function countTime(){
-                    $(".countTimeMinute").html(minute);
-                    $(".countTimeSecond").html(second);
-                    
-                    cnt_sec++;
-                    second++;
-                    if(second==60){
-                        minute++;
-                        second=0;
-                    }
-                    if(cnt_sec>=90){
-                        $('.timer span').css({'color':'red'});
-                    }
-                    
-                }   
-                function alltimer(){
-                    $(".allTimeMinute").html(all_minute);
-                    $(".allTimeSecond").html(all_second);
-                    all_second++;
-                    if(all_second==60){
-                        all_minute++;
-                        all_second=0;
-                    } 
-                }
-                
-                $(".prev").click(function(){
-                    minute=0;
-                    second=0;
-                    cnt_sec=0;
-                    $('.timer span').css({'color':'black'});
-                })
-                
-                $(".next").click(function(){
-                    minute=0;
-                    second=0;
-                    cnt_sec=0;
-                    $('.timer span').css({'color':'black'});
-                })
-                
-                $(".submit").click(function(){
-                    all_sec=0;
-                    all_minute=0;
-                })
-            
-            
-            
-            var cnt=0;
-                $("#slide_img").click(function(){
-                    if(cnt==0){
-                        $("#omr").animate({'right':'-17em'},1000);
-                        cnt++;
-                    }
-                    else{
-                        $("#omr").animate({'right':'0'},1000);
-                        cnt=0;
-                    }
-                })
-            
-    $(".back").mouseover(function(){
-        document.getElementById("move").value = '이전 문제';
-    })
-    $(".back").mouseout(function(){
-        document.getElementById("move").value = '0';
-    })
-    $(".front").mouseover(function(){
-        document.getElementById("move").value = '다음 문제';
-    })
-    $(".front").mouseout(function(){
-        document.getElementById("move").value = '0';
-    })
-
-            
-            });
-
-    </script>
     <title>문제페이지</title>
     <meta charset="UTF-8">
     
@@ -209,10 +116,10 @@ while($row = $result->fetch_assoc()) {
         echo "<input type=\"hidden\" name=\"subject\" value=\"".$_GET['subject']."\">";
         echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
         echo "<input type=\"hidden\" name=\"jump\" value=\"".$_GET['jump']."\">";
-        echo "<input type=\"hidden\" name=\"all_minute\" value=\"".$_GET['all_minute']."\">";
-        echo "<input type=\"hidden\" name=\"all_second\" value=\"".$_GET['all_second']."\">";
-        echo "<input type=\"hidden\" name=\"minute\" value=\"".$_GET['minute']."\">";
-        echo "<input type=\"hidden\" name=\"second\" value=\"".$_GET['second']."\">";
+        echo "<input type=\"hidden\" id=\"all_minute\" name=\"all_minute\" value=\"".$_GET['all_minute']."\">";
+        echo "<input type=\"hidden\" id=\"all_second\" name=\"all_second\" value=\"".$_GET['all_second']."\">";
+        echo "<input type=\"hidden\" id=\"minute\" name=\"minute\" value=\"".$_GET['minute']."\">";
+        echo "<input type=\"hidden\" id=\"second\" name=\"second\" value=\"".$_GET['second']."\">";
         echo "<input id=\"move\" type=\"hidden\" name=\"submit\" value=\"0\">";
         
         
