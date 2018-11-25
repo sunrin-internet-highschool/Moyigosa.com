@@ -281,7 +281,7 @@ input[type=radio] {
 #omr .body .omr div{
     position:relative;
     margin: 0.5em 0.5em;
-    width:85%;
+    width:100%;
 }
 
 #omr .body .omr .omr_float_correct{
