@@ -45,6 +45,13 @@ header{
     width:100%;
 }
      
+            .id{float:left;}
+            .password{float:left;}
+            .password_confirm{float:left;}
+            .mail{float:left;}
+            .name{float:left;}
+            .nick{float:left;}
+            
 .login_wrap{
     width:100%;
 }
@@ -52,10 +59,10 @@ header{
 .login{  
     text-align: center;
     margin: 0 auto;
-    width:500px;
-    padding-bottom: 50px;
+    height:350px;
+    width:1500px;
     border:1px solid black;
-            }
+}
             
 #login_title{
     display: block;
@@ -66,19 +73,28 @@ header{
     margin-bottom: 10px;
 }
     
-.login div:nth-child(n) span{
+            .frame{
+                height:280px;
+                width:1250px;
+                margin-left:250px;
+            }
+            
+.login div div:nth-child(n) span{
     display: block;
     text-align: left;
     margin-left:50px;
     margin-bottom: 5px;
+    height:21px;
+    margin-right:8px;
 }
             
 .login span{
     text-align: left;
 }
             
+            
 input[type="submit"]{
-    margin-top: 10px;
+    margin-top: 26px;
     background-color: #5B4C43;
     border:0;
     cursor: pointer;
@@ -94,11 +110,13 @@ input[type="text"],[type="password"]{
     width:400px;
 }
 
-.login div:nth-child(n){
+.login div div:nth-child(n){
     padding-bottom: 10px;
     padding-top: 10px;
+    width:500px;
+    float:left;
 }
-          
+
 @media all and (max-width:720px){
     .login{
         width:450px;
@@ -134,4 +152,3 @@ input[type="text"],[type="password"]{
         width:300px;
     }
 }
-            
