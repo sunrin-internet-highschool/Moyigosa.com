@@ -37,7 +37,6 @@
                 <div class="id_wrap">
                     <span class="id">아이디</span>
                     <span id="id_check"></span>
-                    <input type="submit" value="중복확인" name="submit">
                     <br>
                     <input type="text" name="id" id="id" maxlength="12" onKeyup=id_check(this)>
                 </div>
