@@ -221,6 +221,7 @@ input[type=radio] {
     text-align: center;
     height:100%;
     width:17em;
+    overflow: scroll;
 }
 
 #omr .body .text{
