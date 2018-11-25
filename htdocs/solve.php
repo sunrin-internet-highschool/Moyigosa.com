@@ -151,6 +151,10 @@ while($row = $result->fetch_assoc()) {
                     $(".allTimeMinute").html(all_minute);
                     $(".allTimeSecond").html(all_second);
                     all_second++;
+                    cnt_sec++;
+                    if(cnt_sec<60){
+                        all_minute=0;
+                    }
                     if(all_second==60){
                         all_minute++;
                         all_second=0;
