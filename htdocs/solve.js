@@ -1,16 +1,20 @@
 $(document).ready(function(){
         var all_minute = document.getElementById("all_minute").value;
         var all_second = document.getElementById("all_second").value;
+        var minute=document.getElementById("minute").value;
+        var second=document.getElementById("second").value;
         var cnt_sec=0;
-            var minute=0;
-            var second=0;
                 
             
                 if(typeof(all_minute)==Number){
                     all_minute=0;
                 }if(typeof(all_second)==Number){
                     all_second=0;
-                }
+                }if(typeof(minute)!=Number){
+                    minute=0;
+                }if(typeof(second)!=Number){
+                    second=0;
+                }           
             
             
 
@@ -48,19 +52,25 @@ $(document).ready(function(){
                 }
                 
                 $(".back").click(function(){
+                    document.getElementById("minute").value=minute;
                     document.getElementById("all_minute").value=all_minute;
+                    document.getElementById("second").value=second;
                     document.getElementById("all_second").value=all_second;
                     $('.timer span').css({'color':'black'});
                 })
                 
                 $(".front").click(function(){
+                    document.getElementById("minute").value=minute;
                     document.getElementById("all_minute").value=all_minute;
+                    document.getElementById("second").value=second;
                     document.getElementById("all_second").value=all_second;
                     $('.timer span').css({'color':'black'});
                 })
                 
                 $(".submit").click(function(){
+                    document.getElementById("minute").value=minute;
                     document.getElementById("all_minute").value=all_minute;
+                    document.getElementById("second").value=second;
                     document.getElementById("all_second").value=all_second;
                 })
             
