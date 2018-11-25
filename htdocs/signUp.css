@@ -1,154 +1,141 @@
-*{margin:0; padding:0;}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:700|Noto+Serif+KR&subset=korean');
+*{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
 
 body{
-    background-color: white;
-    height:1200px;
-}
-
-header img{
-    margin-top:20px;
-    height:50px;
-    width:150px;
-}
-
-header{
-    height:100px;
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    width: 100%;
-    color: white;
-}
-            
-.bar{
-    width:100%;
-    background-color: #333333;
-    height:90px;
-    margin-bottom: 40px;
-}
-
-.bar td{
-    color:white;
-    width:25%;
     text-align: center;
 }
-            
-#last{
+
+#logo{
+    height: 3em;
+    width:auto;
+    margin-top: 1em;
+}
+
+#login_wrap{
+    display:inline-block;
+    border:0.15em solid #4c4f4f;
+    width:80em;
+    position:relative;
+    margin-top:1em;
+    text-align: inherit;
+    height:40em;
+}
+
+#login_wrap #login_title{
+    position: absolute;
+    top:0;
+    left:0;
+    margin-top: 0.6em;
+    margin-left: 1em;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 3em;
+}
+
+#signup_wrap{
+    display: inline-block;
+    position:relative;
+    width:70em;
+    margin-top:8em;
+    height:30em;
+}
+
+input[type=text],input[type=password]{
     border:none;
+    background-color:#EAEAEA;
+    width:40em;
+    height:4em;
+    margin-top:0.5em;
 }
-            
-.bar td span{
-    display:block;
-    height:30px;
-    line-height: 30px;
-    border-right: 1px solid white;
-    width:100%;
+
+span:nth-child(2){
+    color:#969292;
+    font-size: 0.8em;
 }
-     
-            .id{float:left;}
-            .password{float:left;}
-            .password_confirm{float:left;}
-            .mail{float:left;}
-            .name{float:left;}
-            .nick{float:left;}
-            
-.login_wrap{
-    width:100%;
-}
-            
-.login{  
-    text-align: center;
-    margin: 0 auto;
-    height:350px;
-    width:1500px;
-    border:1px solid black;
-}
-            
-#login_title{
-    display: block;
-    font-size: 30px;
-    font-weight:bold;
-    margin-left: 50px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-    
-            .frame{
-                height:280px;
-                width:1250px;
-                margin-left:250px;
-            }
-            
-.login div div:nth-child(n) span{
-    display: block;
+
+.id_wrap{
+    display:inline-block;
+    position:absolute;
+    left: 0;
+    top:0;
     text-align: left;
-    margin-left:50px;
-    margin-bottom: 5px;
-    height:21px;
-    margin-right:8px;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
 }
-            
-.login span{
+
+.id_wrap input[type=submit]{
+    position:absolute;
+    top:0;
+    right: 0;
+    border: none;
+    background-color: #6f605a;
+    color:white;
+    height:2em;
+    width:8em;
+    margin-top:0.5em;
+}
+
+.password_wrap{
+    display:inline-block;
+    position:absolute;
+    left: 0;
+    top:5em;
     text-align: left;
-}
-            
-            
-input[type="submit"]{
-    margin-top: 26px;
-    background-color: #5B4C43;
-    border:0;
-    cursor: pointer;
-    height: 40px;
-    width:400px;
-    color: white;
-}
-
-input[type="text"],[type="password"]{
-    background-color: #E6E6E6;
-    border:0px;
-    height:40px;
-    width:400px;
-}
-
-.login div div:nth-child(n){
-    padding-bottom: 10px;
-    padding-top: 10px;
-    width:500px;
-    float:left;
-}
-
-@media all and (max-width:720px){
-    .login{
-        width:450px;
-    }
-                
-    #login_title{
-        font-size:30px;
-    }
-                
-    input[type="text"],[type="password"]{
-        width:350px;
-    }
-    input[type="submit"]{
-        width:350px;
-    }
-}
-            
-            
-@media all and (max-width:540px){
-    .login{
-    width:400px;
-    }
-        
-    #login_title{
-        font-size:25px;
-    }
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
     
-    input[type="text"],[type="password"]{
-        width:300px;
-    }
+}
 
-    input[type="submit"]{
-        width:300px;
-    }
+.password_confirm_wrap{
+    display:inline-block;
+    position:absolute;
+    left: 0;
+    top:10em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.mail_wrap{
+    display:inline-block;
+    position:absolute;
+    right: 0;
+    top:0;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.name_wrap{
+    display:inline-block;
+    position:absolute;
+    right: 0;
+    top:5em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.nick_wrap{
+    display:inline-block;
+    position:absolute;
+    right: 0;
+    top:10em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.submit{
+    border: none;
+    background-color: #6f605a;
+    color:white;
+    margin-top:16.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+    font-size: 1.5em;
+    width: 15.5em;
+    height:2.5em;
+    
 }

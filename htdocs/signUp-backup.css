@@ -1,0 +1,135 @@
+*{margin:0; padding:0;}
+
+body{
+    background-color: white;
+    height:1200px;
+}
+
+header img{
+    margin-top:20px;
+    height:50px;
+    width:150px;
+}
+
+header{
+    height:100px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    width: 100%;
+    color: white;
+}
+            
+.bar{
+    width:100%;
+    background-color: #333333;
+    height:90px;
+    margin-bottom: 40px;
+}
+
+.bar td{
+    color:white;
+    width:25%;
+    text-align: center;
+}
+            
+#last{
+    border:none;
+}
+            
+.bar td span{
+    display:block;
+    height:30px;
+    line-height: 30px;
+    border-right: 1px solid white;
+    width:100%;
+}
+     
+            .id{float:left;}
+            .password{float:left;}
+            .password_confirm{float:left;}
+            .mail{float:left;}
+            .name{float:left;}
+            .nick{float:left;}
+            
+.login_wrap{
+    width:100%;
+}
+            
+.login{  
+    text-align: center;
+    margin: 0 auto;
+    height:350px;
+    width:1500px;
+    border:1px solid black;
+}
+            
+#login_title{
+    display: block;
+    font-size: 30px;
+    font-weight:bold;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+    
+            .frame{
+                height:280px;
+                width:1250px;
+                margin-left:250px;
+            }
+            
+.login div div:nth-child(n) span{
+    display: block;
+    text-align: left;
+    margin-left:50px;
+    margin-bottom: 5px;
+    height:21px;
+    margin-right:8px;
+}
+            
+.login span{
+    text-align: left;
+}
+            
+            
+input[type="submit"]{
+    margin-top: 26px;
+    background-color: #5B4C43;
+    border:0;
+    cursor: pointer;
+    height: 40px;
+    width:400px;
+    color: white;
+}
+
+input[type="text"],[type="password"]{
+    background-color: #E6E6E6;
+    border:0px;
+    height:40px;
+    width:400px;
+}
+
+.login div div:nth-child(n){
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width:500px;
+    float:left;
+}
+
+@media all and (max-width:720px){
+    .login{
+        width:450px;
+    }
+                
+    #login_title{
+        font-size:30px;
+    }
+                
+    input[type="text"],[type="password"]{
+        width:350px;
+    }
+    input[type="submit"]{
+        width:350px;
+    }
+}
