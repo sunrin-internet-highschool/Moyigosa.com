@@ -39,6 +39,7 @@ while($row = $result->fetch_assoc()){
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/index.css">
+    <script src="/index.js"></script>
     <title>모의고사풀이사이트</title>
 </head>
 
@@ -56,31 +57,6 @@ while($row = $result->fetch_assoc()){
                 session_unset();
                 echo"<script>alert('로그아웃되었습니다');</script>";
             }
-                            
-            if(!empty($_POST['id'])&&!empty($_POST['pw'])){
-                $result = mysqli_query($conn, "SELECT * FROM users where id='".$_POST['id']."' and password='".$_POST['pw']."'");
-            while($row = $result->fetch_assoc()) {
-                $id=$row['id'];                  
-                $pw=$row['password'];
-                $nick=$row['nick'];
-                $name=$row['name'];
-                $email=$row['email'];
-                
-            }
-                if(!isset($id)||!isset($pw)){
-                echo"<script>alert('입력하신 아이디나 비밀번호가 잘못되었습니다.');</script>";
-            } 
-                unset($_POST['id']);
-                unset($_POST['password']);
-            }
-            
-            if(isset($id)&&isset($pw)&&!empty($id)&&!empty($pw)){
-                $_SESSION['id']=$id;
-                $_SESSION['pw']=$pw;
-                $_SESSION['nick']=$nick;
-                $_SESSION['name']=$name;
-                $_SESSION['email']=$email;
-            }       
             
             if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
                 echo "hello ",$_SESSION['nick'],".";
@@ -90,13 +66,8 @@ while($row = $result->fetch_assoc()){
                 echo "<a href=\"user.php\" target=\"_blank\">회원정보수정</a>";
             }else{//로그인 안된 상태
                 $_SESSION['temp']=true;
-                echo "<div id=\"login\">";
-                echo "<form action=\"\" method=\"post\">";
-                echo "<input type=\"text\" name=\"id\" class=\"input\"><br>";
-                echo "<input type=\"password\" name=\"pw\" class=\"input\">";
-                echo "<input type=\"submit\" value=\"로그인\" class=\"login\">";
-                echo "</form>";
-                echo "</div>";
+                echo "<a href=\"login.php\" target=\"_self\">로그인</a>";
+                echo" | ";
                 echo "<a href=\"signUp.php\" target=\"_blank\">회원가입</a>";
             }
             ?>
@@ -163,7 +134,6 @@ while($row = $result->fetch_assoc()){
 
             <table class="list">
                 <tr>
-                    <td class="href"></td>
                     <td class="td">학년</td>
                     <td class="td">년도</td>
                     <td class="td">월</td>
@@ -203,8 +173,9 @@ while($row = $result->fetch_assoc()){
                     }
                     
                     echo "<tr>";
-                    echo "<td class=\"href\"><a href=\"solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1\" target=\"_blank\"><img src=\"/picture/index_img/index.png\"></a></td>";
-                    echo "<td class=\"td\">",$grade,"학년</td>";
+                    echo "<td class=\"td\">";
+                    echo "<a href=\"solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1\" target=\"_blank\" class=\"href\"><img src=\"/picture/index_img/index.png\"></a>";
+                    echo $grade,"학년</td>";
                     echo "<td class=\"td\">",$year,"</td>";
                     echo "<td class=\"td\">",$month,"</td>";
                     echo "<td class=\"td\">",$subject,"</td>";
