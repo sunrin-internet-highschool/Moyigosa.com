@@ -67,12 +67,12 @@
 }
 
 #main{
-    width:100em;
+    width:100%;
     margin: 0.5em auto;
 }
 
 #sebu{
-    margin:0.5em 0;
+    margin:0.5em 0.5em;
     font-family: 'Gothic A1', sans-serif;
     font-size: 2em;
     width:4.25em;
@@ -84,6 +84,7 @@
     text-align: center;
     background-color: #5B4C43;
     border-radius:0.5em;
+    margin:0 1em;
 }
 
 select{
@@ -108,7 +109,7 @@ select{
 }
         
 #list{
-    width:100%;
+    margin:0 1em;
 }
         
 .list{
@@ -122,6 +123,7 @@ select{
 }
         
 #list tr .td{
+    position: relative;
     width:20%;
     height:3em;
     text-align: center;
@@ -138,22 +140,32 @@ select{
     border-bottom:0.1em solid gainsboro;
 }
         
+.href{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
 .href img{
     width:auto;
-    height:2.5em;
-    float:left;
+    height:3em;
 }
 
 .background{
     display: inline-block;
-    border:0.15em solid #72635B;
-    height:2em;
+    //border:0.15em solid #72635B;
+    height:1em;
     width:50%;
+    border-radius: 2em;
+    position:relative;
+    background-color:beige;
 }
 
 .bar{
+    position:absolute;
     background-color:#72635B;
-    height:2em;
+    height:100%;
+    border-radius: 2em;
 }
 /*
         @media (min-width:480px){
