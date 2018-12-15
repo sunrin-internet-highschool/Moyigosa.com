@@ -1,4 +1,8 @@
 <?php
+if(isset($_POST['logout'])){
+    session_unset();
+    echo"<script>alert('로그아웃되었습니다');</script>";
+}
 session_start();
 require_once ('cnn.php');
 $i=0;
@@ -37,55 +41,34 @@ while($row = $result->fetch_assoc()){
 <html>
 
 <head>
+    <title>
+        모의고사
+    </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/index.css">
-    <script src="/index.js"></script>
-    <title>모의고사풀이사이트</title>
+    <link rel="stylesheet" type="text/css" href="/side.css">
+    <script src="/login.js"></script>
 </head>
 
 <body>
-    <div id="title">
-        <div class="logo">
-            <a href="" class="title"><img src="/picture/index_img/logo.png" alt="모의고사"></a>
-        </div>
-        <div class="text">
-            <img src="/picture/index_img/pencil.png" alt="연필">&nbsp;문제 풀이&nbsp;<span>Problem Solving</span>
-        </div>
-        <div id="user">
-            <?php
-            if(isset($_POST['logout'])){
-                session_unset();
-                echo"<script>alert('로그아웃되었습니다');</script>";
-            }
-            
-            if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
-                echo "hello ",$_SESSION['nick'],".";
-                echo "<form action=\"\" method=\"post\">";
-                echo "<input type=\"submit\" value=\"로그아웃\" name=\"logout\">";
-                echo "</form>";
-                echo "<a href=\"user.php\" target=\"_blank\">회원정보수정</a>";
-            }else{//로그인 안된 상태
-                $_SESSION['temp']=true;
-                echo "<a href=\"login.php\" target=\"_self\">로그인</a>";
-                echo" | ";
-                echo "<a href=\"signUp.php\" target=\"_blank\">회원가입</a>";
-            }
-            ?>
-        </div>
-
+    <div id="top">
+        <img src="/picture/main/logo.png" class="logo" width="235px" height="55px">
+        <img src="/picture/main/line.png" class="line" width="48px" height="41px">
     </div>
-    <div id="main">
-        <p id="sebu">세부 검색</p>
-
-        <div id="menu">
+    <div id="middle">
+        <div class="search_button">
+            <span>검색조건</span>
+            <img src="/picture/main/down.png" width="49px" height="28px">
+        </div>
+        <div class="search">
             <form action="" method="get">
                 <select name="grade">
                     <option>학년</option>
-                    <?php 
-            for($i=0;!empty($grade[$i]);$i++){
+                    <?php
+                    for($i=0;!empty($grade[$i]);$i++){
                         echo "<option value=\"",$grade[$i],"\">",$grade[$i],"학년</option>";
                     }
-                ?>
+                    ?>
                 </select>
                 <select name="year">
                     <option>년도</option>
@@ -108,14 +91,14 @@ while($row = $result->fetch_assoc()){
                         echo "<option value=\"",$subject[$i],"\">",$subject[$i],"</option>";
                     }
                 ?>
-                </select>
-                <input type="image" src="/picture/index_img/search.png" value="검색" class="search">;
-
+                </select><br>
+                <input type="submit" value="검색" class="submit">
             </form>
         </div>
-
-        <div id="list">
-            <?php
+    </div>
+    <div id="bottom">
+        <?php
+        require_once('cnn.php');
             $say=null;
         if(isset($_GET['year'])&&"년도"!=$_GET['year']){
             $say="&&year=".$_GET['year'];
@@ -131,60 +114,82 @@ while($row = $result->fetch_assoc()){
         }
         $result = mysqli_query($conn, ("select distinct year,month,grade,subject from list where year is not null ".$say));
         ?>
-
-            <table class="list">
-                <tr>
-                    <td class="td">학년</td>
-                    <td class="td">년도</td>
-                    <td class="td">월</td>
-                    <td class="td">과목</td>
-                    <td  class="td" colspan="2">현황</td>
-                </tr>
-                <?php
-                while($row = $result->fetch_assoc()) {
-                    $count=0;
-                    $per=0;
-                    $year=$row['year'];
-                    $month=$row['month'];
-                    $grade=$row['grade'];
-                    $subject=$row['subject'];
-                    $def=$year.$month.$grade.$subject;
+        <?php
+        while($row = $result->fetch_assoc()) {
+            $count=0;
+            $per=0;
+            $year=$row['year'];
+            $month=$row['month'];
+            $grade=$row['grade'];
+            $subject=$row['subject'];
+            $def=$year.$month.$grade.$subject;
                     
-                    $result2 = mysqli_query($conn,"select count(num) from list where year=$year and month=$month and grade=$grade and subject='$subject'");
-                    while($row2 = $result2->fetch_assoc()) {
-                        $maxNum=$row2['count(num)'];
-                    }
+            $result2 = mysqli_query($conn,"select count(num) from list where year=$year and month=$month and grade=$grade and subject='$subject'");
+            while($row2 = $result2->fetch_assoc()) {
+                $maxNum=$row2['count(num)'];
+            }
                     
-                    for($i=1;$i<=$maxNum;$i++){
-                        if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]>=1&&$_SESSION[$def][1][$i]<=5){
-                            $count++;
-                        }
-                    }
-                    
-                    if(isset($_SESSION['id'])){
-                        $result3 = mysqli_query($conn,"select count(answer) from ".$_SESSION['id']." where year=$year and month=$month and grade=$grade and subject='$subject'");
-                        while($row3 = $result3->fetch_assoc()) {
-                            $count=$row3['count(answer)'];
-                        }
-                    }
-                    
-                   if($count){
-                       $per=$count/$maxNum*100;
-                    }
-                    
-                    echo "<tr>";
-                    echo "<td class=\"td\">";
-                    echo "<a href=\"solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1\" target=\"_blank\" class=\"href\"><img src=\"/picture/index_img/index.png\"></a>";
-                    echo $grade,"학년</td>";
-                    echo "<td class=\"td\">",$year,"</td>";
-                    echo "<td class=\"td\">",$month,"</td>";
-                    echo "<td class=\"td\">",$subject,"</td>";
-                    echo "<td class=\"td\">$count/$maxNum<br><div class=\"background\"><div class=\"bar\" style=\"width:",$per,"%;\"></div></div></td>";
-                    echo "</tr>";
+            for($i=1;$i<=$maxNum;$i++){
+                if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]>=1&&$_SESSION[$def][1][$i]<=5){
+                    $count++;
                 }
+            }
+                    
+            if(isset($_SESSION['id'])){
+                $result3 = mysqli_query($conn,"select count(answer) from ".$_SESSION['id']." where year=$year and month=$month and grade=$grade and subject='$subject'");
+                while($row3 = $result3->fetch_assoc()) {
+                    $count=$row3['count(answer)'];
+                }
+            }
+            
+            if($count){
+                $per=$count/$maxNum*100;
+            }
+            echo "<a href=\"solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1\" target=\"_blank\" class=\"href\">";
+            echo "<div class=\"element\">";
+            echo "<span>";
+            echo $year,"년 ",$month,"월 ",$grade,"학년 ",$subject;
+            echo "</span>";
+            echo "<div id=\"bar\">";
+            echo "$count/$maxNum","&nbsp;<div class=\"background\"><div class=\"bar\" style=\"width:",$per,"%;\"></div></div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</a>";
+        }
         ?>
-            </table>
+    </div>
+    <div id="side">
+        <div id="side_top">
+            <div id="login">
+                <?php
+            
+            if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
+                echo "<form action=\"\" method=\"post\">";
+                echo "<input type=\"image\" src=\"/picture/linemenu/logout.png\">";
+                echo "<input type=\"hidden\" name=\"logout\" name=\"logout\">";
+                echo "</form>";
+                echo "<a href=\"user.php\" target=\"_self\"><img src=\"/picture/linemenu/user.png\" width=\"146px\" height=\"55px\"></a>";
+            }else{//로그인 안된 상태
+                $_SESSION['temp']=true;
+                echo "<a href=\"login.php\" target=\"_self\"><img src=\"/picture/linemenu/login.png\" width=\"146px\" height=\"55px\"></a>";
+                echo "<a href=\"signUp.php\" target=\"_self\"><img src=\"/picture/linemenu/signup.png\" width=\"146px\" height=\"55px\"></a>";
+            }
+                ?>
+            </div>
+            <img src="picture/linemenu/xicon.png" width="47px" height="47px" class="close">
         </div>
+        <div id="side_middle">
+            <div class="side_element">
+                <a href="/index.php"><span>메인페이지</span></a>
+            </div>
+            <?php
+            for($i=0;$i<20;$i++){
+                echo "<div class=\"side_element\"><span>$i</span><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></div>";
+            }
+            ?>
+        </div>
+    </div>
+    <div id="background">
     </div>
 </body>
 

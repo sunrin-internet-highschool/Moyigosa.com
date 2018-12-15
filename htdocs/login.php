@@ -2,6 +2,8 @@
 session_start();
 $alert='';
     if(isset($_POST['id'])&&isset($_POST['pw'])){
+        $_POST['id']=htmlspecialchars($_POST['id']);
+        $_POST['pw']=htmlspecialchars($_POST['pw']);
         require_once('cnn.php');
         $result = mysqli_query($conn, "SELECT * from users where id='".$_POST['id']."' and password='".$_POST['id']."'");
         $temp=false;

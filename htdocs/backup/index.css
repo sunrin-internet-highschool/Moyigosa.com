@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1:700|Playfair+Display&subset=korean');
+*{
+    margin:0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#title{
+    width:100%;
+    background-image: url(/picture/index_img/book.png);
+    background-size: cover;
+    padding-bottom: 0.5em;
+}
+
+#title .logo{
+    padding-top:0.5em;
+    text-align: center;
+}
+
+#title .logo img{
+    width:auto;
+    height:3em;
+}
+
+#user{
+    width:auto;
+    height:auto;
+    position: absolute;
+    top:1em;
+    right:1em;
+}
+
+#user #login{
+    position: relative;
+    top:0;
+    left:0;
+    width:auto;
+}
+
+#user .input{
+    width:75%;
+}
+
+#user .login{
+    height:100%;
+    width:25%;
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+#title .text{
+    font-family: 'Gothic A1', sans-serif;
+    color:white;
+    font-size:3em;
+    margin-left:0.25em;
+}
+
+#title .text img{
+    height:1.25em;
+    width:auto;
+    vertical-align: middle;
+}
+
+#title .text span{
+    font-size: 0.4em;
+    font-family: 'Playfair Display', serif;
+}
+
+#main{
+    width:100%;
+    margin: 0.5em auto;
+}
+
+#sebu{
+    margin:0.5em 0.5em;
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 2em;
+    width:4.25em;
+    color:#5B4C43;
+    border-bottom: 0.1em solid #5B4C43;
+}
+
+#menu{
+    text-align: center;
+    background-color: #5B4C43;
+    border-radius:0.5em;
+    margin:0 1em;
+}
+
+select{
+    padding-left: 0.5em;
+    margin:1.5em 2em;
+    height:3em;
+    width: 15em;
+    border:none;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;
+    background: url('/picture/index_img/selection.png') no-repeat 95% 50% #fff; /* 화살표 아이콘 추가 */  
+    background-size: 1em;
+    color:#717070;
+}
+
+.search{
+    height:3.5em;
+    width:auto;
+    vertical-align: middle;
+    cursor: pointer;
+}
+        
+#list{
+    margin:0 1em;
+}
+        
+.list{
+    margin-top: 1em;
+    width:100%;
+    border-collapse: collapse;
+}
+    
+#list tr{
+    width:100%;
+}
+        
+#list tr .td{
+    position: relative;
+    width:20%;
+    height:3em;
+    text-align: center;
+}
+        
+.list tr:nth-child(1){
+    color:white;
+    background-color: #72635B;
+}
+        
+.list tr:nth-child(n+2){
+    color:#5B4C43;
+    height:6em;
+    border-bottom:0.1em solid gainsboro;
+}
+        
+.href{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.href img{
+    width:auto;
+    height:3em;
+}
+
+.background{
+    display: inline-block;
+    //border:0.15em solid #72635B;
+    height:1em;
+    width:50%;
+    border-radius: 2em;
+    position:relative;
+    background-color:beige;
+}
+
+.bar{
+    position:absolute;
+    background-color:#72635B;
+    height:100%;
+    border-radius: 2em;
+}
+/*
+        @media (min-width:480px){
+            .ps_right span{
+                display:none;
+            }
+            #menu{
+                text-align: left;
+                padding-left: 20px;
+            }
+        }
+        
+        @media (min-width:540px){
+            #menu{
+                text-align: center;
+            }
+        }*/

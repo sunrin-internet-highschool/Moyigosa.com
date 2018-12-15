@@ -1,185 +1,165 @@
-@import url('https://fonts.googleapis.com/css?family=Gothic+A1:700|Playfair+Display&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Noto+Serif+KR:300&subset=korean');
+
 *{
-    margin:0 0 0 0;
-    padding: 0 0 0 0;
+    margin: 0;
+    padding: 0;
+    border:0;
 }
 
-#title{
-    width:100%;
-    background-image: url(/picture/index_img/book.png);
-    background-size: cover;
-    padding-bottom: 0.5em;
+a:hover,a:visited,a:active,a{
+    color:black;
+}
+body{
+    background-color:#D1D1D1;
 }
 
-#title .logo{
-    padding-top:0.5em;
+#top{
+    background-color:#5B4C43;
     text-align: center;
-}
-
-#title .logo img{
-    width:auto;
-    height:3em;
-}
-
-#user{
-    width:auto;
-    height:auto;
-    position: absolute;
-    top:1em;
-    right:1em;
-}
-
-#user #login{
     position: relative;
-    top:0;
-    left:0;
-    width:auto;
+    width:100%;
+    height: 119px;
 }
 
-#user .input{
-    width:75%;
+.logo{
+    margin-top: 32px;
 }
 
-#user .login{
-    height:100%;
-    width:25%;
+.line{
+    display:inline-block;
     position: absolute;
     top:0;
     right:0;
-}
-
-#title .text{
-    font-family: 'Gothic A1', sans-serif;
-    color:white;
-    font-size:3em;
-    margin-left:0.25em;
-}
-
-#title .text img{
-    height:1.25em;
-    width:auto;
-    vertical-align: middle;
-}
-
-#title .text span{
-    font-size: 0.4em;
-    font-family: 'Playfair Display', serif;
-}
-
-#main{
-    width:100%;
-    margin: 0.5em auto;
-}
-
-#sebu{
-    margin:0.5em 0.5em;
-    font-family: 'Gothic A1', sans-serif;
-    font-size: 2em;
-    width:4.25em;
-    color:#5B4C43;
-    border-bottom: 0.1em solid #5B4C43;
-}
-
-#menu{
-    text-align: center;
-    background-color: #5B4C43;
-    border-radius:0.5em;
-    margin:0 1em;
-}
-
-select{
-    padding-left: 0.5em;
-    margin:1.5em 2em;
-    height:3em;
-    width: 15em;
-    border:none;
-    -webkit-appearance: none; 
-    -moz-appearance: none;    
-    appearance: none;
-    background: url('/picture/index_img/selection.png') no-repeat 95% 50% #fff; /* 화살표 아이콘 추가 */  
-    background-size: 1em;
-    color:#717070;
-}
-
-.search{
-    height:3.5em;
-    width:auto;
-    vertical-align: middle;
-    cursor: pointer;
-}
-        
-#list{
-    margin:0 1em;
-}
-        
-.list{
-    margin-top: 1em;
-    width:100%;
-    border-collapse: collapse;
-}
+    margin:39px;
     
-#list tr{
+}
+
+#middle{
+    margin-top: 16px;
     width:100%;
-}
-        
-#list tr .td{
+    height: auto;
+    background-color: white;
     position: relative;
-    width:20%;
-    height:3em;
-    text-align: center;
 }
-        
-.list tr:nth-child(1){
-    color:white;
-    background-color: #72635B;
+
+.search_button{
+    width:100%;
+    height:84px;
+    position:relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #333232;
 }
-        
-.list tr:nth-child(n+2){
-    color:#5B4C43;
-    height:6em;
-    border-bottom:0.1em solid gainsboro;
-}
-        
-.href{
+
+.search_button span{
     position:absolute;
     top:0;
     left:0;
+    margin: 28px;
+    line-height: 30px;
 }
 
-.href img{
-    width:auto;
-    height:3em;
-}
-
-.background{
-    display: inline-block;
-    //border:0.15em solid #72635B;
-    height:1em;
-    width:50%;
-    border-radius: 2em;
-    position:relative;
-    background-color:beige;
-}
-
-.bar{
+.search_button img{
     position:absolute;
-    background-color:#72635B;
-    height:100%;
-    border-radius: 2em;
+    top:0;
+    right:0;
+    margin: 28px 28px 0 0;
 }
-/*
-        @media (min-width:480px){
-            .ps_right span{
-                display:none;
-            }
-            #menu{
-                text-align: left;
-                padding-left: 20px;
-            }
-        }
-        
-        @media (min-width:540px){
-            #menu{
-                text-align: center;
-            }
-        }*/
+
+.search{
+    border-top:1px solid #9E9E9E;
+    width:100%;
+    height:340px;
+    background-color:white;
+    text-align: center;
+    
+}
+
+.search form select{
+    margin:0 30px;
+    margin-top:40px;
+    padding-left: 10px;
+    width:278px;
+    height:66px;
+    background-color:#E8E6E6;
+    color:#333232;
+    font-size: 30px;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    border:0;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;
+    background: url('/picture/search/smalldown.png') no-repeat 95% 50% #E8E6E6; /* 화살표 아이콘 추가 */  
+    background-size: 1em;
+}
+
+.search form select option{
+    font-size: 15px;
+}
+
+.search form .submit{
+    margin-top:40px;
+    width:610px;
+    height:66px;
+    background-color:#72635B;
+    font-family: 'Noto Serif KR', serif;
+    color:#FFFFFF;
+    font-size: 25px;
+}
+
+#bottom{
+    position:relative;
+    width:100%;
+    height:auto;
+    background-color:white;
+    margin-top: 16px;
+}
+
+#bottom .element{
+    background-color:white;
+    width:100%;
+    height:126px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    position:relative;
+    border-bottom:1px solid #9E9E9E;
+}
+
+#bottom .element span{
+    position:absolute;
+    top:50.5px;
+    left:50.5px;
+    
+}
+
+#bottom .element #bar{
+    position:absolute;
+    height:30px;
+    top:0;
+    right:0;
+    text-align:center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    margin-top:48px;
+    margin-right:20px;
+}
+
+#bottom .element #bar .background{
+    height:30px;
+    width: 200px;
+    display: inline-block;
+    background-color:lightgray;
+    border-radius: 100px;
+    position:relative;
+    bottom:-5px;
+}
+
+#bottom .element #bar .background .bar{
+    height:100%;
+    background-color:#72635B;
+    border-radius: 100px;
+}

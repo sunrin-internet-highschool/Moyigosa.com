@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height:1200px;
+}
+        
+        
+.background_book{
+    width:100%;
+    height:400px;
+    position: relative;
+    background: url("picture/index_img/book.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    //background-position: 0 -150px;
+}
+
+.background #book{
+    width:100%;
+    height:400px;
+}
+
+#logo{
+    width:170px;
+    height:80px;
+    z-index: 1;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
+    position:relative;
+}
+
+#title .title{
+    font-size: 2em;
+    font-weight: bold;
+    color: slategray;
+    text-decoration: none;
+}
+
+#user{
+    width:auto;
+    height:auto;
+    position: absolute;
+    top:1em;
+    right:1em;
+}
+
+#user #login{
+    position: relative;
+    top:0;
+    left:0;
+    width:auto;
+}
+
+#user .input{
+    width:75%;
+}
+
+#user .login{
+    height:100%;
+    width:25%;
+    position: absolute;
+    top:0;
+    right:0;
+}
+
+.ps{
+    margin-left: 20px;
+    margin-top:200px;
+    color:white;
+    width:500px;
+    height:100px;
+}
+
+.pencil{
+    width:100px;
+    height:100px;
+}
+
+.ps_left{
+    width:100px;
+    height:100px;
+    float:left;
+}
+
+.ps_right{
+    width:400px;
+    height:100px;
+    float:left;
+}
+
+.ps_right p{
+    line-height: 100px;
+    font-size:50px;
+    margin-right: 5px;
+}
+
+.ps span{
+    font-size:16px;
+}
+
+.main_wrap{
+    width:100%;
+}
+
+#main{
+    margin-top:35px;
+    margin-left: 30px;
+    margin-right: 30px;
+    
+}
+
+#sebu{
+    font-family: "삼성 고딕체 보통", "Centaur 보통";
+    font-size: 40px;
+    width:180px;
+    color:#5B4C43;
+    border-bottom: 4px solid #5B4C43;
+}
+
+#menu{
+    text-align: center;
+    background-color: #5B4C43;
+    margin-top:20px;
+    border:1px solid #5B4C43;
+    border-radius:5px;
+}
+
+select{
+    margin:10px 0;
+    height:40px;
+    width:300px;
+}
+
+.submit_wrap {
+    display:inline-block;
+}
+
+.submit_wrap input[type=submit]{
+    display:none;
+}
+
+.submit_wrap input[type=submit]+label{
+    display:inline-block;
+}
+
+.submit_wrap input[type=submit]+label::before{
+    content:url("/picture/index_img/search.png");
+    margin-right: 10px;
+    left:5;
+}
+
+.submit_wrap{
+    margin-top:5px;
+    margin-left: 20px;
+    position:absolute;
+}   
+        
+#list{
+    width:100%;
+}
+        
+.list{
+    margin-top: 30px;
+    width:100%;
+    border-collapse: collapse;
+}
+    
+#list tr{
+    width:100%;
+}
+        
+#list tr td{
+    width:100px;
+    height:50px;
+    text-align: center;
+}
+        
+.list tr:nth-child(1){
+    width:70px;
+    color:white;
+    background-color: #72635B;
+}
+        
+.list tr:nth-child(n+2){
+    color:#5B4C43;
+    height:100px;
+    border-bottom:1px solid gainsboro;
+}
+        
+td img{
+    width:30px;
+    height:30px;
+    float:left;
+}
+        
+td span{
+    padding-right: 30px;
+}
+        
+.background{
+    border:2px solid #72635B;
+    border-radius: 10px;
+    height:25px;
+    width:50%;
+    margin-left: 25%;
+}
+
+        @media (min-width:480px){
+            .ps_right span{
+                display:none;
+            }
+            #menu{
+                text-align: left;
+                padding-left: 20px;
+            }
+        }
+        
+        @media (min-width:540px){
+            #menu{
+                text-align: center;
+            }
+        }
