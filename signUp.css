@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:700|Noto+Serif+KR&subset=korean');
+*{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+body{
+    text-align: center;
+}
+
+#logo{
+    height: 3em;
+    width:auto;
+    margin-top: 1em;
+}
+
+#login_wrap{
+    display:inline-block;
+    border:0.15em solid #4c4f4f;
+    width:80em;
+    position:relative;
+    margin-top:1em;
+    text-align: inherit;
+    height:40em;
+}
+
+#login_wrap #login_title{
+    position: absolute;
+    top:0;
+    left:0;
+    margin-top: 0.6em;
+    margin-left: 1em;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 3em;
+}
+
+#signup_wrap{
+    display: inline-block;
+    position:relative;
+    width:70em;
+    margin-top:8em;
+    height:30em;
+}
+
+input[type=text],input[type=password]{
+    border:none;
+    background-color:#EAEAEA;
+    width:40em;
+    height:4em;
+    margin-top:0.5em;
+}
+
+span:nth-child(2){
+    color:#969292;
+    font-size: 0.8em;
+}
+
+.id_wrap{
+    display:inline-block;
+    position:absolute;
+    left: 0;
+    top:0;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.id_wrap input[type=submit]{
+    position:absolute;
+    top:0;
+    right: 0;
+    border: none;
+    background-color: #6f605a;
+    color:white;
+    height:2em;
+    width:8em;
+    margin-top:0.5em;
+}
+
+.password_wrap{
+    display:inline-block;
+    position:absolute;
+    left: 0;
+    top:5em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+    
+}
+
+.password_confirm_wrap{
+    display:inline-block;
+    position:absolute;
+    left: 0;
+    top:10em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.mail_wrap{
+    display:inline-block;
+    position:absolute;
+    right: 0;
+    top:0;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.name_wrap{
+    display:inline-block;
+    position:absolute;
+    right: 0;
+    top:5em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.nick_wrap{
+    display:inline-block;
+    position:absolute;
+    right: 0;
+    top:10em;
+    text-align: left;
+    font-size: 1.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+}
+
+.submit{
+    border: none;
+    background-color: #6f605a;
+    color:white;
+    margin-top:16.5em;
+    font-family: 'Noto Serif KR', sans-serif;
+    font-size: 1.5em;
+    width: 15.5em;
+    height:2.5em;
+    
+}
