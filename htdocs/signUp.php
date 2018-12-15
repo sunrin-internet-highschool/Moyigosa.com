@@ -1,6 +1,11 @@
 <?php
-  if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['nick'])){
-        require_once ('cnn.php');
+if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['nick'])){
+    $_POST['id']=htmlspecialchars($_POST['id']);
+    $_POST['pw']=htmlspecialchars($_POST['pw']);
+    $_POST['email']=htmlspecialchars($_POST['email']);
+    $_POST['name']=htmlspecialchars($_POST['name']);
+    $_POST['nick']=htmlspecialchars($_POST['nick']);
+    require_once ('cnn.php');
     $result = mysqli_query($conn, "SELECT id FROM users where id='".$_POST['id']."'");
     while($row = $result->fetch_assoc()) {
         $id=$row['id'];
