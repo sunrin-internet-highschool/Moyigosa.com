@@ -22,6 +22,7 @@ session_start();
 <html>
 
 <head>
+   <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/login.js"></script>
     <title>로그인 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -47,7 +48,7 @@ session_start();
             <a href="/signUp.php"><span class="signup">회원가입</span></a>
             <?php
             if(!$temp){
-                //echo "<div id=\"error\"><img src=\"/picture/login/error.png\" width=\"450px\" height=\"237px\" class=\"error\"><img src=\"/picture/login/admit.png\" width=\"137px\" height=\"57px\" class=\"admit\"></div>";
+                echo "<div id=\"error\"><img src=\"/picture/login/error.png\" width=\"450px\" height=\"237px\" class=\"error\"><img src=\"/picture/login/admit.png\" width=\"137px\" height=\"57px\" class=\"admit\"></div>";
             }
             ?>
         </div>

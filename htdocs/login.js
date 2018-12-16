@@ -1,4 +1,14 @@
-var id = document.getElementsByClassName('id');
+$(document).ready(function(){
+    $(function(){
+        $(".admit").click(function(){
+            $("#error").css("display","none");
+        })
+        
+    })
+
+})
+
+/*var id = document.getElementsByClassName('id');
 var pw = document.getElementsByClassName('pw');
 
 window.onload = function () {

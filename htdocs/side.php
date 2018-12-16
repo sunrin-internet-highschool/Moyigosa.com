@@ -1,5 +1,9 @@
 <link rel="stylesheet" type="text/css" href="/side.css">
-<div id="side">
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="/side.js"></script>
+</head>
+<div id="side" style="right:-30em">
     <div id="side_top">
         <div id="login">
             <?php
@@ -34,5 +38,5 @@
             ?>
     </div>
 </div>
-<div id="background">
+<div id="background" style="display:none">
 </div>
