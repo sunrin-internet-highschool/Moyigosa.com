@@ -48,7 +48,7 @@ while($row = $result->fetch_assoc()){
 <body>
     <?php
     require_once('top.php');
-    //require_once('side.php');
+    require_once('side.php');
     ?>
     <div id="middle">
         <div class="search_button">
