@@ -8,13 +8,14 @@
     height:100%;
     opacity: 0.5;
     background-color:black;
+    z-index: 200;
 }
 
 #side{
     width:445px;
     height:100%;
     position:fixed;
-    z-index:120;
+    z-index:220;
     top:0;
     right:0;
 }

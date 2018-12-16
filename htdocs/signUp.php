@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset($_POST['name'])&&isset($_POST['nick'])){
+if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POST['name'])&&isset($_POST['nick'])){
     $_POST['id']=htmlspecialchars($_POST['id']);
     $_POST['pw']=htmlspecialchars($_POST['pw']);
     $_POST['email']=htmlspecialchars($_POST['email']);
@@ -13,73 +13,50 @@ if(isset($_POST['id'])&&isset($_POST['password'])&&isset($_POST['mail'])&&isset(
     if(empty($id)){
         mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['password']."','".$_POST['name']."','".$_POST['mail']."','".$_POST['nick']."')");
         mysqli_query($conn, "create table ".$_POST['id']."(num int not null, answer int,year int not null, month int not null, grade int not null,subject varchar(11) not null)");
-        echo"<script>alert('회원가입이 성공적으로 끝났습니다!');self.close();</script>";
+        echo"<script>location.href=\"/index.php\";</script>";
+        exit();
     }   
 }  
 ?>
 <html>
 
 <head>
+    <script src="/login.js"></script>
+    <title>회원가입 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="viewport">
-
     <link rel="stylesheet" type="text/css" href="/signUp.css">
-    <title>
-        회원가입
-    </title>
-    <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
-    <img src="/picture/signUp_img/logo.png" alt="로고" id="logo">
+    <?php
+    require_once('top.php');
+    ?>
+    <div id="middle">
+        <div id="signup_wrap">
+            <div class="signup">Registration</div>
 
-    <form name="data" method="post" onsubmit="return Login()">
-
-        <div id="login_wrap">
-            <span id="login_title">회원가입</span>
-            <div id="signup_wrap">
-                <div class="id_wrap">
-                    <span class="id">아이디</span>
-                    <span id="id_check"></span>
-                    <br>
-                    <input type="text" name="id" id="id" maxlength="12" onKeyup=id_check(this)>
-                </div>
-
-                <div class="password_wrap">
-                    <span class="password">비밀번호</span><span id="password_check"></span><br>
-
-                    <input type="password" name="password" id="password" maxlength="12" onKeyup=password_check(this)>
-                </div>
-
-                <div class="password_confirm_wrap">
-                    <span class="password_confirm">비밀번호 확인</span><span id="password_confirm_check"></span><br>
-                    <input type="password" name="password_confirm" id="password_confirm" maxlength="12" onKeyup=password_check(this)>
-                </div>
-
-                <div class="mail_wrap">
-                    <span class="mail">이메일</span><span id="mail_check"></span><br>
-
-                    <input type="text" name="mail" id="mail" onKeyup=mail_check(this)>
-                </div>
-
-                <div class="name_wrap">
-                    <span class="name">이름</span><span id="name_check"></span><br>
-
-                    <input type="text" name="name" id="name" maxlength="12" onKeyup=name_check(this)>
-                </div>
-
-                <div class="nick_wrap">
-                    <span class="nick">닉네임</span><span id="nick_check"></span><br>
-
-                    <input type="text" name="nick" id="nick" maxlength="12" onKeyup=nick_check(this)>
-                </div>
-                <input type="submit" value="회원가입" class="submit">
-            </div>
+            <form method="post" action="">
+                <span class="id_text">아이디</span>&nbsp;<span class="id_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="text" name="id" class="id"><br>
+                <span class="pw_text">비밀번호</span>&nbsp;<span class="pw_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="password" name="pw" class="pw"><br>
+                <span class="pw_r_text">비밀번호 확인</span>&nbsp;<span class="pw_r_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="password" name="pw_r" class="pw_r"><br>
+                <span class="email_text">이메일</span>&nbsp;<span class="email_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="email" name="email" class="email"><br>
+                <span class="nick_text">닉네임</span>&nbsp;<span class="nick_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="text" name="nick" class="nick"><br>
+                <span class="name_text">이름</span>&nbsp;<span class="name_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="text" name="name" class="name"><br>
+                <input type="submit" value="회원가입">
+            </form>
         </div>
+        
+    </div>
 
-    </form>
-
+    <?php
+    //require_once('side.php');
+    ?>
 </body>
 
 </html>

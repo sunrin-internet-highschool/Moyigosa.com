@@ -157,7 +157,7 @@ while($row = $result->fetch_assoc()){
         ?>
     </div>
     <?php
-    require_once('side.php');
+    //require_once('side.php');
     ?>
 </body>
 

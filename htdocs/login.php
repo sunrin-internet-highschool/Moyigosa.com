@@ -46,16 +46,16 @@ $alert='';
             </form>
             <a href="/signUp.php"><span class="signup">회원가입</span></a>
             <?php
-         if(!$temp){
-        echo "<div id=\"error\"><img src=\"/picture/login/error.png\" width=\"450px\" height=\"237px\" class=\"error\"><img src=\"/picture/login/admit.png\" width=\"137px\" height=\"57px\" class=\"admit\"></div>";
-    }
-        ?>
+            if(!$temp){
+                //echo "<div id=\"error\"><img src=\"/picture/login/error.png\" width=\"450px\" height=\"237px\" class=\"error\"><img src=\"/picture/login/admit.png\" width=\"137px\" height=\"57px\" class=\"admit\"></div>";
+            }
+            ?>
         </div>
         
     </div>
 
     <?php
-    require_once('side.php');
+    //require_once('side.php');
     ?>
 </body>
 

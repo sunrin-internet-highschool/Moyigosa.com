@@ -1,141 +1,80 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:700|Noto+Serif+KR&subset=korean');
-*{
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|Noto+Serif+KR:300&subset=korean');
 
-body{
+#middle {
+    margin-top: 16px;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    position: relative;
     text-align: center;
 }
 
-#logo{
-    height: 3em;
-    width:auto;
-    margin-top: 1em;
-}
-
-#login_wrap{
-    display:inline-block;
-    border:0.15em solid #4c4f4f;
-    width:80em;
-    position:relative;
-    margin-top:1em;
-    text-align: inherit;
-    height:40em;
-}
-
-#login_wrap #login_title{
-    position: absolute;
-    top:0;
-    left:0;
-    margin-top: 0.6em;
-    margin-left: 1em;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 3em;
-}
-
-#signup_wrap{
+#middle #signup_wrap {
+    width: 629px;
+    height: auto;
     display: inline-block;
-    position:relative;
-    width:70em;
-    margin-top:8em;
-    height:30em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
 }
 
-input[type=text],input[type=password]{
-    border:none;
-    background-color:#EAEAEA;
-    width:40em;
-    height:4em;
-    margin-top:0.5em;
-}
-
-span:nth-child(2){
-    color:#969292;
-    font-size: 0.8em;
-}
-
-.id_wrap{
-    display:inline-block;
-    position:absolute;
-    left: 0;
-    top:0;
+#middle #signup_wrap .signup {
+    width: 100%;
     text-align: left;
-    font-size: 1.5em;
-    font-family: 'Noto Serif KR', sans-serif;
+    font-size: 60px;
+    color: #333232;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-.id_wrap input[type=submit]{
-    position:absolute;
-    top:0;
-    right: 0;
-    border: none;
-    background-color: #6f605a;
-    color:white;
-    height:2em;
-    width:8em;
-    margin-top:0.5em;
-}
-
-.password_wrap{
-    display:inline-block;
-    position:absolute;
-    left: 0;
-    top:5em;
+#middle form {
     text-align: left;
-    font-size: 1.5em;
-    font-family: 'Noto Serif KR', sans-serif;
-    
+    margin-top: 32px;
 }
 
-.password_confirm_wrap{
-    display:inline-block;
-    position:absolute;
-    left: 0;
-    top:10em;
-    text-align: left;
-    font-size: 1.5em;
-    font-family: 'Noto Serif KR', sans-serif;
+#middle form span {
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-.mail_wrap{
-    display:inline-block;
-    position:absolute;
-    right: 0;
-    top:0;
-    text-align: left;
-    font-size: 1.5em;
-    font-family: 'Noto Serif KR', sans-serif;
+.id_check,
+.pw_r_check,
+.pw_check,
+.name_check,
+.email_check,
+.nick_check {
+    color: #9B9B9B;
+    font-size: 22px;
 }
 
-.name_wrap{
-    display:inline-block;
-    position:absolute;
-    right: 0;
-    top:5em;
-    text-align: left;
-    font-size: 1.5em;
-    font-family: 'Noto Serif KR', sans-serif;
+.id_text,
+.pw_text,
+.pw_r_text,
+.name_text,
+.email_text,
+.nick_text {
+    font-size: 25px;
+    color: #333232;
 }
 
-.nick_wrap{
-    display:inline-block;
-    position:absolute;
-    right: 0;
-    top:10em;
-    text-align: left;
-    font-size: 1.5em;
-    font-family: 'Noto Serif KR', sans-serif;
+#middle form input[type=text],
+#middle form input[type=password],
+#middle form input[type=email] {
+    width: 629px;
+    height: 66px;
+    background-color: #E8E6E6;
+    margin-bottom: 32px;
+    font-size: 40px;
+    color: #333232;
+    font-family: 'Noto Sans KR', sans-serif;
+    padding-left: 15px;
 }
 
-.submit{
-    border: none;
-    background-color: #6f605a;
-    color:white;
-    margin-top:16.5em;
-    font-family: 'Noto Serif KR', sans-serif;
-    font-size: 1.5em;
-    width: 15.5em;
-    height:2.5em;
-    
+#middle form input[type=submit] {
+    width: 629px;
+    height: 66px;
+    background-color: #72635B;
+    font-size: 25px;
+    color: #FFFFFF;
+    font-family: 'Noto Serif KR', serif;
+    padding-left: 15px;
+    margin-bottom: 10px;
 }
