@@ -69,6 +69,14 @@
     overflow-y: scroll;
 }
 
+#side #side_middle a{
+    z-index: 300;
+}
+
+#side #side_middle img{
+    z-index: 320;
+}
+
 #side #side_middle .side_element{
     background-color:white;
     width:428px;

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Noto+Serif+KR:300&subset=korean');
 @import url('/default.css');
 
-#title,#selection,#view,#buttons{
+#title,#selection,#view,#buttons,#question,#solve{
     margin-top: 16px;
     width:100%;
     height: auto;
@@ -19,4 +19,109 @@
 #title div{
     display: inline-block;
     margin:18px;
+}
+#view .view_selection{
+    position: relative;
+    width:100%;
+    height:84px;
+}
+#view .view_selection div{
+    font-size:30px;
+    color:#333232;
+    width:50%;
+    height:84px;
+    background-color:white;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    top:0;
+    line-height: 84px;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+
+#view .view_selection div:nth-child(1){
+    left: 0;
+}
+
+#view .view_selection div:nth-child(2){
+    right:0;
+}
+
+#question{
+    text-align: center;
+}
+
+#question > div{
+    margin:15px 0;
+    display:inline-block;
+    text-align: left;
+    width:calc(100% - 30px);
+}
+
+#question > div > .question{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color:#333232;
+}
+
+#question > div > .sound{
+    width:100%;
+}
+
+#question > div > .example{
+    border:1px solid black;
+}
+
+#selection .selection_title{
+    width:100%;
+    height:84px;
+    background-color:#72635B;
+    font-size: 30px;
+    color:white;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 84px;
+    display:inline-block;
+}
+
+#selection .selection{
+    font-size: 30px;
+    color:#333232;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#selection .selection input[type=radio] {
+    display: none;
+}
+
+#selection .selection input[type=radio] + label {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 32px;
+    padding-left: 27px;
+    background-repeat: no-repeat;
+    background-size: 27px auto;
+    background-position: left;
+    background-image: url('/picture/solve/grayicon.png');
+    margin:10px;
+}
+
+#selection .selection input[type=radio]:checked + label,
+#selection .selection input[type=radio]:checked + label {
+    background-image: url('/picture/solve/smallvicon.png');
+}
+
+#buttons{
+    text-align: center;
+}
+
+#buttons input[type=submit]{
+    width:209px;
+    height:75px;
+    background-color: #72635B;
+    font-size:25px;
+    color:white;
+    font-family: 'Noto Serif KR', serif;
+    margin:10px;
 }

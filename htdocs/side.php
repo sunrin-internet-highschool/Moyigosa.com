@@ -23,7 +23,7 @@
             }
                 ?>
         </div>
-        <img src="picture/linemenu/xicon.png" width="47px" height="47px" class="close">
+        <img src="/picture/linemenu/xicon.png" width="47px" height="47px" class="close">
     </div>
     <div id="side_middle">
         <a href="/index.php">
@@ -32,10 +32,21 @@
             </div>
         </a>
         <?php
-            for($i=0;$i<20;$i++){
-                echo "<div class=\"side_element\"><span>$i</span><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></div>";
+        require_once('cnn.php');
+        $result = mysqli_query($conn, "select distinct year,month,grade,subject,concat(year,month,grade,subject) as 'tag' from list");
+        while($row = $result->fetch_assoc()) {
+            $tag=$row['tag'];
+            $year=$row['year'];
+            $month=$row['month'];
+            $grade=$row['grade'];
+            $subject=$row['subject'];
+            if(isset($_SESSION[$tag])){
+                echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$_SESSION[$tag]['jump'],"\">";
+                echo "<div class=\"side_element\"><span>$year","년 ","$month","월 ","$grade","학년"," $subject 모의고사</span><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></div>";
+                echo "</a>";
             }
-            ?>
+        }
+        ?>
     </div>
 </div>
 <div id="background" style="display:none">
