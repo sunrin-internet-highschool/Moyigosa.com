@@ -1,11 +1,10 @@
 <?php
 session_start();
-$alert='';
     if(isset($_POST['id'])&&isset($_POST['pw'])){
         $_POST['id']=htmlspecialchars($_POST['id']);
         $_POST['pw']=htmlspecialchars($_POST['pw']);
         require_once('cnn.php');
-        $result = mysqli_query($conn, "SELECT * from users where id='".$_POST['id']."' and password='".$_POST['id']."'");
+        $result = mysqli_query($conn, "SELECT * from users where id='".$_POST['id']."' and password='".$_POST['pw']."'");
         $temp=false;
         while($row = $result->fetch_assoc()) {
             $_SESSION['id']=$row['id'];
@@ -16,7 +15,7 @@ $alert='';
             $temp=true;
         }
         if($temp){
-            echo "<script>location.href=\"/index.php\";</script>";
+            echo "<script>location.href=\"/\";</script>";
         }
     }
 ?>
@@ -32,6 +31,7 @@ $alert='';
 <body>
     <?php
     require_once('top.php');
+    //require_once('side.php');
     ?>
     <div id="middle">
         <div id="login_wrap">
@@ -53,10 +53,6 @@ $alert='';
         </div>
         
     </div>
-
-    <?php
-    //require_once('side.php');
-    ?>
 </body>
 
 </html>

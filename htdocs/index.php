@@ -1,8 +1,4 @@
 <?php
-if(isset($_POST['logout'])){
-    session_unset();
-    echo"<script>alert('로그아웃되었습니다');</script>";
-}
 session_start();
 require_once ('cnn.php');
 $i=0;
@@ -52,6 +48,7 @@ while($row = $result->fetch_assoc()){
 <body>
     <?php
     require_once('top.php');
+    //require_once('side.php');
     ?>
     <div id="middle">
         <div class="search_button">
@@ -143,7 +140,7 @@ while($row = $result->fetch_assoc()){
             if($count){
                 $per=$count/$maxNum*100;
             }
-            echo "<a href=\"solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1\" target=\"_blank\" class=\"href\">";
+            echo "<a href=\"/solve.php/?grade=$grade&year=$year&month=$month&subject=$subject&jump=1\" target=\"_self\" class=\"href\">";
             echo "<div class=\"element\">";
             echo "<span>";
             echo $year,"년 ",$month,"월 ",$grade,"학년 ",$subject;
@@ -156,9 +153,6 @@ while($row = $result->fetch_assoc()){
         }
         ?>
     </div>
-    <?php
-    //require_once('side.php');
-    ?>
 </body>
 
 </html>

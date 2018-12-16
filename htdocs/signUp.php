@@ -11,9 +11,9 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
         $id=$row['id'];
     }
     if(empty($id)){
-        mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['password']."','".$_POST['name']."','".$_POST['mail']."','".$_POST['nick']."')");
+        mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['pw']."','".$_POST['name']."','".$_POST['email']."','".$_POST['nick']."')");
         mysqli_query($conn, "create table ".$_POST['id']."(num int not null, answer int,year int not null, month int not null, grade int not null,subject varchar(11) not null)");
-        echo"<script>location.href=\"/index.php\";</script>";
+        echo"<script>location.href=\"/\";</script>";
         exit();
     }   
 }  
@@ -30,6 +30,7 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
 <body>
     <?php
     require_once('top.php');
+    //require_once('side.php');
     ?>
     <div id="middle">
         <div id="signup_wrap">
@@ -53,10 +54,6 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
         </div>
         
     </div>
-
-    <?php
-    //require_once('side.php');
-    ?>
 </body>
 
 </html>

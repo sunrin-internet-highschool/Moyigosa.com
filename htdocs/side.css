@@ -37,11 +37,21 @@
     position: relative;
 }
 
-#side #side_top #login a:nth-child(2){
+#side #side_top #login .side_login{
+     position:absolute;
+    top:0;
+    left:10px;
+}
+
+#side #side_top #login .side_signup{
     position:absolute;
     top:0;
-    left:150px;
-    
+    left:160px;
+}
+#side #side_top #login input[type=image]{
+    position:absolute;
+    top:0;
+    left:100px;
 }
 
 #side #side_top .close{
