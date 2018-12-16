@@ -27,32 +27,6 @@ while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['max']=$row['count(num)'];
 }//$maxNum = 문제집 문제 갯수
 
-for($i=1;$i<=$_SESSION[$def]['max'];$i++){
-    if(isset($_GET[$i])&&!empty($_GET[$i])){
-        $_SESSION[$def]['answer'][$i]=$_GET[$i];
-    }
-}
-
-if(isset($_GET['answer'])&&!empty($_GET['answer'])){
-    $_SESSION[$def]['answer'][$_GET['jump']]=$_GET['answer'];
-}
-if(isset($_SESSION['id'])){
-    for($i=1;$i<=$_SESSION[$def]['max'];$i++){
-        if(isset($_GET[$i])&&!empty($_GET[$i])){
-            mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
-            mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
-        }
-    }
-}
-
-if(isset($_GET['pre'])&&$_GET['jump']>1){
-    $_GET['jump']--;
-}
-
-if(isset($_GET['next'])&&$_GET['jump']<$_SESSION[$def]['max']){
-    $_GET['jump']++;
-}
-$_SESSION[$def]['jump']=$_GET['jump'];
 ?>
 <html>
 
@@ -68,6 +42,22 @@ $_SESSION[$def]['jump']=$_GET['jump'];
     <?php
     require_once('top.php');
     require_once('side.php');
+if(isset($_GET['answer'])&&!empty($_GET['answer'])){
+    $_SESSION[$def]['answer'][$_GET['jump']]=$_GET['answer'];
+}
+if(isset($_SESSION['id'])){
+    mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
+    mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+}
+if(isset($_GET['pre'])&&$_GET['jump']>1){
+    $_GET['jump']--;
+}
+
+if(isset($_GET['next'])&&$_GET['jump']<$_SESSION[$def]['max']){
+    $_GET['jump']++;
+}
+$_SESSION[$def]['jump']=$_GET['jump'];
+    
     ?>
     <form method="get" action="">
         <?php
@@ -96,7 +86,7 @@ $_SESSION[$def]['jump']=$_GET['jump'];
             <div>
                 <?php
             require_once('cnn.php');
-            $result = mysqli_query($conn, "SELECT * FROM list".$select);
+            $result = mysqli_query($conn, "SELECT * FROM list".$select." and num=".$_GET['jump']);
             while($row = $result->fetch_assoc()) {
                 $question=$row["question"];
                 $example=$row["example"];
@@ -136,9 +126,9 @@ $_SESSION[$def]['jump']=$_GET['jump'];
                 <?php
                 for($i=1;$i<=5;$i++){
                     if(isset($_SESSION[$def]['answer'][$_GET['jump']])&&$_SESSION[$def]['answer'][$_GET['jump']]==$i){
-                        echo "<input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"b$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
                     }else{
-                        echo "<input type=\"radio\" name=\"answer\" value=\"$i\" id=\"b$i\"><label for = \"b$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
                     }
                 }
                 ?>

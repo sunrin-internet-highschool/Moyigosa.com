@@ -64,7 +64,7 @@
 #side #side_middle{
     width:495px;
     position:relative;
-    height:100%;
+    height:calc(100% - 119px);
     background-color:#E8E6E6;
     overflow-y: scroll;
 }
@@ -99,9 +99,40 @@
     position:absolute;
 }
 
+#side #side_middle .side_element > a{
+    z-index: 300;
+}
+
+#side #side_middle .side_element > a > a{
+    z-index: 320;
+}
+
 #side #side_middle .side_element img{
     position: absolute;
     top:0;
     right:0;
     margin:16px;
+}
+
+#side #side_middle .omr{
+    margin-left:8.5px;
+    margin-top:1px;
+    width:428px;
+    background-color:white;
+    position:relative;
+}
+
+#side #side_middle .omr .omr_row{
+    padding-left: 10px;
+}
+
+#side #side_middle .omr .omr_row a{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color:#B3ABA9;
+}
+
+#side #side_middle div:last-child{
+    margin-bottom: 16px;
 }

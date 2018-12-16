@@ -41,9 +41,42 @@
             $grade=$row['grade'];
             $subject=$row['subject'];
             if(isset($_SESSION[$tag])){
+                for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
+                    if(isset($_GET[$i])&&!empty($_GET[$i])){
+                        $_SESSION[$tag]['answer'][$i]=$_GET[$i];
+                    }
+                }
+                /*if(isset($_SESSION['id'])){
+                    for($i=1;$i<=$_SESSION[$def]['max'];$i++){
+                        if(isset($_GET[$i])&&!empty($_GET[$i])){
+                            mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
+                            mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+                        }
+                    }
+                }*/
                 echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$_SESSION[$tag]['jump'],"\">";
-                echo "<div class=\"side_element\"><span>$year","년 ","$month","월 ","$grade","학년"," $subject 모의고사</span><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></div>";
+                echo "<div class=\"side_element\"><span>$year","년 ","$month","월 ","$grade","학년"," $subject 모의고사</span><a href=\"\" target=\"_self\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></a></div>";
                 echo "</a>";
+                echo "<div class=\"omr\">";
+                for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
+                    echo "<div class=\"omr_row\">";
+                    echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$i,"\">";
+                    if($i<10){
+                        echo "0",$i;
+                    }else{
+                        echo $i;
+                    }
+                    echo "</a>";
+                    for($j=1;$j<=5;$j++){
+                        if(isset($_SESSION[$tag]['answer'][$i])&&$_SESSION[$tag]['answer'][$i]==$j){
+                            echo "<input type=\"radio\" name=\"$tag","$j\" value=\"$j\" checked=\"checked\" id=\"b","$j\"> <label for=\"b","$j\">&nbsp;</label><br>";
+                        }else{
+                            echo "<input type=\"radio\" name=\"$tag","$j\" value=\"$j\" id=\"b","$j\"><label for = \"b","$j\"></label><br>";
+                        }
+                    }
+                    echo "</div>";
+                }
+                echo "</div>";
             }
         }
         ?>
