@@ -1,0 +1,21 @@
+@import url('/default.css');
+#top{
+    background-color:#5B4C43;
+    text-align: center;
+    position: relative;
+    width:100%;
+    height: 119px;
+}
+
+#top .logo{
+    margin-top: 32px;
+}
+
+#top .line{
+    display:inline-block;
+    position: absolute;
+    top:0;
+    right:0;
+    margin:39px;
+    
+}

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&subset=korean');
+@import url('/default.css');
 #background{
     position:fixed;
     top:0;
@@ -67,6 +68,10 @@
     color:#333232;
     font-family: 'Noto Sans KR', sans-serif;
     position:relative;
+}
+
+#side #side_middle .side_element:hover,#side #side_middle .side_element:active{
+    background-color:antiquewhite;
 }
 
 #side #side_middle .side_element span{

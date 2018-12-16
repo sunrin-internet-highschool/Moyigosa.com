@@ -1,38 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Noto+Serif+KR:300&subset=korean');
-
-*{
-    margin: 0;
-    padding: 0;
-    border:0;
-}
-
-a:hover,a:visited,a:active,a{
-    color:black;
-}
-body{
-    background-color:#D1D1D1;
-}
-
-#top{
-    background-color:#5B4C43;
-    text-align: center;
-    position: relative;
-    width:100%;
-    height: 119px;
-}
-
-.logo{
-    margin-top: 32px;
-}
-
-.line{
-    display:inline-block;
-    position: absolute;
-    top:0;
-    right:0;
-    margin:39px;
-    
-}
+@import url('/default.css');
 
 #middle{
     margin-top: 16px;
