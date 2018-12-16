@@ -21,7 +21,8 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
 <html>
 
 <head>
-    <script src="/login.js"></script>
+    <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="/signUp.js"></script>
     <title>회원가입 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/signUp.css">
@@ -30,7 +31,7 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
 <body>
     <?php
     require_once('top.php');
-    //require_once('side.php');
+    require_once('side.php');
     ?>
     <div id="middle">
         <div id="signup_wrap">
@@ -38,18 +39,18 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
 
             <form method="post" action="">
                 <span class="id_text">아이디</span>&nbsp;<span class="id_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="text" name="id" class="id"><br>
+                <input type="text" name="id" class="id" onKeyup=id_check(this) maxlength="20"><br>
                 <span class="pw_text">비밀번호</span>&nbsp;<span class="pw_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="password" name="pw" class="pw"><br>
+                <input type="password" name="pw" class="pw" onKeyup=password_check(this) maxlength="20"><br>
                 <span class="pw_r_text">비밀번호 확인</span>&nbsp;<span class="pw_r_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="password" name="pw_r" class="pw_r"><br>
+                <input type="password" name="pw_r" class="pw_r" onKeyup=password_check(this) maxlength="20"><br>
                 <span class="email_text">이메일</span>&nbsp;<span class="email_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="email" name="email" class="email"><br>
+                <input type="email" name="email" class="email" onKeyup=email_check(this) maxlength="20"><br>
                 <span class="nick_text">닉네임</span>&nbsp;<span class="nick_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="text" name="nick" class="nick"><br>
+                <input type="text" name="nick" class="nick" onKeyup=nick_check(this) maxlength="20"><br>
                 <span class="name_text">이름</span>&nbsp;<span class="name_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="text" name="name" class="name"><br>
-                <input type="submit" value="회원가입">
+                <input type="text" name="name" class="name" onKeyup=name_check(this) maxlength="20"><br>
+                <input type="submit" id="submit" onMouseOver="confirm()" value="회원가입">
             </form>
         </div>
         

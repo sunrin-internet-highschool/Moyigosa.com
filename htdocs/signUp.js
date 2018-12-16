@@ -1,196 +1,188 @@
-        function id_check(obj){
-            var getCheck= RegExp(/^[a-zA-Z0-9]{6,12}$/);
-            
-            if(obj.value.length>0 && obj.value.length<=5){
-                $("#id_check").css({'color':'red'});
-            }
-            if(obj.value.length>=6){
-                if(!getCheck.test($("#id").val())){
-                    $("#id_check").css({'color':'red'});
-                }
-            }
-            if(getCheck.test($("#id").val())){
-                $("#id_check").css({'color':'green'});
-            }
+var id = false;
+var pw_b = false;
+var pw_r_b = false;
+var email = false;
+var name = false;
+var nick = false;
 
+function id_check(obj){
+    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
+    if(obj.value.length>20){
+        id=false;
+        $(".id_text").css({'color':'red'});
+    }
+    
+    else if(obj.value.length>0 && obj.value.length<=20){
+        if(!getCheck.test($(".id").val())){
+            id=false;
+            $(".id_text").css({'color':'red'});
         }
-        
-        function password_check(obj){
-            var pw=$("#password").val();
-            var pwc=$("#password_confirm").val();
-            
-            var getCheck= RegExp(/^[a-zA-Z0-9]{8,12}$/);
-            if(obj.value.length>0 && obj.value.length<=7){
-                $("#password_check").css({'color':'red'});
-            }
-            if(obj.value.length>=8){
-                if(!getCheck.test($("#password").val())){
-                    $("#password_check").css({'color':'red'});
-                }
-            }
-            
-            if(pw == "" && pwc != ""){
-                $("#password_confirm_check").html("비밀번호를 먼저 입력해 주십시오.");
-                $("#password_confirm_check").css({'color':'red'});
-            }
-            
-            if(pw != "" && pwc != ""){
-                if(pw==pwc){
-                    $("#password_confirm_check").html("");
-                    $("#password_confirm_check").css({'color':'green'});
-                }
-                else{
-                    $("#password_confirm_check").html("다시 한번 확인해주세요.");
-                    $("#password_confirm_check").css({'color':'red'});
-                }
-            }
-            
-            if(getCheck.test($("#password").val())){
-                $("#password_check").css({'color':'green'});
-            }
-            
-
+        else if(getCheck.test($(".id").val())){
+            $(".id_text").css({'color':'green'});
+            id=true;  
         }
-        
-        function mail_check(obj){
-            var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-            if(obj.value.length>0){
-                if(!getMail.test($("#mail").val())){
-                    $("#mail_check").css({'color':'red'});
-                }
-            }
-            
-            if(getMail.test($("#mail").val())){
-                $("#mail_check").css({'color':'green'});
-            }
+    }
+    
+    else if(obj.value.length==0 && $(".id").focus()){
+        id=false;
+        $(".id_text").css({'color':'red'});
+    }
+}
 
+function password_check(obj){
+    var pw=$(".pw").val();
+    var pw_r=$(".pw_r").val();
+    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
+    
+    if(obj.value.length>20){
+        pw_b=false;
+        $(".pw_text").css({'color':'red'});
+    }
+    
+    else if(obj.value.length>0 && obj.value.length<=20){
+        if(!getCheck.test($(".pw").val())){
+            pw_b=false;
+            $(".pw_text").css({'color':'red'});
         }
-        /*
-        function name_check(obj){
-            var getName= RegExp(/^[가-힣]+$/);
-            
-            if(obj.value.length>0){
-                if(!getName.test($("#name").val())){
-                    $("#name_check").html("올바른 한글로만 입력해주십시오.");
-                    $(".name").css({'color':'red'});
-                }
-            }
-            
-            if(getName.test($("#name").val())){
-                $("#name_check").html("");
-                $(".name").css({'color':'green'});
-            }
-            
-            $("#name").blur(function(){
-                $("#name_check").html("");
-            })
-        }*/
-        /*
-        function nick_check(obj){
-            var getCheck= RegExp(/^[a-zA-Z0-9]{1,12}$/);
-            
-            if(obj.value.length>0){
-                if(!getCheck.test($("#nick").val())){
-                    $("#nick_check").html("영어 대소문자와 숫자로만 입력해주십시오.");
-                    $(".nick").css({'color':'red'});
-                }
-            }
-            
-            if(getCheck.test($("#nick").val())){
-                $("#nick_check").html("");
-                $(".nick").css({'color':'green'});
-            }
-            
-
+        else if(getCheck.test($(".pw").val())){
+            pw_b=true;
+            $(".pw_text").css({'color':'green'});
         }
-        */
+    }
+    else if(pw == "" && $(".pw").focus()){
+        pw_r_b=false;
+        $(".pw_text").css({'color':'red'});
+    }
+    
+    else if(pw_r == ""){
+        pw_r_b=false;
+        $(".pw_r_text").css({'color':'red'});
+    }
+    
+    if(pw == "" && pw_r != ""){
+        pw_r_b=false;
+        $(".pw_r_text").css({'color':'red'});   
+    }
+    
+    if(pw != "" && pw_r != ""){
+        if(pw==pw_r){
+            pw_r_b=true;
+            $(".pw_r_text").css({'color':'green'});
+        }
+        else{
+            pw_r_b=false;
+            $(".pw_r_text").css({'color':'red'});
+        }
+    }           
+    
+    if(pw_r == "" && pw_r != ""){
+        pw_r_b=false;
+        $(".pw_r_text").css({'color':'red'});
+    }
+
+}
         
-    function Login(){
-      var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-      var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
-      var getName= RegExp(/^[가-힣]+$/);
+function email_check(obj){
+    var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+    
+    if(obj.value.length>20){
+        email=false;
+        $(".email_text").css({'color':'red'});
+    }
+    
+    else if(obj.value.length>0 && obj.value.length<=20){
+        if(!getMail.test($(".email").val())){
+            email=false;
+            $(".email_text").css({'color':'red'});
+        }
+        else if(getMail.test($(".email").val())){
+            $(".email_text").css({'color':'green'});
+            email=true;
+        }
+    }
+    else if(obj.value.length==0 && $(".email").focus()){
+        email=false;
+        $(".email_text").css({'color':'red'});
+    }
+}
         
-      $("#id").on('keydown', function(){
-          $('h1').html(" good");
-      })
+ function nick_check(obj){
+     var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
+     
+     if(obj.value.length>20){
+         nick=false;
+         $(".nick_text").css({'color':'red'});
+     }
+            
+     if(obj.value.length>0 && obj.value.length<=20){
+         if(!getCheck.test($(".nick").val())){
+             nick=false;
+             $(".nick_text").css({'color':'red'});
+         }
+         else if(getCheck.test($(".nick").val())){
+             nick=true;
+             $(".nick_text").css({'color':'green'});
+         }       
+     }
+     else if(obj.value.length==0 && $(".nick").focus()){
+         nick=false;
+        $(".nick_text").css({'color':'red'});
+     }
+}
         
-      if($("#id").val() == ""){
-        alert("아이디를 입력해 주십시오");
-        $("#id").focus();
-        return false;
-      }
-
-      if(!getCheck.test($("#id").val())){
-        alert("아이디를 형식에 맞게 입력해 주십시오");
-        $("#id").val("");
-        $("#id").focus();
-        return false;
-      }
-
-      
-      if($("#password").val() == ""){
-        alert("패스워드를 입력해 주십시오");
-        $("#password").focus();
-        return false;
-      }
-
-      if(!getCheck.test($("#password").val())){
-        alert("패스워드를 형식에 맞게 입력해 주십시오");
-        $("#password").val("");
-        $("#password").focus();
-        return false;
-      }
-      
-      if($("#password_confirm").val() == ""){
-        alert("패스워드 확인을 입력해 주십시오");
-        $("#password").focus();
-        return false;
-      }
-        
-      if($("#password").val() != $("#password_confirm").val()){
-        alert("패스워드와 다릅니다.");
-        $("#password_confirm").val("");
-        $("#password_confirm").focus();
-        return false;
-      }
-
-      if($("#mail").val() == ""){
-        alert("이메일을 입력해 주십시오");
-        $("#mail").focus();
-        return false;
-      }
-
-      if(!getMail.test($("#mail").val())){
-        alert("이메일을 형식에 맞게 입력해 주십시오")
-        $("#mail").val("");
-        $("#mail").focus();
-        return false;
-      }
-    /*
-      if($("#name").val() == ""){
-        alert("이름을 입력해 주십시오");
-        $("#name").focus();
-        return false;
-      }
-      
-      if(!getName.test($("#name").val())){
-        alert("이름을 형식에 맞게 입력해 주십시오")
-        $("#name").val("");
-        $("#name").focus();
-        return false;
-      }
-    */  
-      if($("#nick").val() == ""){
-        alert("닉네임을 입력해 주십시오");
-        $("#nick").focus();
-        return false;
-      }
-       
-      if(!getCheck.test($("#nick").val())){
-        alert("닉네임을 형식에 맞게 입력해 주십시오")
-        $("#nick").val("");
-        $("#nick").focus();
-        return false;
-      }
-
-  }
+function name_check(obj){
+    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
+    
+    if(obj.value.length>20){
+        name=false;
+        $(".name_text").css({'color':'red'});
+    }
+    
+    if(obj.value.length>0 && obj.value.length<=20){
+        if(!getCheck.test($(".name").val())){
+            $(".name_text").css({'color':'red'});
+            name=false;
+        }
+        else if(getCheck.test($(".name").val())){
+            $(".name_text").css({'color':'green'});
+            name=true;
+        }
+    }
+    else if(obj.value.length==0 && $(".name").focus()){
+        $(".name_text").css({'color':'red'});
+        name=false;
+    }
+}
+//email(false) , pw_b(true), name(true), nick(false)
+function confirm(){
+    alert($(".email_text").attr("style"));
+    if($(".email_text").attr("style")=="color: green;" && $(".id_text").attr("style")=="color: green;" && $(".pw_text").attr("style")=="color: green;" && $(".pw_r_text").attr("style")=="color: green;" && $(".nick_text").attr("style")=="color: green;" && $(".name_text").attr("style")=="color: green;"){
+        alert("jo");
+    }
+    else{
+        alert("f");
+        var not = document.getElementById("submit");
+        not.disabled = "disabled";
+    }
+}
+/*
+function name_check(obj){
+    var getName= RegExp(/^[가-힣]+$/);
+    
+    if(obj.value.length>0){
+        if(!getName.test($("#name").val())){
+            $("#name_check").html("올바른 한글로만 입력해주십시오.");
+            $(".name").css({'color':'red'});
+        }
+    }
+    
+    if(getName.test($("#name").val())){
+        $("#name_check").html("");
+        $(".name").css({'color':'green'});
+    }
+    
+    $("#name").blur(function(){
+        $("#name_check").html("");
+    })
+}
+ */
