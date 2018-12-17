@@ -1,6 +1,6 @@
 <?php
 session_start();
-    if(isset($_POST['id'])&&isset($_POST['pw'])){
+    if(isset($_POST['id'])&&isset($_POST['pw'])&&!empty($_POST['pw'])&&!empty($_POST['id'])){
         $_POST['id']=htmlspecialchars($_POST['id']);
         $_POST['pw']=htmlspecialchars($_POST['pw']);
         require_once('cnn.php');
@@ -32,7 +32,7 @@ session_start();
 <body>
     <?php
     require_once('top.php');
-    //require_once('side.php');
+    require_once('side.php');
     ?>
     <div id="middle">
         <div id="login_wrap">
@@ -47,7 +47,7 @@ session_start();
             </form>
             <a href="/signUp.php"><span class="signup">회원가입</span></a>
             <?php
-            if(!$temp){
+            if(isset($temp)&&!$temp){
                 echo "<div id=\"error\"><img src=\"/picture/login/error.png\" width=\"450px\" height=\"237px\" class=\"error\"><img src=\"/picture/login/admit.png\" width=\"137px\" height=\"57px\" class=\"admit\"></div>";
             }
             ?>

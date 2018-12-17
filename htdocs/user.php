@@ -31,7 +31,7 @@ if(isset($_POST['change'])){
 <body>
     <?php
     require_once('top.php');
-    //require_once('side.php');
+    require_once('side.php');
     ?>
     <div id="middle">
         <div id="signup_wrap">

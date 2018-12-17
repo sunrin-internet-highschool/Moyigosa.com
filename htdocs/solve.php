@@ -27,6 +27,21 @@ while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['max']=$row['count(num)'];
 }//$maxNum = 문제집 문제 갯수
 
+if(isset($_GET['answer'])&&!empty($_GET['answer'])){
+        $_SESSION[$def]['answer'][$_GET['jump']]=$_GET['answer'];
+    }
+    if(isset($_SESSION['id'])){
+        mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
+        mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+    }
+
+if(isset($_GET['check'])){
+    $_SESSION[$def]['check'][$_GET['jump']]=true;
+}
+
+if(isset($_GET['uncheck'])){
+    $_SESSION[$def]['check'][$_GET['jump']]=false;
+}
 ?>
 <html>
 
@@ -42,21 +57,15 @@ while($row = $result->fetch_assoc()) {
     <?php
     require_once('top.php');
     require_once('side.php');
-if(isset($_GET['answer'])&&!empty($_GET['answer'])){
-    $_SESSION[$def]['answer'][$_GET['jump']]=$_GET['answer'];
-}
-if(isset($_SESSION['id'])){
-    mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
-    mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
-}
-if(isset($_GET['pre'])&&$_GET['jump']>1){
-    $_GET['jump']--;
-}
+    
+    if(isset($_GET['pre'])&&$_GET['jump']>1){
+        $_GET['jump']--;
+    }
 
-if(isset($_GET['next'])&&$_GET['jump']<$_SESSION[$def]['max']){
+    if(isset($_GET['next'])&&$_GET['jump']<$_SESSION[$def]['max']){
     $_GET['jump']++;
-}
-$_SESSION[$def]['jump']=$_GET['jump'];
+    }
+    $_SESSION[$def]['jump']=$_GET['jump'];
     
     ?>
     <form method="get" action="">
@@ -126,9 +135,9 @@ $_SESSION[$def]['jump']=$_GET['jump'];
                 <?php
                 for($i=1;$i<=5;$i++){
                     if(isset($_SESSION[$def]['answer'][$_GET['jump']])&&$_SESSION[$def]['answer'][$_GET['jump']]==$i){
-                        echo "<input type=\"radio\" name=\"answer\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def","$i\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
                     }else{
-                        echo "<input type=\"radio\" name=\"answer\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def","$i\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
                     }
                 }
                 ?>
@@ -138,9 +147,9 @@ $_SESSION[$def]['jump']=$_GET['jump'];
         <div id="buttons">
             <?php
             if(isset($_SESSION[$def]['check'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true){
-                echo "<input type=\"submit\" name=\"mark\" value=\"채점 취소\">";
+                echo "<input type=\"submit\" name=\"uncheck\" value=\"채점 취소\">";
             }else{
-                echo "<input type=\"submit\" name=\"mark\" value=\"채점\">";
+                echo "<input type=\"submit\" name=\"check\" value=\"채점\">";
             }
             ?>
             <input type="submit" name="pre" value="이전 문제">

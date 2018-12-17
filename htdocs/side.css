@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|Noto+Serif+KR:300&subset=korean');
 @import url('/default.css');
 #background{
     position:fixed;
@@ -105,6 +105,8 @@
 
 #side #side_middle .side_element > a > a{
     z-index: 320;
+    width:33px;
+    height:31px;
 }
 
 #side #side_middle .side_element img{
@@ -120,10 +122,11 @@
     width:428px;
     background-color:white;
     position:relative;
+    padding-bottom:10px;
 }
 
 #side #side_middle .omr .omr_row{
-    padding-left: 10px;
+    text-align: center;
 }
 
 #side #side_middle .omr .omr_row a{
@@ -131,8 +134,81 @@
     font-weight: bold;
     font-size: 40px;
     color:#B3ABA9;
+    position: relative;
+    top:8px;
 }
 
-#side #side_middle div:last-child{
-    margin-bottom: 16px;
+#side #side_middle .omr .omr_row input[type=radio] {
+    display: none;
+}
+
+#side #side_middle .omr .omr_row input[type=radio] + label {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 40px;
+    padding-left: 40px;
+    background-repeat: no-repeat;
+    background-size: auto 40px;
+    background-position: left;
+    margin:0 10px;
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-4) + label {
+    background-image: url('/picture/linemenu/omr/3.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-3) + label {
+    background-image: url('/picture/linemenu/omr/1.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-2) + label {
+    background-image: url('/picture/linemenu/omr/4.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-1) + label {
+    background-image: url('/picture/linemenu/omr/2.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n) + label {
+    background-image: url('/picture/linemenu/omr/5.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-4):checked + label {
+    background-image: url('/picture/linemenu/omr/3_check.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-3):checked + label {
+    background-image: url('/picture/linemenu/omr/1_check.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-2):checked + label {
+    background-image: url('/picture/linemenu/omr/4_check.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n-1):checked + label {
+    background-image: url('/picture/linemenu/omr/2_check.png');
+}
+
+#side #side_middle .omr .omr_row input[type=radio]:nth-child(5n):checked + label {
+    background-image: url('/picture/linemenu/omr/5_check.png');
+}
+
+#side #side_middle .side_omr_submit{
+    margin-left:8.5px;
+    margin-top:1px;
+    width:428px;
+    background-color:white;
+    position:relative;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#side #side_middle .side_omr_submit input[type=submit]{
+    color:white;
+    font-family: 'Noto Serif KR', serif;
+    background-color:#72635B;
+    width:408px;
+    height:64px;
+    font-size: 21px;
+    margin-top:10px;
 }

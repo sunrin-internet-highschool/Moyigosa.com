@@ -32,6 +32,27 @@ $(document).ready(function(){
             }            
         })
         
+        var chk = 0;
+        $(".omr_viewer").click(function(event){
+            //console.log(jQuery(this).parents('div').children('.side_omr_submit').attr('class'));
+            if(jQuery(this).children('img').attr("src", "/picture/linemenu/plusicon.png") && cnt==0){
+                jQuery(this).children('img').attr("src", "/picture/linemenu/minusicon.png");
+                jQuery(this).parents('div').children('.side_omr_submit').slideUp(500);
+                jQuery(this).parents('div').children('.omr').slideUp(500);
+                jQuery(this).parents('div').children('.omr').css("display","block");
+                jQuery(this).parents('div').children('.side_omr_submit').css("display","block");
+                cnt++;
+            }
+            else if(jQuery(this).children('img').attr("src", "/picture/linemenu/minusicon.png") && cnt==1){
+                jQuery(this).children('img').attr("src", "/picture/linemenu/plusicon.png");
+                jQuery(this).parents('div').children('.side_omr_submit').slideDown(500);
+                jQuery(this).parents('div').children('.omr').slideDown(500);
+                jQuery(this).parents('div').children('.omr').css("display","none");
+                jQuery(this).parents('div').children('.side_omr_submit').css("display","none");
+                cnt=0;
+            }
+        })
+        
         
     })
 })

@@ -107,7 +107,6 @@
     margin:10px;
 }
 
-#selection .selection input[type=radio]:checked + label,
 #selection .selection input[type=radio]:checked + label {
     background-image: url('/picture/solve/smallvicon.png');
 }
