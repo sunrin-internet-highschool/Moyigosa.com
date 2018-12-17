@@ -41,7 +41,7 @@
                 echo "<input type=\"hidden\" name=\"jump\" value=\"",$_GET['jump'],"\">";
             ?>
             <a href="/index.php">
-                <div class="side_element">
+                <div class="side_element" draggable="true">
                     <span>메인페이지</span>
                 </div>
             </a>

@@ -1,4 +1,28 @@
+
 $(document).ready(function(){
+    $(".solve").click(function(){
+        $("#solve").css("display","block");
+        $("#question").css("display","none");
+        //$(".solve").css("border-bottom","10px solid #72635B").fadeIn();
+        //$(".view_selection .question").css("border-bottom","none");
+        $(".view_bar").animate({'left':'50%'},600);
+        
+    })
+
+    $(".view_selection .question").click(function(){
+        $("#question").css("display","block");
+        $("#solve").css("display","none");
+        //$(".view_selection .question").css("border-bottom","10px solid #72635B");
+        //$(".solve").css("border-bottom","none");
+        //$(".view_selection .question").fadeIn();
+        $(".view_bar").animate({'left':'0'},600);
+    })    
+})
+
+
+
+
+/*$(document).ready(function(){
         var all_minute = document.getElementById("all_minute").value;
         var all_second = document.getElementById("all_second").value;
         var minute=document.getElementById("minute").value;
@@ -103,3 +127,4 @@ $(document).ready(function(){
 
             
             });
+*/

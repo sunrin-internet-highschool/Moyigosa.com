@@ -4,17 +4,17 @@ $(document).ready(function(){
         var sh = $(".search");
         var sd = $("#side");
         $(bk).click(function(){
-            $(sd).animate({'right':'-30em'},800);
+            $(sd).animate({'right':'-30em'},500);
             bk.fadeOut();/*css("display","none");*/
         })
            
         $(".close").click(function(){
-            $(sd).animate({'right':'-30em'},800);
+            $(sd).animate({'right':'-30em'},500);
             bk.fadeOut();
         })
            
         $(".line").click(function(){
-            $(sd).animate({'right':'0'},800);
+            $(sd).animate({'right':'0'},500);
             bk.fadeIn();
         })
         
@@ -52,7 +52,6 @@ $(document).ready(function(){
                 cnt=0;
             }
         })
-        
         
     })
 })

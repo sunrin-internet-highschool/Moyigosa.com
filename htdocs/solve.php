@@ -29,11 +29,12 @@ while($row = $result->fetch_assoc()) {
 
 if(isset($_GET['answer'])&&!empty($_GET['answer'])){
         $_SESSION[$def]['answer'][$_GET['jump']]=$_GET[$def.$_GET['jump']];
-    }
     if(isset($_SESSION['id'])){
         mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
         mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
     }
+    }
+    
 
 if(isset($_GET['check'])){
     $_SESSION[$def]['check'][$_GET['jump']]=true;
@@ -49,8 +50,10 @@ if(isset($_GET['uncheck'])){
     <title>
         문제페이지
     </title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/solve.css">
+    <script src="/solve.js"></script>
 </head>
 
 <body>
@@ -88,6 +91,7 @@ if(isset($_GET['uncheck'])){
             <div class="view_selection">
                 <div class="question">문제</div>
                 <div class="solve">해설</div>
+                <div class="view_bar"></div>
             </div>
         </div>
 
@@ -123,7 +127,7 @@ if(isset($_GET['uncheck'])){
             </div>
         </div>
 
-        <div id="solve">
+        <div id="solve" style="display:none">
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
 
@@ -135,7 +139,7 @@ if(isset($_GET['uncheck'])){
                 <?php
                 for($i=1;$i<=5;$i++){
                     if(isset($_SESSION[$def]['answer'][$_GET['jump']])&&$_SESSION[$def]['answer'][$_GET['jump']]==$i){
-                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">&nbsp;",${"select".$i},"</label><br>";
                     }else if(isset($_SESSION[$def]['check'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true&&$_SESSION[$def]['correct'][$_GET['jump']]==$i){
                         echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label>&nbsp;&nbsp;!정답!<br>";
                     }else{
