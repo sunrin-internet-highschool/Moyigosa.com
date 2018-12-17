@@ -11,7 +11,7 @@
 
 #title{
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     color:#333232;
 }
@@ -64,6 +64,7 @@
     font-weight: bold;
     font-size: 25px;
     color:#333232;
+    margin-bottom: 15px;
 }
 
 #question > div > .sound{
@@ -72,6 +73,7 @@
 
 #question > div > .example{
     border:1px solid black;
+    padding:10px;
 }
 
 #selection .selection_title{
@@ -89,6 +91,7 @@
     font-size: 30px;
     color:#333232;
     font-family: 'Noto Sans KR', sans-serif;
+    padding:20px 10px;
 }
 
 #selection .selection input[type=radio] {

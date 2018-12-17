@@ -89,7 +89,7 @@
     position:relative;
 }
 
-#side #side_middle .side_element:hover,#side #side_middle .side_element:active{
+#side #side_middle .side_element:hover{
     background-color:antiquewhite;
 }
 

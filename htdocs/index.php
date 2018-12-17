@@ -5,31 +5,31 @@ $i=0;
 $sql = "SELECT distinct year FROM list";
 $result = mysqli_query($conn, $sql);
 while($row = $result->fetch_assoc()) {
-    $year[$i]=$row["year"];
+    $s_year[$i]=$row["year"];
     $i++;
 }
 $i=0;
 $result = mysqli_query($conn, "SELECT distinct grade FROM list");
 while($row = $result->fetch_assoc()) {
-    $grade[$i]=$row["grade"];
+    $s_grade[$i]=$row["grade"];
     $i++;
 }
     $i=0;
 $result = mysqli_query($conn, "SELECT distinct month FROM list");
 while($row = $result->fetch_assoc()) {
-    $month[$i]=$row["month"];
+    $s_month[$i]=$row["month"];
     $i++;
 }
         $i=0;
 $result = mysqli_query($conn, "SELECT distinct subject FROM list");
 while($row = $result->fetch_assoc()) {
-    $subject[$i]=$row["subject"];
+    $s_subject[$i]=$row["subject"];
     $i++;
 }
 $i=0;
 $result = mysqli_query($conn, "SELECT distinct num FROM list");
 while($row = $result->fetch_assoc()){
-    $num[$i]=$row["num"];
+    $s_num[$i]=$row["num"];
     $i++;
 }
 
@@ -60,30 +60,30 @@ while($row = $result->fetch_assoc()){
                 <select name="grade">
                     <option>학년</option>
                     <?php
-                    for($i=0;!empty($grade[$i]);$i++){
-                        echo "<option value=\"",$grade[$i],"\">",$grade[$i],"학년</option>";
+                    for($i=0;!empty($s_grade[$i]);$i++){
+                        echo "<option value=\"",$s_grade[$i],"\">",$s_grade[$i],"학년</option>";
                     }
                     ?>
                 </select>
                 <select name="year">
                     <option>년도</option>
-                    <?php for($i=0;!empty($year[$i]);$i++){
-                        echo "<option value=\"",$year[$i],"\">",$year[$i],"년</option>";
+                    <?php for($i=0;!empty($s_year[$i]);$i++){
+                        echo "<option value=\"",$s_year[$i],"\">",$s_year[$i],"년</option>";
                     }
                 ?>
 
                 </select>
                 <select name="month">
                     <option>월</option>
-                    <?php for($i=0;!empty($month[$i]);$i++){
-                        echo "<option value=\"",$month[$i],"\">",$month[$i],"월</option>";
+                    <?php for($i=0;!empty($s_month[$i]);$i++){
+                        echo "<option value=\"",$s_month[$i],"\">",$s_month[$i],"월</option>";
                     }
                 ?>
                 </select>
                 <select name="subject">
                     <option>과목</option>
-                    <?php for($i=0;!empty($subject[$i]);$i++){
-                        echo "<option value=\"",$subject[$i],"\">",$subject[$i],"</option>";
+                    <?php for($i=0;!empty($s_subject[$i]);$i++){
+                        echo "<option value=\"",$s_subject[$i],"\">",$s_subject[$i],"</option>";
                     }
                 ?>
                 </select><br>
@@ -125,7 +125,7 @@ while($row = $result->fetch_assoc()){
             }
                     
             for($i=1;$i<=$maxNum;$i++){
-                if(isset($_SESSION[$def][1][$i])&&$_SESSION[$def][1][$i]>=1&&$_SESSION[$def][1][$i]<=5){
+                if(isset($_SESSION[$def]['answer'][$i])&&$_SESSION[$def]['answer'][$i]>=1&&$_SESSION[$def]['answer'][$i]<=5){
                     $count++;
                 }
             }

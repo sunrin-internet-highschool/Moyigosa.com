@@ -28,6 +28,18 @@
     </div>
     <div id="side_middle">
         <form method="get" action="">
+            <?php
+            if(isset($_GET['year']))
+                echo "<input type=\"hidden\" name=\"year\" value=\"",$_GET['year'],"\">";
+            if(isset($_GET['month']))
+                echo "<input type=\"hidden\" name=\"month\" value=\"",$_GET['month'],"\">";
+            if(isset($_GET['grade']))
+                echo "<input type=\"hidden\" name=\"grade\" value=\"",$_GET['grade'],"\">";
+            if(isset($_GET['subject']))
+                echo "<input type=\"hidden\" name=\"subject\" value=\"",$_GET['subject'],"\">";
+            if(isset($_GET['jump']))
+                echo "<input type=\"hidden\" name=\"jump\" value=\"",$_GET['jump'],"\">";
+            ?>
             <a href="/index.php">
                 <div class="side_element">
                     <span>메인페이지</span>
@@ -48,21 +60,51 @@
                         $_SESSION[$tag]['answer'][$i]=$_GET[$i];
                     }
                 }
-                /*if(isset($_SESSION['id'])){
-                    for($i=1;$i<=$_SESSION[$def]['max'];$i++){
-                        if(isset($_GET[$i])&&!empty($_GET[$i])){
-                            mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$_GET['year']." and month=".$_GET['month']." and grade=".$_GET['grade']." and subject='".$_GET['subject']."'");
-                            mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$i].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+                
+                for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
+                    if(isset($_SESSION[$tag]['answer'])){
+                        
+                    }
+                }
+                
+                
+                for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
+                    if(isset($_GET[$tag.$i])&&!empty($_GET[$tag.$i])){
+                        $_SESSION[$tag]['answer'][$i]=$_GET[$tag.$i];
+                        if(isset($_SESSION['id'])){
+                            mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$year." and month=".$month." and grade=".$grade." and subject='".$subject."'");
+                            mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$tag.$i].','.$year.','.$month.','.$grade.",'".$subject."')");
                         }
                     }
-                }*/
+                }
+                
+                if(isset($_GET['check_all'])){
+                    for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
+                        $_SESSION[$tag]['check'][$i]=true;
+                    }
+                }
+                
+                if(isset($_GET['uncheck_all'])){
+                    for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
+                        $_SESSION[$tag]['check'][$i]=false;
+                    }
+                }
+                
                 echo "<div>";
                 echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$_SESSION[$tag]['jump'],"\">";
-                echo "<div class=\"side_element\"><span>$year","년 ","$month","월 ","$grade","학년"," $subject</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></a></div>";
+                echo "<div class=\"side_element\" ><span>$year","년 ","$month","월 ","$grade","학년"," $subject</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></a></div>";
                 echo "</a>";
                 echo "<div class=\"omr\" style=\"display:none\">";
                 for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
-                    echo "<div class=\"omr_row\">";
+                    if(isset($_SESSION[$tag]['check'][$i])&&$_SESSION[$tag]['check'][$i]==true){
+                        if(isset($_SESSION[$tag]['answer'][$i])&&$_SESSION[$tag]['answer'][$i]==$_SESSION[$tag]['correct'][$i]){
+                            echo "<div class=\"omr_row\" style=\"background-color:green;\">";
+                        }else{
+                            echo "<div class=\"omr_row\" style=\"background-color:red;\">";
+                        }
+                    }else{
+                        echo "<div class=\"omr_row\">";
+                    }
                     echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$i,"\">";
                     if($i<10){
                         echo "0",$i;
@@ -73,6 +115,8 @@
                     for($j=1;$j<=5;$j++){
                         if(isset($_SESSION[$tag]['answer'][$i])&&$_SESSION[$tag]['answer'][$i]==$j){
                             echo "<input type=\"radio\" name=\"$tag","$i\" value=\"$j\" checked=\"checked\" id=\"$tag","$i","$j\"> <label for=\"$tag","$i","$j\">&nbsp;</label>";
+                        }else if(isset($_SESSION[$tag]['check'][$i])&&$_SESSION[$tag]['check'][$i]==true&&$_SESSION[$tag]['correct'][$i]==$j){
+                            echo "<input type=\"radio\" name=\"$tag","$i\" value=\"$j\" id=\"$tag","$i","$j\" style=\"background-color:red;\"> <label for=\"$tag","$i","$j\">&nbsp;</label>";
                         }else{
                             echo "<input type=\"radio\" name=\"$tag","$i\" value=\"$j\" id=\"$tag","$i","$j\"><label for = \"$tag","$i","$j\">&nbsp;</label>";
                         }

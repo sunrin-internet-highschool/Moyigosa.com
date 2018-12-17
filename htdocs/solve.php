@@ -28,7 +28,7 @@ while($row = $result->fetch_assoc()) {
 }//$maxNum = 문제집 문제 갯수
 
 if(isset($_GET['answer'])&&!empty($_GET['answer'])){
-        $_SESSION[$def]['answer'][$_GET['jump']]=$_GET['answer'];
+        $_SESSION[$def]['answer'][$_GET['jump']]=$_GET[$def.$_GET['jump']];
     }
     if(isset($_SESSION['id'])){
         mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
@@ -79,7 +79,7 @@ if(isset($_GET['uncheck'])){
         <div id="title">
             <div>
                 <?php
-                echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['subject']," ",$_GET['grade'],"학년 모의고사";
+                echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'];
                 ?>
             </div>
         </div>
@@ -124,7 +124,7 @@ if(isset($_GET['uncheck'])){
         </div>
 
         <div id="solve">
-
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
 
         <div id="selection">
@@ -135,9 +135,11 @@ if(isset($_GET['uncheck'])){
                 <?php
                 for($i=1;$i<=5;$i++){
                     if(isset($_SESSION[$def]['answer'][$_GET['jump']])&&$_SESSION[$def]['answer'][$_GET['jump']]==$i){
-                        echo "<input type=\"radio\" name=\"$def","$i\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"b$i\">&nbsp;",${"select".$i},"</label><br>";
+                    }else if(isset($_SESSION[$def]['check'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true&&$_SESSION[$def]['correct'][$_GET['jump']]==$i){
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label>&nbsp;&nbsp;!정답!<br>";
                     }else{
-                        echo "<input type=\"radio\" name=\"$def","$i\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
                     }
                 }
                 ?>
