@@ -37,7 +37,7 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
         <div id="signup_wrap">
             <div class="signup">Registration</div>
 
-            <form method="post" action="">
+            <form method="post" action="" onsubmit="return Login()">
                 <span class="id_text">아이디</span>&nbsp;<span class="id_check">(영문 숫자 조합 20자 이하)</span><br>
                 <input type="text" name="id" class="id" onKeyup=id_check(this) maxlength="20"><br>
                 <span class="pw_text">비밀번호</span>&nbsp;<span class="pw_check">(영문 숫자 조합 20자 이하)</span><br>
@@ -50,7 +50,7 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
                 <input type="text" name="nick" class="nick" onKeyup=nick_check(this) maxlength="20"><br>
                 <span class="name_text">이름</span>&nbsp;<span class="name_check">(영문 숫자 조합 20자 이하)</span><br>
                 <input type="text" name="name" class="name" onKeyup=name_check(this) maxlength="20"><br>
-                <input type="submit" id="submit" onMouseOver="confirm()" value="회원가입">
+                <input type="submit" id="submit" value="회원가입">
             </form>
         </div>
         
