@@ -52,6 +52,22 @@ $(document).ready(function(){
                 cnt=0;
             }
         })
-        
+        var trv = 1;
+        $("#trashcan").click(function(){
+            if(trv==1){
+                $(".omr_viewer img").css({"transform":"rotate(45deg)"});
+                trv = 0;
+            }
+            else if(trv ==0){
+                $(".omr_viewer img").css({"transform":"rotate(90deg)"});
+                trv = 1;
+            }
+        })
+       /* 
+        var sub1 = $(".side_element a span").split('년 ');
+        var sub2 = sub1[1].split('월 ');
+        var sub3 = sub2[1].split('학년 ');
+        $(".delete").value=sub1[0]+sub2[0]+sub3[0];
+        */
     })
 })

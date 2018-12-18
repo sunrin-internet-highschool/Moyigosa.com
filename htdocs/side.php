@@ -30,6 +30,7 @@
     </div>
     <div id="side_middle">
         <form method="get" action="">
+           <input type="hidden" name="delete" class="delete" value="">
             <?php
             if(isset($_GET['year']))
                 echo "<input type=\"hidden\" name=\"year\" value=\"",$_GET['year'],"\">";
@@ -141,6 +142,7 @@
         </form>
     </div>
 </div>
+<img src="/picture/linemenu/delete.png" id="trashcan" width="auto" height="250px">
 <div id="background" style="display:none">
 </div>
 
