@@ -117,10 +117,28 @@
     background-position: left;
     margin:10px;
     background-image: url('/picture/solve/green_o.png');
+    color:#336633;
 }
 
 #selection .selection .check:checked + label {
     background-image: url('/picture/solve/green_v.png');
+}
+
+#selection .selection .wrong + label {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 32px;
+    padding-left: 27px;
+    background-repeat: no-repeat;
+    background-size: 27px auto;
+    background-position: left;
+    margin:10px;
+    background-image: url('/picture/solve/red_o.png');
+    color:#993333;
+}
+
+#selection .selection .wrong:checked + label {
+    background-image: url('/picture/solve/red_v.png');
 }
 
 #selection .selection .uncheck + label {

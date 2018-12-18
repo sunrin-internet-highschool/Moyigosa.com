@@ -39,17 +39,17 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
 
             <form method="post" action="" onsubmit="return Login()">
                 <span class="id_text">아이디</span>&nbsp;<span class="id_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="text" name="id" class="id" onKeyup=id_check(this)><br>
+                <input type="text" name="id" class="id" onKeyup=id_check(this) maxlength="20"><br>
                 <span class="pw_text">비밀번호</span>&nbsp;<span class="pw_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="password" name="pw" class="pw" onKeyup=password_check(this)><br>
+                <input type="password" name="pw" class="pw" onKeyup=password_check(this) maxlength="20"><br>
                 <span class="pw_r_text">비밀번호 확인</span>&nbsp;<span class="pw_r_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="password" name="pw_r" class="pw_r" onKeyup=password_check(this)><br>
+                <input type="password" name="pw_r" class="pw_r" onKeyup=password_check(this) maxlength="20"><br>
                 <span class="email_text">이메일</span>&nbsp;<span class="email_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="text" name="email" class="email" onKeyup=email_check(this)><br>
+                <input type="email" name="email" class="email" onKeyup=email_check(this) maxlength="20"><br>
                 <span class="nick_text">닉네임</span>&nbsp;<span class="nick_check">(영문 숫자 조합 20자 이하)</span><br>
-                <input type="text" name="nick" class="nick" onKeyup=nick_check(this)><br>
-                <span class="name_text">이름</span>&nbsp;<span class="name_check">(영문 한글 조합 20자 이하)</span><br>
-                <input type="text" name="name" class="name" onKeyup=name_check(this)><br>
+                <input type="text" name="nick" class="nick" onKeyup=nick_check(this) maxlength="20"><br>
+                <span class="name_text">이름</span>&nbsp;<span class="name_check">(영문 숫자 조합 20자 이하)</span><br>
+                <input type="text" name="name" class="name" onKeyup=name_check(this) maxlength="20"><br>
                 <input type="submit" id="submit" value="회원가입">
             </form>
         </div>

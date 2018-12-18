@@ -1,3 +1,5 @@
+<?php
+?>
 <link rel="stylesheet" type="text/css" href="/side.css">
 
 <head>
@@ -98,14 +100,17 @@
                 for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
                     if(isset($_SESSION[$tag]['check'][$i])&&$_SESSION[$tag]['check'][$i]==true){
                         if(isset($_SESSION[$tag]['answer'][$i])&&$_SESSION[$tag]['answer'][$i]==$_SESSION[$tag]['correct'][$i]){
-                            echo "<div class=\"omr_row\" style=\"background-color:green;\">";
+                            echo "<div class=\"omr_row\" style=\"background-color:#CCFFCC;\">";
+                            echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$i,"\" style=\"color:#669966;\">";
                         }else{
-                            echo "<div class=\"omr_row\" style=\"background-color:red;\">";
+                            echo "<div class=\"omr_row\" style=\"background-color:#FFCCCC;\">";
+                            echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$i,"\" style=\"color:#CC6666;\">";
                         }
                     }else{
                         echo "<div class=\"omr_row\">";
+                        echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$i,"\">";
                     }
-                    echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$i,"\">";
+                    
                     if($i<10){
                         echo "0",$i;
                     }else{
@@ -138,3 +143,6 @@
 </div>
 <div id="background" style="display:none">
 </div>
+
+<?php
+?>

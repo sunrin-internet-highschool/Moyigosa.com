@@ -49,11 +49,9 @@ function password_check(obj){
     
     if(pw != "" && pw_r != ""){
         if(pw==pw_r){
-            $(".pw_r_check").html("(영문 숫자 조합 20자 이하)");
             $(".pw_r_text").css({'color':'green'});
         }
         else{
-            $(".pw_r_check").html("(비밀번호와 일치하지 않습니다.)");
             $(".pw_r_text").css({'color':'red'});
         }
     }           
@@ -105,7 +103,7 @@ function email_check(obj){
 }
         
 function name_check(obj){
-    var getCheck= RegExp(/^[a-zA-Z가-힣]{1,20}$/);
+    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
     
     if(obj.value.length>20){
         $(".name_text").css({'color':'red'});
@@ -127,7 +125,7 @@ function name_check(obj){
 function Login(){
     var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
     var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
-    var getName= RegExp(/^[a-zA-Z0-9]{1,20}$/);
+    //var getName= RegExp(/^[가-힣]+$/);
         
     if($(".id").val() == ""){
         $(".id").focus();
@@ -189,7 +187,7 @@ function Login(){
         return false;
     }
       
-    if(!getName.test($(".name").val())){
+    if(!getCheck.test($(".name").val())){
         $(".name").val("");
         $(".name").focus();
         return false;
