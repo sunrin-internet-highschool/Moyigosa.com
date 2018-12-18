@@ -68,14 +68,6 @@
     width:calc(100% - 30px);
 }
 
-#question > div > .question{
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: bold;
-    font-size: 25px;
-    color:#333232;
-    margin-bottom: 15px;
-}
-
 #question > div > .sound{
     width:100%;
 }
@@ -103,11 +95,35 @@
     padding:20px 10px;
 }
 
+#selection .selection .question{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    color:#333232;
+    margin-bottom: 15px;
+}
+
 #selection .selection input[type=radio] {
     display: none;
 }
 
-#selection .selection input[type=radio] + label {
+#selection .selection .check + label {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 32px;
+    padding-left: 27px;
+    background-repeat: no-repeat;
+    background-size: 27px auto;
+    background-position: left;
+    margin:10px;
+    background-image: url('/picture/solve/green_o.png');
+}
+
+#selection .selection .check:checked + label {
+    background-image: url('/picture/solve/green_v.png');
+}
+
+#selection .selection .uncheck + label {
     display: inline-block;
     cursor: pointer;
     line-height: 32px;
@@ -119,7 +135,7 @@
     margin:10px;
 }
 
-#selection .selection input[type=radio]:checked + label {
+#selection .selection .uncheck:checked + label {
     background-image: url('/picture/solve/smallvicon.png');
 }
 

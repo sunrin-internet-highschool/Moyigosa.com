@@ -6,6 +6,7 @@ if(!isset($_GET['year'])||!isset($_GET['month'])||!isset($_GET['grade'])||!isset
 session_start();
 $select=" WHERE grade=".$_GET['grade']." AND year=".$_GET['year']." AND month=".$_GET['month']." AND subject='".$_GET['subject']."'";
 $def=$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject'];
+$_SESSION[$def]['jump']=$_GET['jump'];
 require_once('cnn.php');
 
 if(isset($_SESSION['id'])){
@@ -68,7 +69,6 @@ if(isset($_GET['uncheck'])){
     if(isset($_GET['next'])&&$_GET['jump']<$_SESSION[$def]['max']){
     $_GET['jump']++;
     }
-    $_SESSION[$def]['jump']=$_GET['jump'];
     
     ?>
     <form method="get" action="">
@@ -111,9 +111,6 @@ if(isset($_GET['uncheck'])){
                 $picture=$row["picture"];
                 $sound=$row["sound"];
             }
-            if(!empty($question)){
-                echo "<div class=\"question\">",$_GET['jump'],". ","$question</div>";
-            }
             if(!empty($sound)){
                 echo "<audio src=\"$sound\" controls=\"controls\" class=\"sound\">";
             }
@@ -135,19 +132,27 @@ if(isset($_GET['uncheck'])){
             <div class="selection_title">
                 &nbsp;&nbsp;정답&nbsp;선택
             </div>
-            <div class="selection">
+            
                 <?php
+            for($q=0;$q<3;$q++){
+            echo "<div class=\"selection\">";
+            
+            if(!empty($question)){
+                echo "<div class=\"question\">",$_GET['jump'],". ","$question</div>";
+            }
                 for($i=1;$i<=5;$i++){
                     if(isset($_SESSION[$def]['answer'][$_GET['jump']])&&$_SESSION[$def]['answer'][$_GET['jump']]==$i){
-                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" checked=\"checked\" id=\"$i\"> <label for=\"$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" checked=\"checked\" id=\"$i\" class=\"uncheck\"> <label for=\"$i\">&nbsp;",${"select".$i},"</label><br>";
                     }else if(isset($_SESSION[$def]['check'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true&&$_SESSION[$def]['correct'][$_GET['jump']]==$i){
-                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label>&nbsp;&nbsp;!정답!<br>";
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\" class=\"check\"><label for = \"$i\">&nbsp;",${"select".$i},"</label>&nbsp;&nbsp;!정답!<br>";
                     }else{
-                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
+                        echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\" class=\"uncheck\"><label for = \"$i\">&nbsp;",${"select".$i},"</label><br>";
                     }
                 }
-                ?>
-            </div>
+               
+            echo "</div>";
+            }
+                 ?>
         </div>
 
         <div id="buttons">
