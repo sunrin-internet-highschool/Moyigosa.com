@@ -6,7 +6,7 @@ if(!isset($_GET['year'])||!isset($_GET['month'])||!isset($_GET['grade'])||!isset
 session_start();
 $select=" WHERE grade=".$_GET['grade']." AND year=".$_GET['year']." AND month=".$_GET['month']." AND subject='".$_GET['subject']."'";
 $def=$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject'];
-if(isset($_GET['delete'])){
+if(isset($_GET['delete'])&&$def==$_GET['delete']){
     unset($_SESSION[$_GET['delete']]);
     echo "<script>location.href=\"/\"</script>";
     exit();

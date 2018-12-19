@@ -1,4 +1,10 @@
 <link rel="stylesheet" type="text/css" href="/side.css">
+<?php
+if(isset($_GET['delete'])){
+    unset($_SESSION[$_GET['delete']]);
+}
+?>
+
 
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
