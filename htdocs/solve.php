@@ -1,41 +1,68 @@
 <?php
-if(!isset($_GET['year'])||!isset($_GET['month'])||!isset($_GET['grade'])||!isset($_GET['subject'])||!isset($_GET['jump'])){
+if((!isset($_GET['year'])||!isset($_GET['month'])||!isset($_GET['grade'])||!isset($_GET['subject'])||!isset($_GET['jump']))&&(!isset($_GET['btype'])||!isset($_GET['stype'])||!isset($_GET['subject']))){
     include("error.php");
     die();
 }
 session_start();
-$select=" WHERE grade=".$_GET['grade']." AND year=".$_GET['year']." AND month=".$_GET['month']." AND subject='".$_GET['subject']."'";
-$def=$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject'];
+if(isset($_GET['year'])&&isset($_GET['month'])&&isset($_GET['grade'])&&isset($_GET['subject'])){
+    $select=" WHERE grade=".$_GET['grade']." AND year=".$_GET['year']." AND month=".$_GET['month']." AND subject='".$_GET['subject']."'";
+    $def=$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject'];
+}
+
+if(isset($_GET['subject'])&&isset($_GET['btype'])&&isset($_GET['stype'])){
+    $select=" WHERE subject='".$_GET['subject']."' and bigtype='".$_GET['btype']."' and smalltype='".$_GET['stype']."'";
+    $def=$_GET['subject'].$_GET['btype'].$_GET['stype'];
+}
+
 if(isset($_GET['delete'])&&$def==$_GET['delete']){
     unset($_SESSION[$_GET['delete']]);
     echo "<script>location.href=\"/\"</script>";
     exit();
 }
+
 $_SESSION[$def]['jump']=$_GET['jump'];
 require_once('cnn.php');
 if(isset($_SESSION['id'])){
+    $i=1;
     $result = mysqli_query($conn, "SELECT answer,num FROM ".$_SESSION['id'].$select);
     while($row = $result->fetch_assoc()) {
-        $_SESSION[$def]['answer'][$row['num']]=$row['answer'];
+        $_SESSION[$def]['answer'][$i]=$row['answer'];
+        $i++;
     }
 }//$COOKIE['answer'.$def][$i] = 계정 정답 불러오기
+
 $i=1;
-$result = mysqli_query($conn, "SELECT correct FROM list".$select." order by num");
+$result = mysqli_query($conn, "SELECT correct FROM list".$select);
 while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['correct'][$i]=$row['correct'];
     $i++;
 }//$COOKIE['correct'.$def][$i] = 문제집 정답 불러오기
-$result = mysqli_query($conn, "SELECT count(num) FROM list".$select." order by num");
+
+$i=1;
+$result = mysqli_query($conn, "SELECT year,month,grade,subject,bigtype,smalltype,num FROM list".$select);
+while($row = $result->fetch_assoc()) {
+    $_SESSION[$def]['year'][$i]=$row['year'];
+    $_SESSION[$def]['month'][$i]=$row['month'];
+    $_SESSION[$def]['grade'][$i]=$row['grade'];
+    $_SESSION[$def]['subject'][$i]=$row['subject'];
+    $_SESSION[$def]['btype'][$i]=$row['bigtype'];
+    $_SESSION[$def]['stype'][$i]=$row['smalltype'];
+    $_SESSION[$def]['num'][$i]=$row['num'];
+    $i++;
+}
+
+$result = mysqli_query($conn, "SELECT count(num) FROM list".$select);
 while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['max']=$row['count(num)'];
 }//$maxNum = 문제집 문제 갯수
-if(isset($_GET['answer'])&&!empty($_GET['answer'])){
+
+if(isset($_GET[$def.$_GET['jump']])&&!empty($_GET[$def.$_GET['jump']])){
         $_SESSION[$def]['answer'][$_GET['jump']]=$_GET[$def.$_GET['jump']];
     if(isset($_SESSION['id'])){
-        mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_GET['jump']);
-        mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_GET['jump'].",".$_GET['answer'].','.$_GET['year'].','.$_GET['month'].','.$_GET['grade'].",'".$_GET['subject']."')");
+        mysqli_query($conn, "delete from ".$_SESSION['id']."where year=".$_SESSION[$def]['year'][$_GET['jump']]." and num=".$_SESSION[$def]['num'][$_GET['jump']]." and month=".$_SESSION[$def]['month'][$_GET['jump']]." and grade=".$_SESSION[$def]['grade'][$_GET['jump']]." and subject='".$_SESSION[$def]['subject'][$_GET['jump']]."' and btype='".$_SESSION[$def]['btype'][$_GET['jump']]."' and stype='".$_SESSION[$def]['stype'][$_GET['jump']]."'");
+        mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_SESSION[$def]['num'][$_GET['jump']].",".$_GET[$def.$_GET['jump']].','.$_SESSION[$def]['year'][$_GET['jump']].','.$_SESSION[$def]['month'][$_GET['jump']].','.$_SESSION[$def]['grade'][$_GET['jump']].",'".$_SESSION[$def]['subject'][$_GET['jump']]."','".$_SESSION[$def]['btype'][$_GET['jump']]."','".$_SESSION[$def]['stype'][$_GET['jump']]."')");
     }
-    }  
+}  
 
 if(isset($_GET['check'])){
     $_SESSION[$def]['check'][$_GET['jump']]=true;
@@ -73,16 +100,36 @@ if(isset($_GET['uncheck'])){
     ?>
     <form method="get" action="">
         <?php
-        echo "<input type=\"hidden\" name=\"year\" value=\"",$_GET['year'],"\">";
-        echo "<input type=\"hidden\" name=\"month\" value=\"",$_GET['month'],"\">";
-        echo "<input type=\"hidden\" name=\"grade\" value=\"",$_GET['grade'],"\">";
-        echo "<input type=\"hidden\" name=\"subject\" value=\"",$_GET['subject'],"\">";
-        echo "<input type=\"hidden\" name=\"jump\" value=\"",$_GET['jump'],"\">";
+        if(isset($_GET['year'])){
+            echo "<input type=\"hidden\" name=\"year\" value=\"",$_GET['year'],"\">";
+        }
+        if(isset($_GET['month'])){
+            echo "<input type=\"hidden\" name=\"month\" value=\"",$_GET['month'],"\">";
+        }
+        if(isset($_GET['grade'])){
+            echo "<input type=\"hidden\" name=\"grade\" value=\"",$_GET['grade'],"\">";
+        }
+        if(isset($_GET['subject'])){
+            echo "<input type=\"hidden\" name=\"subject\" value=\"",$_GET['subject'],"\">";
+        }
+        if(isset($_GET['jump'])){
+            echo "<input type=\"hidden\" name=\"jump\" value=\"",$_GET['jump'],"\">";
+        }
+        if(isset($_GET['btype'])){
+            echo "<input type=\"hidden\" name=\"btype\" value=\"",$_GET['btype'],"\">";
+        }
+        if(isset($_GET['stype'])){
+            echo "<input type=\"hidden\" name=\"stype\" value=\"",$_GET['stype'],"\">";
+        }
         ?>
         <div id="title">
             <div>
                 <?php
-                echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'];
+                if(isset($_GET['year'])&&isset($_GET['month'])&&isset($_GET['grade'])&&isset($_GET['subject'])){
+                    echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'];
+                }else if(isset($_GET['subject'])&&isset($_GET['btype'])&&isset($_GET['stype'])){
+                    echo $_GET['subject']," ",$_GET['btype']," ",$_GET['stype'];
+                }
                 ?>
             </div>
         </div>
@@ -99,7 +146,7 @@ if(isset($_GET['uncheck'])){
             <div>
                 <?php
             require_once('cnn.php');
-            $result = mysqli_query($conn, "SELECT * FROM list".$select." and num=".$_GET['jump']);
+            $result = mysqli_query($conn, "SELECT * FROM list".$select." and num=".$_SESSION[$def]['num'][$_GET['jump']]);
             while($row = $result->fetch_assoc()) {
                 $question=$row["question"];
                 $example=$row["example"];
@@ -140,7 +187,7 @@ if(isset($_GET['uncheck'])){
                 echo "<div class=\"question\">",$_GET['jump'],". ","$question</div>";
             }
                 for($i=1;$i<=5;$i++){
-                    if(isset($_SESSION[$def]['check'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true&&$_SESSION[$def]['correct'][$_GET['jump']]==$i&&$_SESSION[$def]['answer'][$_GET['jump']]==$_SESSION[$def]['correct'][$_GET['jump']]){
+                    if(isset($_SESSION[$def]['check'][$_GET['jump']])&&isset($_SESSION[$def]['answer'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true&&$_SESSION[$def]['correct'][$_GET['jump']]==$i&&$_SESSION[$def]['answer'][$_GET['jump']]==$_SESSION[$def]['correct'][$_GET['jump']]){
                         echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" checked=\"checked\" id=\"$i\" class=\"check\"><label for = \"$i\">&nbsp;",${"select".$i},"</label>&nbsp;&nbsp;<br>";
                     }else if(isset($_SESSION[$def]['check'][$_GET['jump']])&&$_SESSION[$def]['check'][$_GET['jump']]==true&&$_SESSION[$def]['correct'][$_GET['jump']]==$i){
                         echo "<input type=\"radio\" name=\"$def",$_GET['jump'],"\" value=\"$i\" id=\"$i\" class=\"check\"><label for = \"$i\">&nbsp;",${"select".$i},"</label>&nbsp;&nbsp;<br>";
