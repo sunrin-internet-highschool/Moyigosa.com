@@ -32,7 +32,20 @@ while($row = $result->fetch_assoc()){
     $s_num[$i]=$row["num"];
     $i++;
 }
-
+$i=0;
+/*
+$result = mysqli_query($conn, "SELECT distinct bigtype FROM list");
+while($row = $result->fetch_assoc()){
+    $s_btype[$i]=$row["bigtype"];
+    $i++;
+}
+$i=0;
+$result = mysqli_query($conn, "SELECT distinct smalltype FROM list");
+while($row = $result->fetch_assoc()){
+    $s_stype[$i]=$row["smalltype"];
+    $i++;
+}
+*/
 ?>
 <html>
 
@@ -108,8 +121,6 @@ while($row = $result->fetch_assoc()){
             $say.="&&subject=\"".$_GET['subject']."\"";
         }
         $result = mysqli_query($conn, ("select distinct year,month,grade,subject from list where year is not null ".$say));
-        ?>
-        <?php
         while($row = $result->fetch_assoc()) {
             $count=0;
             $per=0;

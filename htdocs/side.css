@@ -23,8 +23,7 @@
 #trashcan{
     z-index: 220;
     bottom:20px;
-    right:465px;
-    position:absolute;
+    position:fixed;
 }
 
 

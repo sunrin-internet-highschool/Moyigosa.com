@@ -1,5 +1,3 @@
-<?php
-?>
 <link rel="stylesheet" type="text/css" href="/side.css">
 
 <head>
@@ -29,7 +27,7 @@
         <img src="/picture/linemenu/xicon.png" width="47px" height="47px" class="close">
     </div>
     <div id="side_middle">
-        <form method="get" action="">
+        <form method="get" action="" id="side_submit">
            <input type="hidden" name="delete" class="delete" value="">
             <?php
             if(isset($_GET['year']))
@@ -95,7 +93,7 @@
                 
                 echo "<div>";
                 echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$_SESSION[$tag]['jump'],"\">";
-                echo "<div class=\"side_element\" ><span>$year","년 ","$month","월 ","$grade","학년"," $subject</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\"></a></div>";
+                echo "<div class=\"side_element\" ><span>$year","년 ","$month","월 ","$grade","학년"," $subject</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\" value=\"$year$month$grade$subject\"></a></div>";
                 echo "</a>";
                 echo "<div class=\"omr\" style=\"display:none\">";
                 for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
@@ -142,7 +140,7 @@
         </form>
     </div>
 </div>
-<img src="/picture/linemenu/delete.png" id="trashcan" width="auto" height="250px">
+<img src="/picture/linemenu/delete.png" id="trashcan" width="auto" height="250px" style="left:-200px;">
 <div id="background" style="display:none">
 </div>
 
