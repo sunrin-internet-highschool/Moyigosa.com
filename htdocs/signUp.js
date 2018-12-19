@@ -1,11 +1,16 @@
 function id_check(obj){
-    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
+    var getCheck= RegExp(/^[a-zA-Z]{1,20}$/);
+    var getNumCheck= RegExp(/^[0-9]+$/);
     if(obj.value.length>20){
         $(".id_text").css({'color':'red'});
     }
     
+    if(getNumCheck.test($(".id").val())){
+        $(".id_text").css({'color':'red'});
+    }
+    
     else if(obj.value.length>0 && obj.value.length<=20){
-        if(!getCheck.test($(".id").val())){
+        if(!getCheck.test($(".id").val()) && getNumCheck.test($(".id").val())){
             $(".id_text").css({'color':'red'});
         }
         else if(getCheck.test($(".id").val())){
@@ -49,9 +54,11 @@ function password_check(obj){
     
     if(pw != "" && pw_r != ""){
         if(pw==pw_r){
+            $(".pw_r_check").html("(영문 숫자 조합 20자 이하)");
             $(".pw_r_text").css({'color':'green'});
         }
         else{
+            $(".pw_r_check").html("(비밀번호와 일치하지 않습니다.)");
             $(".pw_r_text").css({'color':'red'});
         }
     }           
@@ -103,17 +110,17 @@ function email_check(obj){
 }
         
 function name_check(obj){
-    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
-    
+    var getCheck= RegExp(/^[a-zA-Z]{1,20}$/);
+    var getName = RegExp(/[가-힣]+$/);
     if(obj.value.length>20){
         $(".name_text").css({'color':'red'});
     }
     
     if(obj.value.length>0 && obj.value.length<=20){
-        if(!getCheck.test($(".name").val())){
+        if(!getCheck.test($(".name").val()) && !getName.test($(".name").val())){
             $(".name_text").css({'color':'red'});
         }
-        else if(getCheck.test($(".name").val())){
+        else if(getCheck.test($(".name").val()) || getName.test($(".name").val())){
             $(".name_text").css({'color':'green'});
         }
     }
@@ -124,8 +131,21 @@ function name_check(obj){
 
 function Login(){
     var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+    var getNumCheck = RegExp(/^[0-9]+$/);
     var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
-    //var getName= RegExp(/^[가-힣]+$/);
+    var getNameCheck= RegExp(/^[a-zA-Z]{1,20}$/);
+    var getName= RegExp(/^[가-힣]+$/);
+    if(!getNameCheck.test($(".id").val())){
+        $(".id").val("");
+        $(".id").focus();
+        return false;
+    }
+    
+    if(getNumCheck.test($(".id").val())){
+        $(".id").val("");
+        $(".id").focus();
+        return false;
+    }    
         
     if($(".id").val() == ""){
         $(".id").focus();
@@ -187,7 +207,7 @@ function Login(){
         return false;
     }
       
-    if(!getCheck.test($(".name").val())){
+    if(!getName.test($(".name").val()) && !getNameCheck.test($(".name").val())){
         $(".name").val("");
         $(".name").focus();
         return false;
