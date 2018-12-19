@@ -1,1 +1,1 @@
-CREATE TABLE list(id int primary key auto_increment,num INT, question TEXT NOT NULL, example TEXT, select1 TEXT, select2 TEXT, select3 TEXT, select4 TEXT, select5 TEXT, sound TEXT, picture TEXT, correct INT, year INT,month INT, subject VARCHAR(11), grade INT);
+CREATE TABLE list(id int primary key auto_increment,num INT, question TEXT NOT NULL, example TEXT, select1 TEXT, select2 TEXT, select3 TEXT, select4 TEXT, select5 TEXT, sound TEXT, picture TEXT, correct INT, hsj TEXT, bigtype VARCHAR(20), smalltype TEXT, year INT,month INT, subject VARCHAR(11), grade INT);
