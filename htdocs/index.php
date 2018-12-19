@@ -44,8 +44,6 @@ while($row = $result->fetch_assoc()){
     }
     $i++;
 }
-
-
 ?>
 <html>
 
@@ -120,7 +118,7 @@ while($row = $result->fetch_assoc()){
                 </select><br>
                 <?php
                 for($i=0;!empty($s_subject[$i]);$i++){
-                    echo "<select name=\"s_btype\">";
+                    echo "<select name=\"btype\">";
                     echo "<option>대분류</option>";
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
                         echo "<option value=\"",$s_btype[$s_subject[$i]][$i1],"\">",$s_btype[$s_subject[$i]][$i1],"</option>";
@@ -129,7 +127,7 @@ while($row = $result->fetch_assoc()){
                 }
                 for($i=0;!empty($s_subject[$i]);$i++){
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
-                    echo "<select name=\"s_stype\">";
+                    echo "<select name=\"stype\">";
                     echo "<option>소분류</option>";
                         for($i11=0;!empty($s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]);$i11++){
                             echo "<option value=\"",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"\">",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"</option>";
@@ -144,6 +142,8 @@ while($row = $result->fetch_assoc()){
     </div>
     <div id="bottom">
         <?php
+        if(!isset($_GET['stype'])&&!isset($_GET['btype'])){
+            
         require_once('cnn.php');
             $say=null;
         if(isset($_GET['year'])&&"년도"!=$_GET['year']){
@@ -199,6 +199,63 @@ while($row = $result->fetch_assoc()){
             echo "</div>";
             echo "</div>";
             echo "</a>";
+        }
+            
+        }else{
+            
+        require_once('cnn.php');
+        $say=null;
+        if(isset($_GET['btype'])&&"대분류"!=$_GET['btype']){
+            $say.="&&bigtype=\"".$_GET['btype']."\"";
+        }
+        if(isset($_GET['stype'])&&"소분류"!=$_GET['stype']){
+            $say.="&&smalltype=\"".$_GET['stype']."\"";
+        }
+        if(isset($_GET['subject'])&&"과목"!=$_GET['subject']){
+            $say.="&&subject=\"".$_GET['subject']."\"";
+        }
+        $result = mysqli_query($conn, ("select distinct subject, bigtype, smalltype from list where year is not null ".$say));
+        while($row = $result->fetch_assoc()) {
+            $count=0;
+            $per=0;
+            $stype=$row['smalltype'];
+            $btype=$row['bigtype'];
+            $subject=$row['subject'];
+            $def=$subject.$btype.$stype;
+                    
+            $result2 = mysqli_query($conn,"select count(num) from list where subject='$subject' and bigtype='$btype' and smalltype='$stype'");
+            while($row2 = $result2->fetch_assoc()) {
+                $maxNum=$row2['count(num)'];
+            }
+                    
+            for($i=1;$i<=$maxNum;$i++){
+                if(isset($_SESSION[$def]['answer'][$i])&&$_SESSION[$def]['answer'][$i]>=1&&$_SESSION[$def]['answer'][$i]<=5){
+                    $count++;
+                }
+            }
+                    
+            if(isset($_SESSION['id'])){
+                $result3 = mysqli_query($conn,"select count(answer) from ".$_SESSION['id']." where subject='$subject' and bigtype='$btype' and smalltype='$stype'");
+                while($row3 = $result3->fetch_assoc()) {
+                    $count=$row3['count(answer)'];
+                }
+            }
+            
+            if($count){
+                $per=$count/$maxNum*100;
+            }
+            echo "<a href=\"/solve.php/?btype=$btype&stype=$stype&subject=$subject&jump=1\" target=\"_self\" class=\"href\">";
+            echo "<div class=\"element\">";
+            echo "<span>";
+            echo $subject," ",$btype," ",$stype;
+            echo "</span>";
+            echo "<div id=\"bar\">";
+            echo "$count/$maxNum","&nbsp;<div class=\"background\"><div class=\"bar\" style=\"width:",$per,"%;\"></div></div>";
+            echo "</div>";
+            echo "</div>";
+            echo "</a>";
+        }
+            
         }
         ?>
     </div>
