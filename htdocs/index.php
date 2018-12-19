@@ -33,7 +33,7 @@ while($row = $result->fetch_assoc()){
     $i1=0;
     $result1 = mysqli_query($conn, "SELECT distinct bigtype FROM list where subject='".$s_subject[$i]."'");
     while($row1 = $result1->fetch_assoc()){
-        $s_btype[$s_subject[$i]][$i1]=$row1["bigtype"];\
+        $s_btype[$s_subject[$i]][$i1]=$row1["bigtype"];
         $i11=0;
         $result11 = mysqli_query($conn, "SELECT distinct smalltype FROM list where bigtype='".$s_btype[$s_subject[$i]][$i1]."'");
         while($row11 = $result11->fetch_assoc()){
