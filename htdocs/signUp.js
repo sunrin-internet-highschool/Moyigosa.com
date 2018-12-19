@@ -1,27 +1,34 @@
 function id_check(obj){
-    var getCheck= RegExp(/^[a-zA-Z]{1,20}$/);
+    var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
     var getNumCheck= RegExp(/^[0-9]+$/);
+    
+    
+    if(obj.value.length==0 && $(".id").focus()){
+        $(".id_text").css({'color':'red'});
+    }
+    
     if(obj.value.length>20){
+        $(".id_text").css({'color':'red'})}
+    
+    if(getNumCheck.test(obj.value[0])){
         $(".id_text").css({'color':'red'});
     }
-    
-    if(getNumCheck.test($(".id").val())){
-        $(".id_text").css({'color':'red'});
-    }
-    
-    else if(obj.value.length>0 && obj.value.length<=20){
-        if(!getCheck.test($(".id").val()) && getNumCheck.test($(".id").val())){
+    else{    
+        if(!getCheck.test($(".id").val())){
             $(".id_text").css({'color':'red'});
         }
-        else if(getCheck.test($(".id").val())){
-            $(".id_text").css({'color':'green'});  
-        }
-    }
-    
-    else if(obj.value.length==0 && $(".id").focus()){
-        $(".id_text").css({'color':'red'});
+        
+        else if(obj.value.length>0 && obj.value.length<=20){
+            if(!getCheck.test($(".id").val())){
+                $(".id_text").css({'color':'red'});
+            }
+            else if(getCheck.test($(".id").val())){
+                $(".id_text").css({'color':'green'});  
+            }
+        }   
     }
 }
+
 
 function password_check(obj){
     var pw=$(".pw").val();
@@ -70,21 +77,26 @@ function password_check(obj){
 }
         
 function email_check(obj){
-    var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-    
+    var getMail = RegExp(/^([\w-\.]+)@((\[[0-9]{1,20}\.[0-9]{1,20}\.[0-9]{1,20}\.)|(([\w-]+\.)+))([a-zA-Z]{1,20}|[0-9]{1,20})(\]?)$/);
+    var getNumCheck= RegExp(/^[0-9]+$/);
     if(obj.value.length>20){
         $(".email_text").css({'color':'red'});
     }
     
-    else if(obj.value.length>0 && obj.value.length<=20){
-        if(!getMail.test($(".email").val())){
-            $(".email_text").css({'color':'red'});
-        }
-        else if(getMail.test($(".email").val())){
-            $(".email_text").css({'color':'green'});
+    if(getNumCheck.test(obj.value[0])){
+        $(".email_text").css({'color':'red'});
+    }
+    else{
+        if(obj.value.length>0 && obj.value.length<=20){
+            if(!getMail.test($(".email").val())){
+                $(".email_text").css({'color':'red'});
+            }
+            else if(getMail.test($(".email").val())){
+                $(".email_text").css({'color':'green'});
+            }
         }
     }
-    else if(obj.value.length==0 && $(".email").focus()){
+    if(obj.value.length==0 && $(".email").focus()){
         $(".email_text").css({'color':'red'});
     }
 }
@@ -130,7 +142,7 @@ function name_check(obj){
 }
 
 function Login(){
-    var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+    var getMail = RegExp(/^([\w-\.]+)@((\[[0-9]{1,20}\.[0-9]{1,20}\.[0-9]{1,20}\.)|(([\w-]+\.)+))([a-zA-Z]{1,20}|[0-9]{1,20})(\]?)$/);
     var getNumCheck = RegExp(/^[0-9]+$/);
     var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
     var getNameCheck= RegExp(/^[a-zA-Z]{1,20}$/);
@@ -147,6 +159,18 @@ function Login(){
         return false;
     }    
         
+    if(getNumCheck.test($(".id").val()[0])){
+        $(".id").val("");
+        $(".id").focus();
+        return false;
+    }
+    
+    if(getNumCheck.test($(".email").val()[0])){
+        $(".email").val("");
+        $(".email").focus();
+        return false;
+    }
+    
     if($(".id").val() == ""){
         $(".id").focus();
         return false;
