@@ -12,7 +12,7 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
     }
     if(empty($id)){
         mysqli_query($conn, "insert into users values('".$_POST['id']."','".$_POST['pw']."','".$_POST['name']."','".$_POST['email']."','".$_POST['nick']."')");
-        mysqli_query($conn, "create table ".$_POST['id']."(num int not null, answer int,year int not null, month int not null, grade int not null,subject varchar(11) not null)");
+        mysqli_query($conn, "create table ".$_POST['id']."(num int, answer int,year int, month int, grade int,subject varchar(11),bigtype text,smalltype text)");
         echo"<script>location.href=\"/\";</script>";
         exit();
     }   
