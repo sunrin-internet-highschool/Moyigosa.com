@@ -118,7 +118,7 @@ while($row = $result->fetch_assoc()){
                 </select><br>
                 <?php
                 for($i=0;!empty($s_subject[$i]);$i++){
-                    echo "<select name=\"btype\">";
+                    echo "<select name=\"btype\" class=\"".$s_subject[$i]."\">";
                     echo "<option>대분류</option>";
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
                         echo "<option value=\"",$s_btype[$s_subject[$i]][$i1],"\">",$s_btype[$s_subject[$i]][$i1],"</option>";
@@ -127,7 +127,7 @@ while($row = $result->fetch_assoc()){
                 }
                 for($i=0;!empty($s_subject[$i]);$i++){
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
-                    echo "<select name=\"stype\">";
+                    echo "<select name=\"stype\" class=\"".$s_btype[$s_subject[$i]][$i1]."\">";
                     echo "<option>소분류</option>";
                         for($i11=0;!empty($s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]);$i11++){
                             echo "<option value=\"",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"\">",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"</option>";
