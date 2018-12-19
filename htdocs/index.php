@@ -53,6 +53,7 @@ while($row = $result->fetch_assoc()){
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/index.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/index.js"></script>
 </head>
 
@@ -106,9 +107,9 @@ while($row = $result->fetch_assoc()){
                 <input type="submit" value="검색" class="submit">
             </form>
         </div>
-        <div class="search_type">
+        <div class="search_type" style="display:none;">
             <form action="" method="get">
-                <select name="subject">
+                <select name="subject" id="sub" onchange="SelectCh(this)">
                     <option>과목</option>
                     <?php
                     for($i=0;!empty($s_subject[$i]);$i++){
@@ -118,16 +119,16 @@ while($row = $result->fetch_assoc()){
                 </select><br>
                 <?php
                 for($i=0;!empty($s_subject[$i]);$i++){
-                    echo "<select name=\"btype\" class=\"".$s_subject[$i]."\">";
+                    echo "<select name=\"btype\" id=\"bsub\" value=\"".$s_subject[$i]."\" style=\"display:none\" onchange=\"SelectBig(this)\">";
                     echo "<option>대분류</option>";
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
-                        echo "<option value=\"",$s_btype[$s_subject[$i]][$i1],"\">",$s_btype[$s_subject[$i]][$i1],"</option>";
+                        echo "<option value=\"",$s_btype[$s_subject[$i]][$i1],"\" >",$s_btype[$s_subject[$i]][$i1],"</option>";
                     }
                     echo "</select><br>";
                 }
                 for($i=0;!empty($s_subject[$i]);$i++){
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
-                    echo "<select name=\"stype\" class=\"".$s_btype[$s_subject[$i]][$i1]."\">";
+                    echo "<select name=\"stype\" id=\"ssub\" style=\"display: none\" value=\"".$s_btype[$s_subject[$i]][$i1]."\" onchange=\"SelectSmall(this)\">";
                     echo "<option>소분류</option>";
                         for($i11=0;!empty($s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]);$i11++){
                             echo "<option value=\"",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"\">",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"</option>";
@@ -259,6 +260,11 @@ while($row = $result->fetch_assoc()){
         }
         ?>
     </div>
+    <form method="get" action="" id="hidden">
+        <input type="hidden" id="btype" value="대분류" name="btype">
+        <input type="hidden" id="stype" value="소분류" name="stype">
+        <input type="hidden" id="subject" value="과목" name="subject">
+    </form>
 </body>
 
 </html>
