@@ -1,8 +1,8 @@
 create database test;
 use test;
 source create_table.txt;
-source 1eng_mun.txt;
-source 1eng_mun.txt;
+source 1eng_201803.txt;
+source 1eng_201809.txt;
 
 #source 1eng_mun_201803.txt;
 #source 1eng_mun_201809.txt;
