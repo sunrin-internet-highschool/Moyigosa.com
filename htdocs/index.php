@@ -14,38 +14,38 @@ while($row = $result->fetch_assoc()) {
     $s_grade[$i]=$row["grade"];
     $i++;
 }
-    $i=0;
+$i=0;
 $result = mysqli_query($conn, "SELECT distinct month FROM list");
 while($row = $result->fetch_assoc()) {
     $s_month[$i]=$row["month"];
     $i++;
 }
-        $i=0;
-$result = mysqli_query($conn, "SELECT distinct subject FROM list");
-while($row = $result->fetch_assoc()) {
-    $s_subject[$i]=$row["subject"];
-    $i++;
-}
 $i=0;
 $result = mysqli_query($conn, "SELECT distinct num FROM list");
-while($row = $result->fetch_assoc()){
+while($row = $result->fetch_assoc()) {
     $s_num[$i]=$row["num"];
     $i++;
 }
 $i=0;
-/*
-$result = mysqli_query($conn, "SELECT distinct bigtype FROM list");
+$result = mysqli_query($conn, "SELECT distinct subject FROM list");
 while($row = $result->fetch_assoc()){
-    $s_btype[$i]=$row["bigtype"];
+    $s_subject[$i]=$row["subject"];
+    $i1=0;
+    $result1 = mysqli_query($conn, "SELECT distinct bigtype FROM list where subject='".$s_subject[$i]."'");
+    while($row1 = $result1->fetch_assoc()){
+        $s_btype[$s_subject[$i]][$i1]=$row1["bigtype"];\
+        $i11=0;
+        $result11 = mysqli_query($conn, "SELECT distinct smalltype FROM list where bigtype='".$s_btype[$s_subject[$i]][$i1]."'");
+        while($row11 = $result11->fetch_assoc()){
+            $s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]=$row11["smalltype"];
+            $i11++;
+        }
+        $i1++;
+    }
     $i++;
 }
-$i=0;
-$result = mysqli_query($conn, "SELECT distinct smalltype FROM list");
-while($row = $result->fetch_assoc()){
-    $s_stype[$i]=$row["smalltype"];
-    $i++;
-}
-*/
+
+
 ?>
 <html>
 
@@ -68,7 +68,12 @@ while($row = $result->fetch_assoc()){
             <span>검색조건</span>
             <img src="/picture/main/down.png" width="49px" height="28px">
         </div>
-        <div class="search">
+        <div class="search_option">
+                <div class="collection">문제집별</div>
+                <div class="type">분류별</div>
+                <div class="search_bar"></div>
+        </div>
+        <div class="search_collection">
             <form action="" method="get">
                 <select name="grade">
                     <option>학년</option>
@@ -100,6 +105,39 @@ while($row = $result->fetch_assoc()){
                     }
                 ?>
                 </select><br>
+                <input type="submit" value="검색" class="submit">
+            </form>
+        </div>
+        <div class="search_type">
+            <form action="" method="get">
+                <select name="subject">
+                    <option>과목</option>
+                    <?php
+                    for($i=0;!empty($s_subject[$i]);$i++){
+                        echo "<option value=\"",$s_subject[$i],"\">",$s_subject[$i],"</option>";
+                    }
+                    ?>
+                </select><br>
+                <?php
+                for($i=0;!empty($s_subject[$i]);$i++){
+                    echo "<select name=\"s_btype\">";
+                    echo "<option>대분류</option>";
+                    for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
+                        echo "<option value=\"",$s_btype[$s_subject[$i]][$i1],"\">",$s_btype[$s_subject[$i]][$i1],"</option>";
+                    }
+                    echo "</select><br>";
+                }
+                for($i=0;!empty($s_subject[$i]);$i++){
+                    for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
+                    echo "<select name=\"s_stype\">";
+                    echo "<option>소분류</option>";
+                        for($i11=0;!empty($s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]);$i11++){
+                            echo "<option value=\"",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"\">",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"</option>";
+                        }
+                    echo "</select><br>";
+                    }
+                }
+                ?>
                 <input type="submit" value="검색" class="submit">
             </form>
         </div>
