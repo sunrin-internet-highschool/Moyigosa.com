@@ -16,6 +16,7 @@ if(isset($_GET['delete'])){
             <?php
             if(isset($_POST['logout'])){
                 session_unset();
+                echo "<script>location.href=\"/\";</script>";
             }
             if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
                 echo "<a href=\"user.php\" target=\"_self\"><img src=\"/picture/linemenu/user.png\" width=\"55px\" height=\"55px\"></a>";
@@ -81,8 +82,8 @@ if(isset($_GET['delete'])){
                                 $btype=$row1['bigtype'];
                                 $stype=$row1['smalltype'];
                             }
-                            mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$i." and year=".$year." and month=".$month." and grade=".$grade." and subject='".$subject."' and bigtype='$btype' and smalltype='$stype'");
-                            mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$i.",".$_GET[$tag.$i].','.$year.','.$month.','.$grade.",'".$subject."','$btype','$stype')");
+                            mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_SESSION[$tag]['num'][$i]." and year=".$year." and month=".$month." and grade=".$grade." and subject='".$subject."' and bigtype='$btype' and smalltype='$stype'");
+                            mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_SESSION[$tag]['num'][$i].",".$_GET[$tag.$i].','.$year.','.$month.','.$grade.",'".$subject."','$btype','$stype')");
                         }
                     }
                 }
@@ -98,6 +99,16 @@ if(isset($_GET['delete'])){
                         $_SESSION[$tag]['check'][$i]=false;
                     }
                 }
+                
+                if(isset($_SESSION['id'])){
+                    for($i2=1;$i2<=$_SESSION[$tag]['max'];$i2++){
+    $result2 = mysqli_query($conn, "SELECT answer FROM ".$_SESSION['id']." where year=".$_SESSION[$tag]['year'][$i2]." and month=".$_SESSION[$tag]['month'][$i2]." and grade=".$_SESSION[$tag]['grade'][$i2]." and subject='".$_SESSION[$tag]['subject'][$i2]."' and smalltype='".$_SESSION[$tag]['stype'][$i2]."' and bigtype='".$_SESSION[$tag]['btype'][$i2]."' and num=".$_SESSION[$tag]['num'][$i2]);
+    while($row2 = $result2->fetch_assoc()) {
+        $_SESSION[$tag]['answer'][$i2]=$row2['answer'];
+    }
+                        
+                    }
+}//$COOKIE['answer'.$def][$i] = 계정 정답 불러오기
                 
                 echo "<div>";
                 echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$_SESSION[$tag]['jump'],"\">";
@@ -156,9 +167,9 @@ if(isset($_GET['delete'])){
                     if(isset($_GET[$tag.$i])&&!empty($_GET[$tag.$i])){
                         $_SESSION[$tag]['answer'][$i]=$_GET[$tag.$i];
                         if(isset($_SESSION['id'])){
-                            $year=$_SESSION[$tag]['year'][$_SESSION[$tag]['num'][$i]];
-                            $month=$_SESSION[$tag]['month'][$_SESSION[$tag]['num'][$i]];
-                            $grade=$_SESSION[$tag]['grade'][$_SESSION[$tag]['num'][$i]];
+                            $year=$_SESSION[$tag]['year'][$i];
+                            $month=$_SESSION[$tag]['month'][$i];
+                            $grade=$_SESSION[$tag]['grade'][$i];
                             mysqli_query($conn, "delete from ".$_SESSION['id']." where num=".$_SESSION[$tag]['num'][$i]." and year=".$year." and month=".$month." and grade=".$grade." and subject='".$subject."' and bigtype='$btype' and smalltype='$stype'");
                             mysqli_query($conn, "insert into ".$_SESSION['id']." values(".$_SESSION[$tag]['num'][$i].",".$_GET[$tag.$i].','.$year.','.$month.','.$grade.",'".$subject."','$btype','$stype')");
                         }

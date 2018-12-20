@@ -7,6 +7,7 @@ session_start();
         $result = mysqli_query($conn, "SELECT * from users where id='".$_POST['id']."' and password='".$_POST['pw']."'");
         $temp=false;
         while($row = $result->fetch_assoc()) {
+            session_unset();
             $_SESSION['id']=$row['id'];
             $_SESSION['pw']=$row['password'];
             $_SESSION['email']=$row['email'];

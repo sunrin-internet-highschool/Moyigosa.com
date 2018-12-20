@@ -1,9 +1,13 @@
 <?php
+session_start();
+if(isset($_POST['logout'])){
+                session_unset();
+                echo "<script>location.href=\"/\";</script>";
+            }
 if((!isset($_GET['year'])||!isset($_GET['month'])||!isset($_GET['grade'])||!isset($_GET['subject'])||!isset($_GET['jump']))&&(!isset($_GET['btype'])||!isset($_GET['stype'])||!isset($_GET['subject']))){
     include("error.php");
     die();
 }
-session_start();
 if(isset($_GET['year'])&&isset($_GET['month'])&&isset($_GET['grade'])&&isset($_GET['subject'])){
     $select=" WHERE grade=".$_GET['grade']." AND year=".$_GET['year']." AND month=".$_GET['month']." AND subject='".$_GET['subject']."'";
     $def=$_GET['year'].$_GET['month'].$_GET['grade'].$_GET['subject'];
@@ -22,24 +26,9 @@ if(isset($_GET['delete'])&&$def==$_GET['delete']){
 
 $_SESSION[$def]['jump']=$_GET['jump'];
 require_once('cnn.php');
-if(isset($_SESSION['id'])){
-    $i=1;
-    $result = mysqli_query($conn, "SELECT answer,num FROM ".$_SESSION['id'].$select);
-    while($row = $result->fetch_assoc()) {
-        $_SESSION[$def]['answer'][$i]=$row['answer'];
-        $i++;
-    }
-}//$COOKIE['answer'.$def][$i] = 계정 정답 불러오기
 
 $i=1;
-$result = mysqli_query($conn, "SELECT correct FROM list".$select);
-while($row = $result->fetch_assoc()) {
-    $_SESSION[$def]['correct'][$i]=$row['correct'];
-    $i++;
-}//$COOKIE['correct'.$def][$i] = 문제집 정답 불러오기
-
-$i=1;
-$result = mysqli_query($conn, "SELECT year,month,grade,subject,bigtype,smalltype,num FROM list".$select);
+$result = mysqli_query($conn, "SELECT year,month,grade,subject,bigtype,smalltype,num,correct FROM list".$select);
 while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['year'][$i]=$row['year'];
     $_SESSION[$def]['month'][$i]=$row['month'];
@@ -48,6 +37,18 @@ while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['btype'][$i]=$row['bigtype'];
     $_SESSION[$def]['stype'][$i]=$row['smalltype'];
     $_SESSION[$def]['num'][$i]=$row['num'];
+    $_SESSION[$def]['correct'][$i]=$row['correct'];
+    /*
+    echo $_SESSION[$def]['year'][$i],"=year<br>";
+    echo $_SESSION[$def]['month'][$i],"=month<br>";
+    echo $_SESSION[$def]['grade'][$i],"=grade<br>";
+    echo $_SESSION[$def]['subject'][$i],"=subject<br>";
+    echo $_SESSION[$def]['btype'][$i],"=btype<br>";
+    echo $_SESSION[$def]['stype'][$i],"=stype<br>";
+    echo $_SESSION[$def]['num'][$i],"=num<br>";
+    echo $_SESSION[$def]['correct'][$i],"=correct<br>";
+    echo "-------------------------------<br>";
+    */
     $i++;
 }
 
@@ -55,6 +56,15 @@ $result = mysqli_query($conn, "SELECT count(num) FROM list".$select);
 while($row = $result->fetch_assoc()) {
     $_SESSION[$def]['max']=$row['count(num)'];
 }//$maxNum = 문제집 문제 갯수
+
+if(isset($_SESSION['id'])){
+    for($i=1;$i<=$_SESSION[$def]['max'];$i++){
+    $result = mysqli_query($conn, "SELECT answer FROM ".$_SESSION['id']." where year=".$_SESSION[$def]['year'][$i]." and month=".$_SESSION[$def]['month'][$i]." and grade=".$_SESSION[$def]['grade'][$i]." and subject='".$_SESSION[$def]['subject'][$i]."' and smalltype='".$_SESSION[$def]['stype'][$i]."' and bigtype='".$_SESSION[$def]['btype'][$i]."' and num=".$_SESSION[$def]['num'][$i]);
+    while($row = $result->fetch_assoc()) {
+        $_SESSION[$def]['answer'][$i]=$row['answer'];
+    }
+    }
+}//$COOKIE['answer'.$def][$i] = 계정 정답 불러오기
 
 if(isset($_GET[$def.$_GET['jump']])&&!empty($_GET[$def.$_GET['jump']])){
         $_SESSION[$def]['answer'][$_GET['jump']]=$_GET[$def.$_GET['jump']];
@@ -128,7 +138,7 @@ if(isset($_GET['uncheck'])){
                 if(isset($_GET['year'])&&isset($_GET['month'])&&isset($_GET['grade'])&&isset($_GET['subject'])){
                     echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'];
                 }else if(isset($_GET['subject'])&&isset($_GET['btype'])&&isset($_GET['stype'])){
-                    echo $_GET['subject']," ",$_GET['btype']," ",$_GET['stype'];
+                    echo $_GET['subject']," ",$_GET['btype']," ",$_GET['stype'],"<br>(".$_SESSION[$def]['year'][$_GET['jump']],"년 ",$_SESSION[$def]['month'][$_GET['jump']],"월 ",$_SESSION[$def]['grade'][$_GET['jump']],"학년 ",$_SESSION[$def]['subject'][$_GET['jump']]," ",$_SESSION[$def]['num'][$_GET['jump']],"번문제)";
                 }
                 ?>
             </div>
@@ -146,7 +156,7 @@ if(isset($_GET['uncheck'])){
             <div>
                 <?php
             require_once('cnn.php');
-            $result = mysqli_query($conn, "SELECT * FROM list".$select." and num=".$_SESSION[$def]['num'][$_GET['jump']]);
+            $result = mysqli_query($conn, "SELECT * FROM list where year=".$_SESSION[$def]['year'][$_GET['jump']]." and month=".$_SESSION[$def]['month'][$_GET['jump']]." and grade=".$_SESSION[$def]['grade'][$_GET['jump']]." and subject='".$_SESSION[$def]['subject'][$_GET['jump']]."' and smalltype='".$_SESSION[$def]['stype'][$_GET['jump']]."' and bigtype='".$_SESSION[$def]['btype'][$_GET['jump']]."' and num=".$_SESSION[$def]['num'][$_GET['jump']]);
             while($row = $result->fetch_assoc()) {
                 $question=$row["question"];
                 $example=$row["example"];
