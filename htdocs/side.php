@@ -19,7 +19,7 @@ if(isset($_GET['delete'])){
                 echo "<script>location.href=\"/\";</script>";
             }
             if(isset($_SESSION['id'])&&isset($_SESSION['pw'])){//로그인 된 상태
-                echo "<a href=\"user.php\" target=\"_self\"><img src=\"/picture/linemenu/user.png\" width=\"55px\" height=\"55px\"></a>";
+                echo "<a href=\"/user.php\" target=\"_self\"><img src=\"/picture/linemenu/user.png\" width=\"55px\" height=\"55px\"></a>";
                 echo "<form action=\"\" method=\"post\">";
                 echo "<input type=\"image\" src=\"/picture/linemenu/logout.png\">";
                 echo "<input type=\"hidden\" name=\"logout\" name=\"logout\">";
