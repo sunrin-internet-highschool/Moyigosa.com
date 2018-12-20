@@ -67,12 +67,12 @@ while($row = $result->fetch_assoc()){
             <span>검색조건</span>
             <img src="/picture/main/down.png" width="49px" height="28px">
         </div>
-        <div class="search_option">
+        <div class="search_option" style="display:none">
                 <div class="collection">문제집별</div>
                 <div class="type">분류별</div>
                 <div class="search_bar"></div>
         </div>
-        <div class="search_collection">
+        <div class="search_collection" style="display:none">
             <form action="" method="get">
                 <select name="grade">
                     <option>학년</option>
@@ -109,7 +109,7 @@ while($row = $result->fetch_assoc()){
         </div>
         <div class="search_type" style="display:none;">
             <form action="" method="get">
-                <select name="subject" id="sub" onchange="SelectCh(this)">
+                <select name="subject" id="sub" onchange="SelectCh(this)" onclick="resetIndex(this)">
                     <option>과목</option>
                     <?php
                     for($i=0;!empty($s_subject[$i]);$i++){
@@ -119,7 +119,7 @@ while($row = $result->fetch_assoc()){
                 </select><br>
                 <?php
                 for($i=0;!empty($s_subject[$i]);$i++){
-                    echo "<select name=\"btype\" id=\"bsub\" value=\"".$s_subject[$i]."\" style=\"display:none\" onchange=\"SelectBig(this)\">";
+                    echo "<select name=\"btype\" id=\"bsub\" value=\"".$s_subject[$i]."\" style=\"display:none\" onchange=\"SelectBig(this)\" onclick=\"resetIndex(this)\">";
                     echo "<option>대분류</option>";
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
                         echo "<option value=\"",$s_btype[$s_subject[$i]][$i1],"\" >",$s_btype[$s_subject[$i]][$i1],"</option>";
@@ -128,7 +128,7 @@ while($row = $result->fetch_assoc()){
                 }
                 for($i=0;!empty($s_subject[$i]);$i++){
                     for($i1=0;!empty($s_btype[$s_subject[$i]][$i1]);$i1++){
-                    echo "<select name=\"stype\" id=\"ssub\" style=\"display: none\" value=\"".$s_btype[$s_subject[$i]][$i1]."\" onchange=\"SelectSmall(this)\">";
+                    echo "<select name=\"stype\" id=\"ssub\" style=\"display: none\" value=\"".$s_btype[$s_subject[$i]][$i1]."\" onchange=\"SelectSmall(this)\" onclick=\"resetIndex(this)\">";
                     echo "<option>소분류</option>";
                         for($i11=0;!empty($s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]);$i11++){
                             echo "<option value=\"",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"\">",$s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11],"</option>";

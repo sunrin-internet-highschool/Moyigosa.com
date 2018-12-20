@@ -2,7 +2,9 @@ $(document).ready(function(){
     $(function(){
         var bk = $("#background");
         var trs = $("#trashcan");
-        var sh = $(".search");
+        var sho = $(".search_option");
+        var shc = $(".search_collection");
+        var sht = $(".search_type");
         var sd = $("#side");
         var trv = 1;
         $("#trashcan").click(function(){
@@ -38,21 +40,10 @@ $(document).ready(function(){
             bk.fadeIn();
         })
         
-        var cnt = 0;
-        $(".search_button").click(function(){
-                if($(".search_button img").attr("src", "/picture/main/down.png") && cnt == 0){
-                $(".search_button img").attr("src", "/picture/search/up.png");
-                sh.slideUp();
-                cnt++;
-            }
-            else if($(".search_button img").attr("src", "/picture/search/up.png")&&cnt == 1){
-                $(".search_button img").attr("src", "/picture/main/down.png");
-                sh.slideDown();
-                cnt=0;
-            }             
-        })
         
-        var chk = 0;
+        
+        
+        var cnt = 0;
         $(".omr_viewer").click(function(event){
            if(trv == 1){
                if(jQuery(this).children('img').attr("src", "/picture/linemenu/plusicon.png") && cnt==0){
