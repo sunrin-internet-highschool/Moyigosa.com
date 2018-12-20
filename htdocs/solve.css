@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Noto+Serif+KR:300&subset=korean');
 @import url('/default.css');
 
+
+
 .view_selection, #top img, #buttons input{
     cursor: pointer;
 }
@@ -78,6 +80,7 @@
 
 .example{
     padding:10px;
+    font-size: 32px;
 }
 
 #selection .selection_title{
@@ -174,25 +177,21 @@
     margin:10px;
 }
 
-@media (min-width:320px){
+@media (max-width:350px){
     #buttons input{
-        width:125px;
+        width:100px;
     }
 }
 
-@media (max-width:375px){
+@media (max-width:424px){
     #buttons input{
-        width:140px;
+        width:135px;
     }
 }
-@media (min-width:425px){
-    #buttons input{
-        width:120px;
-    }
-}
-@media (min-width:768px){
+
+@media (max-width:768px){
     #top{
-        margin-bottom: 70px;
+        margin-bottom: 15px;
     }
     
     #title{
@@ -203,8 +202,8 @@
         border-top: 15px solid #D1D1D1;
     }
     
-    #buttons input{
-        width:100px;
+    #buttons input[type=submit]{
+        width:150px;
     }
     
     #selection{
@@ -213,7 +212,7 @@
     
     #title,#selection,#view,#buttons,#question,#solve{
         margin:0 auto;
-        width:700px;
+        width:100%;
         height: auto;
         background-color: white;
         position: relative;

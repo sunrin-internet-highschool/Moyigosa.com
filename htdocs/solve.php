@@ -98,6 +98,8 @@ if(isset($_GET['uncheck'])){
     <title>
         문제페이지
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <meta name="viewport" content="width=350px, initial-scale=0.5">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/solve.css">

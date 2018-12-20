@@ -21,21 +21,21 @@ while($row = $result->fetch_assoc()) {
     $i++;
 }
 $i=0;
-$result = mysqli_query($conn, "SELECT distinct num FROM list order by num");
+$result = mysqli_query($conn, "SELECT distinct num FROM list");
 while($row = $result->fetch_assoc()) {
     $s_num[$i]=$row["num"];
     $i++;
 }
 $i=0;
-$result = mysqli_query($conn, "SELECT distinct subject FROM list order by subject");
+$result = mysqli_query($conn, "SELECT distinct subject FROM list");
 while($row = $result->fetch_assoc()){
     $s_subject[$i]=$row["subject"];
     $i1=0;
-    $result1 = mysqli_query($conn, "SELECT distinct bigtype FROM list where subject='".$s_subject[$i]."' order by bigtype");
+    $result1 = mysqli_query($conn, "SELECT distinct bigtype FROM list where subject='".$s_subject[$i]."'");
     while($row1 = $result1->fetch_assoc()){
         $s_btype[$s_subject[$i]][$i1]=$row1["bigtype"];
         $i11=0;
-        $result11 = mysqli_query($conn, "SELECT distinct smalltype FROM list where bigtype='".$s_btype[$s_subject[$i]][$i1]."' order by smalltype");
+        $result11 = mysqli_query($conn, "SELECT distinct smalltype FROM list where bigtype='".$s_btype[$s_subject[$i]][$i1]."'");
         while($row11 = $result11->fetch_assoc()){
             $s_stype[$s_subject[$i]][$s_btype[$s_subject[$i]][$i1]][$i11]=$row11["smalltype"];
             $i11++;
@@ -52,7 +52,8 @@ while($row = $result->fetch_assoc()){
         모의고사
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <meta name="viewport" content="width=350px, initial-scale=0.5">
     <link rel="stylesheet" type="text/css" href="/index.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/index.js"></script>
@@ -220,7 +221,7 @@ while($row = $result->fetch_assoc()){
         if(isset($_GET['subject'])&&"과목"!=$_GET['subject']){
             $say.="&&subject=\"".$_GET['subject']."\"";
         }
-        $result = mysqli_query($conn, ("select distinct subject, bigtype, smalltype from list where year is not null ".$say." order by subject asc"));
+        $result = mysqli_query($conn, ("select distinct subject, bigtype, smalltype from list where year is not null ".$say));
         $temp=true;
         while($row = $result->fetch_assoc()) {
             $temp=false;
