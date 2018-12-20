@@ -1,3 +1,9 @@
+$(document).ready(function(){
+    $(".admit").click(function(){
+        $("#error").css("display","none");
+    })
+})
+
 function id_check(obj){
     var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
     var getNumCheck= RegExp(/^[0-9]+$/);
