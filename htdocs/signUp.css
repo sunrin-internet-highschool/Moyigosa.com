@@ -102,3 +102,49 @@
     left:156.5px;
     z-index: 100;
 }
+
+@media (min-width:320px){
+    #middle form input{
+        width:150px;
+    }
+}
+
+@media (min-width:375px){
+    #middle form input{
+        width:250px;
+    }
+}
+@media (min-width:425px){
+    #middle form input{
+        width:200px;
+    }
+}
+@media (min-width:768px){
+    #middle form input{
+        width:500px;
+    }
+}
+@media (min-width:1024px){
+    input{
+        width:845px;
+    }
+}
+
+@media (min-width:1440px){
+    input{
+        width:1250px;
+    }
+}
+
+@media (min-width:1800px){
+    input{
+        width:1640px;
+    }
+}
+
+@media (min-width:2560px){
+    input{
+        width:1380px;
+    }
+}
+

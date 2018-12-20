@@ -211,3 +211,96 @@ select{
     font-weight: 400;
     font-size: 100px;
 }
+
+@media (min-width:480px){    
+    select{
+        width: 200px;
+        height:40px;
+    }
+    .submit{
+        width:500px;
+        height:40px;
+    }
+}
+
+@media (min-width:768px){
+    select{
+        width: 248px;
+        height:55px;
+    }
+    #top{
+        margin-bottom: 70px;
+    }
+    #middle{
+        width:650px;
+        margin:30px auto;
+    }
+    #bottom{
+        width:650px;
+        margin:0 auto;
+    }
+}
+
+@media (min-width:1024px){
+    select{
+        width: 260px;
+        height:60px;
+    }
+    #top{
+        margin-bottom: 70px;
+    }
+    #middle{
+        width:930px;
+        margin:30px auto;
+    }
+    #bottom{
+        width:930px;
+        margin:0 auto;
+    }
+}
+
+@media (min-width:1440px){
+    select{
+        width: 270px;
+        height:71px;
+    }
+    #top{
+        margin-bottom: 70px;
+    }
+    #middle{
+        width:1350px;
+        margin:30px auto;
+    }
+    #bottom{
+        width:1350px;
+        margin:0 auto;
+    }
+}
+
+@media (min-width:1800px){
+    #top{
+        margin-bottom: 70px;
+    }
+    #middle{
+        width:1710px;
+        margin:30px auto;
+    }
+    #bottom{
+        width:1710px;
+        margin:0 auto;
+    }
+}
+
+@media (min-width:2560px){
+    #top{
+        margin-bottom: 70px;
+    }
+    #middle{
+        width:2470px;
+        margin:30px auto;
+    }
+    #bottom{
+        width:2470px;
+        margin:0 auto;
+    }
+}

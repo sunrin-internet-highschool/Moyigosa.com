@@ -169,3 +169,118 @@
     font-family: 'Noto Serif KR', serif;
     margin:10px;
 }
+
+@media (min-width:320px){
+    #buttons input{
+        width:125px;
+    }
+}
+
+@media (max-width:375px){
+    #buttons input{
+        width:140px;
+    }
+}
+@media (min-width:425px){
+    #buttons input{
+        width:120px;
+    }
+}
+@media (min-width:768px){
+    #top{
+        margin-bottom: 70px;
+    }
+    
+    #title{
+        border-bottom: 15px solid #D1D1D1;
+    }
+    
+    #buttons{
+        border-top: 15px solid #D1D1D1;
+    }
+    
+    #buttons input{
+        width:100px;
+    }
+    
+    #selection{
+        border-top: 15px solid #D1D1D1;
+    }
+    
+    #title,#selection,#view,#buttons,#question,#solve{
+        margin:0 auto;
+        width:700px;
+        height: auto;
+        background-color: white;
+        position: relative;
+    }
+}
+@media (min-width:1024px){
+    #top{
+        margin-bottom: 70px;
+    }
+    
+    #title{
+        border-bottom: 15px solid #D1D1D1;
+    }
+    
+    #buttons{
+        border-top: 15px solid #D1D1D1;
+    }
+    
+    #buttons input{
+        width:170px;
+    }
+    
+    #title,#selection,#view,#buttons,#question,#solve{
+        margin:0 auto;
+        width:930px;
+        height: auto;
+        background-color: white;
+        position: relative;
+    }
+}
+
+@media (min-width:1440px){
+    #buttons input{
+        width:170px;
+    }
+    
+    #title,#selection,#view,#buttons,#question,#solve{
+        margin:0 auto;
+        width:1350px;
+        height: auto;
+        background-color: white;
+        position: relative;
+    }
+}
+
+@media (min-width:1800px){
+    #buttons input{
+        width:170px;
+    }
+    
+    #title,#selection,#view,#buttons,#question,#solve{
+        margin:0 auto;
+        width:1710px;
+        height: auto;
+        background-color: white;
+        position: relative;
+    }
+}
+
+@media (min-width:2560px){
+    #buttons input{
+        width:190px;
+        
+    }
+    
+    #title,#selection,#view,#buttons,#question,#solve{
+        margin:0 auto;
+        width:2470px;
+        height: auto;
+        background-color: white;
+        position: relative;
+    }
+}
+

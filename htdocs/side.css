@@ -221,3 +221,36 @@
     font-size: 21px;
     margin-top:10px;
 }
+
+@media (min-width:480px){
+    #trashcan{
+        width:120;
+        height:160px;
+    }
+}
+
+@media (min-width:768px){
+    #trashcan{
+        width:150;
+        height:200px;
+    }
+}
+
+@media (min-width:1024px){
+    #trashcan img{
+        width:150;
+        height:200px;
+    }
+}
+
+@media (min-width:1440px){
+    
+}
+
+@media (min-width:1800px){
+    
+}
+
+@media (min-width:2560px){
+    
+}
