@@ -32,7 +32,7 @@ function SelectCh(obj){
         $("select[value="+val+"]").css("display","inline-block");
         //alert($("#bsub").attr('value'));
         //alert(val);
-        sub = selected;    
+        sub = obj.value;  
     }
     
     if(sort != val){
@@ -56,13 +56,13 @@ function SelectBig(obj){
     if(sort != obj.value){
         $("select[value="+obj.value+"]").css("display","inline-block");
         $("select[value="+sort+"]").css("display","none");
-        big = selected;
+        big = obj.value;
     }
 }
 
 function SelectSmall(obj){
-    small = $("#ssub option:selected").val();
-
+    //small = $("#ssub option:selected").val();
+    small = obj.value;
 }
 
 $(document).ready(function(){
