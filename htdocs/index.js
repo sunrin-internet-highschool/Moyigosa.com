@@ -32,7 +32,9 @@ function SelectCh(obj){
         $("select[value="+val+"]").css("display","inline-block");
         //alert($("#bsub").attr('value'));
         //alert(val);
-        sub = obj.value;  
+        sub = obj.value;
+        big="대분류";
+        small="소분류";
     }
     
     if(sort != val){
@@ -56,17 +58,14 @@ function SelectBig(obj){
     if(sort != obj.value){
         $("select[value="+obj.value+"]").css("display","inline-block");
         $("select[value="+sort+"]").css("display","none");
-        if(sub == $("select[value="+obj.value+"]")){
-            big = obj.value;
-        }
+        big = obj.value;  
+        small="소분류";
     }
 }
 
 function SelectSmall(obj){
     //small = $("#ssub option:selected").val();
-    if(big == $("select[value="+obj.value+"]") && "소분류" != $("select[value="+obj.value+"]")){
-            small = obj.value;
-    }
+    small = obj.value;
 }
 
 $(document).ready(function(){
