@@ -147,18 +147,8 @@ function Login(){
     var getCheck= RegExp(/^[a-zA-Z0-9]{1,20}$/);
     var getNameCheck= RegExp(/^[a-zA-Z]{1,20}$/);
     var getName= RegExp(/^[가-힣]+$/);
-    if(!getNameCheck.test($(".id").val())){
-        $(".id").val("");
-        $(".id").focus();
-        return false;
-    }
+    //
     
-    if(getNumCheck.test($(".id").val())){
-        $(".id").val("");
-        $(".id").focus();
-        return false;
-    }    
-        
     if(getNumCheck.test($(".id").val()[0])){
         $(".id").val("");
         $(".id").focus();
@@ -177,6 +167,7 @@ function Login(){
     }
 
     if(!getCheck.test($(".id").val())){
+        alert($(".id").val()[0]);
         $(".id").val("");
         $(".id").focus();
         return false;
