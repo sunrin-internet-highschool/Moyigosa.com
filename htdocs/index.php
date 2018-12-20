@@ -52,6 +52,7 @@ while($row = $result->fetch_assoc()){
         모의고사
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/index.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/index.js"></script>
