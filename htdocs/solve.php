@@ -1,9 +1,10 @@
 <?php
 session_start();
 if(isset($_POST['logout'])){
-                session_unset();
-                echo "<script>location.href=\"/\";</script>";
-            }
+        session_unset();
+        echo "<script>location.href=\"/\";</script>";
+        exit();
+}
 if((!isset($_GET['year'])||!isset($_GET['month'])||!isset($_GET['grade'])||!isset($_GET['subject'])||!isset($_GET['jump']))&&(!isset($_GET['btype'])||!isset($_GET['stype'])||!isset($_GET['subject']))){
     include("error.php");
     die();
@@ -140,7 +141,7 @@ if(isset($_GET['uncheck'])){
                 if(isset($_GET['year'])&&isset($_GET['month'])&&isset($_GET['grade'])&&isset($_GET['subject'])){
                     echo $_GET['year'],"년 ",$_GET['month'],"월 ",$_GET['grade'],"학년 ",$_GET['subject'];
                 }else if(isset($_GET['subject'])&&isset($_GET['btype'])&&isset($_GET['stype'])){
-                    echo $_GET['subject']," ",$_GET['btype']," ",$_GET['stype'],"<br>(".$_SESSION[$def]['year'][$_GET['jump']],"년 ",$_SESSION[$def]['month'][$_GET['jump']],"월 ",$_SESSION[$def]['grade'][$_GET['jump']],"학년 ",$_SESSION[$def]['subject'][$_GET['jump']]," ",$_SESSION[$def]['num'][$_GET['jump']],"번문제)";
+                    echo $_GET['subject']," ",$_GET['btype']," ",$_GET['stype'],"<br><a href=\"/solve.php/?year=".$_SESSION[$def]['year'][$_GET['jump']]."&month=".$_SESSION[$def]['month'][$_GET['jump']]."&grade=".$_SESSION[$def]['grade'][$_GET['jump']]."&subject=".$_SESSION[$def]['subject'][$_GET['jump']]."&jump=1\">(".$_SESSION[$def]['year'][$_GET['jump']],"년 ",$_SESSION[$def]['month'][$_GET['jump']],"월 ",$_SESSION[$def]['grade'][$_GET['jump']],"학년 ",$_SESSION[$def]['subject'][$_GET['jump']]," ",$_SESSION[$def]['num'][$_GET['jump']],"번문제)</a>";
                 }
                 ?>
             </div>
