@@ -78,3 +78,27 @@
     padding-left: 15px;
     margin-bottom: 10px;
 }
+
+
+#error {
+    width: 450px;
+    height: 237px;
+    display: inline-block;
+    position: absolute;
+    top:150px;
+    left:89.5px;
+}
+
+#error .error{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+}
+
+#error .admit{
+    position: absolute;
+    bottom:25px;
+    left:156.5px;
+    z-index: 100;
+}

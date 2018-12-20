@@ -69,6 +69,7 @@ if(isset($_POST['change'])){
                 ?>
                 <input type="submit" value="회원정보수정" name="change">
             </form>
+            
         </div>
         
     </div>

@@ -2,20 +2,20 @@
 session_start();
 require_once ('cnn.php');
 $i=0;
-$sql = "SELECT distinct year FROM list";
+$sql = "SELECT distinct year FROM list order by year";
 $result = mysqli_query($conn, $sql);
 while($row = $result->fetch_assoc()) {
     $s_year[$i]=$row["year"];
     $i++;
 }
 $i=0;
-$result = mysqli_query($conn, "SELECT distinct grade FROM list");
+$result = mysqli_query($conn, "SELECT distinct grade FROM list order by grade");
 while($row = $result->fetch_assoc()) {
     $s_grade[$i]=$row["grade"];
     $i++;
 }
 $i=0;
-$result = mysqli_query($conn, "SELECT distinct month FROM list");
+$result = mysqli_query($conn, "SELECT distinct month FROM list order by month");
 while($row = $result->fetch_assoc()) {
     $s_month[$i]=$row["month"];
     $i++;
@@ -162,7 +162,9 @@ while($row = $result->fetch_assoc()){
             $say.="&&subject=\"".$_GET['subject']."\"";
         }
         $result = mysqli_query($conn, ("select distinct year,month,grade,subject from list where year is not null ".$say));
+            $temp=true;
         while($row = $result->fetch_assoc()) {
+            $temp=false;
             $count=0;
             $per=0;
             $year=$row['year'];
@@ -218,7 +220,9 @@ while($row = $result->fetch_assoc()){
             $say.="&&subject=\"".$_GET['subject']."\"";
         }
         $result = mysqli_query($conn, ("select distinct subject, bigtype, smalltype from list where year is not null ".$say));
+        $temp=true;
         while($row = $result->fetch_assoc()) {
+            $temp=false;
             $count=0;
             $per=0;
             $stype=$row['smalltype'];
@@ -260,6 +264,11 @@ while($row = $result->fetch_assoc()){
         }
             
         }
+        if($temp){
+                echo "<div class=\"element_none\">";
+                echo "아무것도 없습니다!";
+                echo "</div>";
+            }
         ?>
     </div>
     <form method="get" action="" id="hidden">

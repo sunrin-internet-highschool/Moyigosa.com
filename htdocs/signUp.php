@@ -15,7 +15,9 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
         mysqli_query($conn, "create table ".$_POST['id']."(num int, answer int,year int, month int, grade int,subject varchar(11),bigtype text,smalltype text)");
         echo"<script>location.href=\"/\";</script>";
         exit();
-    }   
+    }else{
+        $temp=true;
+    }
 }  
 ?>
 <html>
@@ -54,6 +56,11 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
                 <input type="text" name="name" class="name" onKeyup=name_check(this)><br>
                 <input type="submit" id="submit" value="회원가입">
             </form>
+            <?php
+            if(isset($temp)&&$temp){
+                echo "<div id=\"error\"><img src=\"/picture/signup/error.png\" width=\"450px\" height=\"237px\" class=\"error\"><img src=\"/picture/signup/admit.png\" width=\"137px\" height=\"57px\" class=\"admit\"></div>";
+            }
+            ?>
         </div>
         
     </div>
