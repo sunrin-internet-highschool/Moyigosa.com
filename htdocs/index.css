@@ -232,7 +232,11 @@ select{
 @media (max-width:350px){
 }
 
-@media (min-width:424px){    
+@media (min-width:424px){
+    .element_none{
+        line-height: 8;
+        font-size:40px;
+    }
     select{
         width: 200px;
         height:40px;
@@ -244,6 +248,10 @@ select{
 }
 
 @media (min-width:768px){
+    .element_none{
+        line-height: 8;
+        font-size:60px;
+    }
     select{
         width: 248px;
         height:55px;
@@ -262,6 +270,10 @@ select{
 }
 
 @media (min-width:1024px){
+    .element_none{
+        line-height: 8;
+        font-size:60px;
+    }
     select{
         width: 260px;
         height:60px;
@@ -280,6 +292,10 @@ select{
 }
 
 @media (min-width:1440px){
+    .element_none{
+        line-height: 8;
+        font-size:60px;
+    }
     select{
         width: 270px;
         height:71px;
@@ -298,6 +314,10 @@ select{
 }
 
 @media (min-width:1800px){
+    .element_none{
+        line-height: 8;
+        font-size:60px;
+    }
     #top{
         margin-bottom: 70px;
     }
@@ -312,6 +332,10 @@ select{
 }
 
 @media (min-width:2560px){
+    .element_none{
+        line-height: 8;
+        font-size:60px;
+    }
     #top{
         margin-bottom: 70px;
     }
