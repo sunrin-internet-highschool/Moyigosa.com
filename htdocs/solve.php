@@ -173,7 +173,7 @@ if(isset($_GET['uncheck'])){
                 $hsj=$row["hsj"];
             }
             if(!empty($sound)){
-                echo "<audio src=\"$sound\" controls=\"controls\" class=\"sound\">";
+                echo "<audio src=\"$sound\" controls=\"controls\" class=\"sound\"></audio>";
             }
             if(!empty($picture)){
                 echo "<img src=\"",$picture,"\" class=\"picture\" width=\"100%\" height=\"auto\">";
