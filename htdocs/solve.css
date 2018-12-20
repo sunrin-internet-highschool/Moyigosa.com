@@ -72,8 +72,7 @@
     width:100%;
 }
 
-#question > div > .example{
-    border:1px solid black;
+.example{
     padding:10px;
 }
 
