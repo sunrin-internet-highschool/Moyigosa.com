@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Noto+Serif+KR:300&subset=korean');
 @import url('/default.css');
 
+.view_selection, #top img, #buttons input{
+    cursor: pointer;
+}
+
 #title,#selection,#view,#buttons,#question,#solve{
     margin-top: 16px;
     width:100%;

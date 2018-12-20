@@ -56,13 +56,17 @@ function SelectBig(obj){
     if(sort != obj.value){
         $("select[value="+obj.value+"]").css("display","inline-block");
         $("select[value="+sort+"]").css("display","none");
-        big = obj.value;
+        if(sub == $("select[value="+obj.value+"]")){
+            big = obj.value;
+        }
     }
 }
 
 function SelectSmall(obj){
     //small = $("#ssub option:selected").val();
-    small = obj.value;
+    if(big == $("select[value="+obj.value+"]") && "소분류" != $("select[value="+obj.value+"]")){
+            small = obj.value;
+    }
 }
 
 $(document).ready(function(){

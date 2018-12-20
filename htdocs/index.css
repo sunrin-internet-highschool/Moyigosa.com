@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700|Noto+Serif+KR:300&subset=korean');
 @import url('/default.css');
 
+#top img{
+    cursor: pointer;
+}
+
+
+
 #middle{
     margin-top: 16px;
     width:100%;
@@ -10,6 +16,7 @@
 }
 
 .search_button{
+    cursor: pointer;
     width:100%;
     height:84px;
     position:relative;
@@ -40,6 +47,14 @@
     background-color:white;
     position: relative;
     height:100px;
+}
+
+.collection, .type, .search_collection select, input{
+    cursor: pointer;
+}
+
+.type, .search_type select, input{
+    cursor: pointer;
 }
 
 .search_option .collection,.search_option .type{

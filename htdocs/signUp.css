@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR|Noto+Serif+KR:300&subset=korean');
 
+input[type=submit], #top img{
+    cursor: pointer;
+}
+
 #middle {
     margin-top: 16px;
     width: 100%;
