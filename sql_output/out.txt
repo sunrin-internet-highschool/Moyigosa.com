@@ -8,6 +8,9 @@ source 2eng_201803.txt;
 source 2eng_201806.txt;
 source 2eng_201809.txt;
 source 3kor_201803.txt;
+source 3kor_201806.txt;
+source 3eng_201803.txt;
+source 3eng_201806.txt;
 
 #source 1eng_mun_201803.txt;
 #source 1eng_mun_201809.txt;
