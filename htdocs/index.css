@@ -5,7 +5,9 @@
     cursor: pointer;
 }
 
-
+#bottom .element:hover{
+    background-color: lavender;
+}
 
 #middle{
     margin-top: 16px;
@@ -228,7 +230,6 @@ select{
 }
 
 @media (max-width:350px){
-    *{font-size:}
 }
 
 @media (min-width:424px){    

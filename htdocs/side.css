@@ -93,21 +93,21 @@
 #side #side_middle .side_element{
     background-color:white;
     width:428px;
-    height:63px;
+    height:100px;
     font-size:25px;
     margin-left:8.5px;
     margin-top:10px;
     color:#333232;
     font-family: 'Noto Sans KR', sans-serif;
     position:relative;
+    line-height:100px;
 }
 
 #side #side_middle .side_element:hover{
-    background-color:antiquewhite;
+    background-color:lavender;
 }
 
 #side #side_middle .side_element span{
-    top:13px;
     left:10px;
     position:absolute;
 }
@@ -124,9 +124,9 @@
 
 #side #side_middle .side_element img{
     position: absolute;
-    top:0;
     right:0;
-    margin:16px;
+    top:0;
+    margin:20px;
 }
 
 #side #side_middle .omr{

@@ -112,7 +112,7 @@ if(isset($_GET['delete'])){
                 
                 echo "<div>";
                 echo "<a href=\"/solve.php/?year=","$year","&month=","$month","&grade=","$grade","&subject=","$subject","&jump=",$_SESSION[$tag]['jump'],"\">";
-                echo "<div class=\"side_element\" ><span>$year","년 ","$month","월 ","$grade","학년"," $subject</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\" value=\"$year$month$grade$subject\"></a></div>";
+                echo "<div class=\"side_element\" ><span>$year","년 ","$month","월 ","$grade","학년"," $subject</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"auto\" height=\"60px\" value=\"$year$month$grade$subject\"></a></div>";
                 echo "</a>";
                 echo "<div class=\"omr\" style=\"display:none\">";
                 for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
@@ -190,7 +190,7 @@ if(isset($_GET['delete'])){
                 
                 echo "<div>";
                 echo "<a href=\"/solve.php/?subject=$subject&btype=$btype&stype=$stype&jump=",$_SESSION[$tag]['jump'],"\">";
-                echo "<div class=\"side_element\" ><span>$subject $btype $stype</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"33\" height=\"31\" value=\"$tag\"></a></div>";
+                echo "<div class=\"side_element\" ><span>$subject $btype $stype</span><a class=\"omr_viewer\"><img src=\"/picture/linemenu/plusicon.png\" width=\"auto\" height=\"60px\" value=\"$tag\"></a></div>";
                 echo "</a>";
                 echo "<div class=\"omr\" style=\"display:none\">";
                 for($i=1;$i<=$_SESSION[$tag]['max'];$i++){
