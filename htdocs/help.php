@@ -16,7 +16,7 @@
     require_once('side.php');
     ?>
     <div id="middle">
-        <img src="/picture/help/help.png" width="100%" height="auto">
+        <img src="/picture/help/help.jpg" class="help_img">
     </div>
 </body>
 
