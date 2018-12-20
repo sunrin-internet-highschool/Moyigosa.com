@@ -28,6 +28,7 @@ session_start();
     <title>로그인 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/login.css">
+<link rel="shortcut icon" href="/picture/ico/icon_5_fsa_icon.ico">
 </head>
 
 <body>

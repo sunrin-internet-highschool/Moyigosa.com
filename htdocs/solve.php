@@ -101,6 +101,8 @@ if(isset($_GET['uncheck'])){
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/solve.css">
     <script src="/solve.js"></script>
+    
+<link rel="shortcut icon" href="/picture/ico/icon_5_fsa_icon.ico">
 </head>
 
 <body>
@@ -167,6 +169,7 @@ if(isset($_GET['uncheck'])){
                 $select5=$row["select5"];
                 $picture=$row["picture"];
                 $sound=$row["sound"];
+                $hsj=$row["hsj"];
             }
             if(!empty($sound)){
                 echo "<audio src=\"$sound\" controls=\"controls\" class=\"sound\">";
@@ -182,7 +185,11 @@ if(isset($_GET['uncheck'])){
         </div>
 
         <div id="solve" style="display:none">
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <?php
+            if(!empty($hsj)){
+                echo "<div class=\"example\">$hsj</div>";
+            }
+            ?>
         </div>
 
         <div id="selection">

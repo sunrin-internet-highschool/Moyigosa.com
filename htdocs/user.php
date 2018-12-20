@@ -27,6 +27,8 @@ if(isset($_POST['change'])){
     <title>회원정보수정 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/user.css">
+    
+<link rel="shortcut icon" href="/picture/ico/icon_5_fsa_icon.ico">
 </head>
 
 <body>

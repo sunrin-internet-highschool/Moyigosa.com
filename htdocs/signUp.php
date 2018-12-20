@@ -26,6 +26,8 @@ if(isset($_POST['id'])&&isset($_POST['pw'])&&isset($_POST['email'])&&isset($_POS
     <title>회원가입 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="/signUp.css">
+    
+<link rel="shortcut icon" href="/picture/ico/icon_5_fsa_icon.ico">
 </head>
 
 <body>
